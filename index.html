@@ -1,100 +1,63 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DichosoPoeta</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #e1f7f2, #ffffff);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-            color: #333;
-            overflow: hidden;
-        }
-
-        .message-container {
-            background-color: #4fc3b2;
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            animation: fadeIn 3s ease-in-out forwards;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        p {
-            font-size: 1.1rem;
-            margin-top: 10px;
-            color: #ffffff;
-            opacity: 0;
-            animation: fadeInText 3s ease-in-out 1s forwards;
-        }
-
-        .email {
-            color: #ffffff;
-            font-weight: bold;
-            text-decoration: none;
-            opacity: 0;
-            animation: fadeInText 3s ease-in-out 1.5s forwards;
-        }
-
-        .date {
-            font-weight: bold;
-            opacity: 0;
-            animation: fadeInText 3s ease-in-out 2s forwards;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInText {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #888;
-        }
-    </style>
+    <title>Poemas Futuristas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="main-header">
+        <h1>🌌 Poemas Futuristas 🌌</h1>
+        <p>Un espacio donde la poesía se encuentra con el futuro.</p>
+    </header>
 
-<div class="message-container">
-    <h1>Página en Construcción</h1>
-    <p>Espero que se encuentren bien. Si tienen alguna pregunta, por favor ponerse en contacto:</p>
-    <a href="mailto:dp@dichosopoeta.com" class="email">dp@dichosopoeta.com</a>
-    <p class="date">Estará lista para el día 20 de Febrero.</p>
-</div>
+    <nav class="navigation">
+        <ul>
+            <li><a href="#poemas">Poemas</a></li>
+            <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
-<div class="footer">
-    <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
-</div>
+    <main class="content">
+        <section id="poemas" class="section poems-section">
+            <h2>Poemas Destacados</h2>
+            <div class="poems-grid">
+                <div class="poem">
+                    <h3>El Universo Interior</h3>
+                    <p>Las estrellas susurran<br> en el silencio eterno<br> de nuestras almas.</p>
+                </div>
+                <div class="poem">
+                    <h3>Susurros del Futuro</h3>
+                    <p>Entre luces y sombras,<br> la tecnología abraza<br> nuestro destino.</p>
+                </div>
+                <!-- Más poemas aquí -->
+            </div>
+        </section>
 
+        <section id="sobre-nosotros" class="section about-section">
+            <h2>Sobre Nosotros</h2>
+            <p>Somos una comunidad de amantes de la poesía, apasionados por unir las palabras del alma con el diseño del futuro. Aquí compartimos versos que inspiran y emocionan.</p>
+        </section>
+
+        <section id="contacto" class="section contact-section">
+            <h2>Contacto</h2>
+            <form>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2024 Poemas Futuristas. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
