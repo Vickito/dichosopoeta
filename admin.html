@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - DichosoPoeta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">DichosoPoeta</div>
+            <a href="index.html">Volver al Blog</a>
+        </nav>
+    </header>
 
+    <main>
+        <section class="admin">
+            <h1>Panel de Administración</h1>
+            <form id="addPostForm">
+                <label for="title">Título del Poema:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="content">Contenido del Poema:</label>
+                <textarea id="content" name="content" rows="10" required></textarea>
+
+                <button type="submit">Añadir Poema</button>
+            </form>
+
+            <section class="poems-list">
+                <h2>Lista de Poemas</h2>
+                <div id="poemsContainer"></div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
