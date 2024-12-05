@@ -10,27 +10,40 @@
     <header>
         <nav>
             <div class="logo">DichosoPoeta</div>
-            <a href="index.html">Volver al Blog</a>
+            <a href="index.html">Volver a Poemas</a>
         </nav>
     </header>
 
     <main>
-        <section class="admin">
-            <h1>Panel de Administración</h1>
-            <form id="addPostForm">
-                <label for="title">Título del Poema:</label>
-                <input type="text" id="title" name="title" required>
+        <section class="login">
+            <h2>Iniciar sesión</h2>
+            <form id="loginForm">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
 
-                <label for="content">Contenido del Poema:</label>
-                <textarea id="content" name="content" rows="10" required></textarea>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
 
-                <button type="submit">Añadir Poema</button>
+                <button type="submit">Iniciar sesión</button>
             </form>
+        </section>
 
-            <section class="poems-list">
-                <h2>Lista de Poemas</h2>
-                <div id="poemsContainer"></div>
-            </section>
+        <section class="add-post" style="display:none;" id="adminSection">
+            <h2>Agregar un nuevo poema</h2>
+            <form id="addPostForm">
+                <label for="title">Título:</label>
+                <input type="text" id="title" required>
+
+                <label for="content">Contenido:</label>
+                <textarea id="content" rows="4" required></textarea>
+
+                <button type="submit">Agregar poema</button>
+            </form>
+        </section>
+
+        <section class="poems-list" style="display:none;" id="poemsSection">
+            <h2>Poemas Guardados</h2>
+            <div id="poemsContainer"></div>
         </section>
     </main>
 
