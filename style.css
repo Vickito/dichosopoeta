@@ -65,3 +65,56 @@ body.dark-mode button {
 body.dark-mode footer {
     background-color: #16a085;
 }
+
+/* Estilos para el área de administración */
+.admin {
+    padding: 20px;
+}
+
+.admin form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin input, .admin textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.admin button {
+    background-color: #1f8a70;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.admin button:hover {
+    background-color: #16a085;
+}
+
+/* Estilos para los poemas listados */
+.poems-list {
+    margin-top: 20px;
+}
+
+.poem {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.poem h3 {
+    color: #1f8a70;
+}
+
+.poem small {
+    color: #777;
+    font-style: italic;
+}
