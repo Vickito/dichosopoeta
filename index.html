@@ -4,8 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DichosoPoeta</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo h1 {
+            margin: 0;
+        }
+
+        header .menu button,
+        header .menu a {
+            margin-left: 20px;
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        #login-section {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        #login-section form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #poemas {
+            padding: 20px;
+        }
+
+        #add-poem-btn {
+            margin-top: 10px;
+        }
+
+        .add-poem-section {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        #poem-content {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        footer {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilo oscuro */
+        body.dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        body.dark-mode header {
+            background-color: #004d40;
+        }
+
+        body.dark-mode footer {
+            background-color: #004d40;
+        }
+
+        /* Estilo para los poemas */
+        .poem {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -51,5 +151,59 @@
     <footer>
         <p>© 2024 DichosoPoeta - Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        // Función para manejar el tema oscuro
+        const toggleThemeBtn = document.getElementById('toggle-theme');
+        const body = document.body;
+        toggleThemeBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+
+        // Función para el login
+        const loginBtn = document.getElementById('login-btn');
+        const loginSection = document.getElementById('login-section');
+        const poemFormSection = document.getElementById('add-poem-section');
+        const addPoemBtn = document.getElementById('add-poem-btn');
+        const poemForm = document.getElementById('poem-form');
+        const poemasList = document.getElementById('poemas-list');
+
+        // Función de Login
+        loginBtn.addEventListener('click', () => {
+            loginSection.style.display = 'block';
+        });
+
+        document.getElementById('login-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Verifica las credenciales (esto debería ser más seguro, este es solo un ejemplo)
+            if (username === 'admin' && password === 'admin123') {
+                loginSection.style.display = 'none';
+                addPoemBtn.style.display = 'block'; // Mostrar botón para añadir poema
+            } else {
+                alert('Credenciales incorrectas');
+            }
+        });
+
+        // Función para agregar poema
+        poemForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const poemContent = document.getElementById('poem-content').value;
+            const poemDiv = document.createElement('div');
+            poemDiv.classList.add('poem');
+            poemDiv.innerText = poemContent;
+            poemasList.appendChild(poemDiv);
+            poemFormSection.style.display = 'none'; // Ocultar sección de añadir poema
+            document.getElementById('poem-content').value = ''; // Limpiar formulario
+        });
+
+        // Mostrar sección para añadir poema cuando se haga clic en el botón
+        addPoemBtn.addEventListener('click', () => {
+            poemFormSection.style.display = 'block';
+            addPoemBtn.style.display = 'none'; // Ocultar botón
+        });
+    </script>
 </body>
 </html>
