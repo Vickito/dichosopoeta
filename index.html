@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #f7c5d5, #fff6f1);
+            background: linear-gradient(to right, #e1f7f2, #ffffff);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,29 +19,30 @@
         }
 
         .message-container {
-            background-color: #f7b7d5;
-            padding: 20px 30px;
+            background-color: #4fc3b2;
+            padding: 30px 40px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 2s ease-in-out;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards;
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #6f4a8e;
-            animation: slideIn 2s ease-in-out;
+            color: #ffffff;
+            margin: 0;
         }
 
         p {
             font-size: 1.1rem;
             margin-top: 10px;
-            color: #444;
+            color: #ffffff;
             opacity: 0;
             animation: fadeInText 3s ease-in-out 1s forwards;
         }
 
         .email {
-            color: #6f4a8e;
+            color: #ffffff;
             font-weight: bold;
             text-decoration: none;
             opacity: 0;
@@ -57,20 +58,9 @@
         @keyframes fadeIn {
             0% {
                 opacity: 0;
-                transform: translateY(-50px);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(0);
             }
         }
 
@@ -103,7 +93,7 @@
 </div>
 
 <div class="footer">
-    <p>&copy; 2024 Dichoso Poeta. Todos los derechos reservados.</p>
+    <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
 </div>
 
 </body>
