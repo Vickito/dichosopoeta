@@ -1,9 +1,9 @@
 // Cambiar entre tema claro y oscuro
-document.getElementById('toggleTheme').addEventListener('click', function () {
+document.getElementById('toggleTheme')?.addEventListener('click', function () {
     document.body.classList.toggle('dark-mode');
 });
 
-// Almacenamiento de poemas (para que persistan)
+// Función para cargar los poemas del localStorage
 function loadPoems() {
     const poems = JSON.parse(localStorage.getItem("poems")) || [];
     const poemsContainer = document.getElementById("poemsContainer");
@@ -21,7 +21,7 @@ function loadPoems() {
     });
 }
 
-// Agregar un poema
+// Función para agregar un poema
 document.getElementById("addPoemForm")?.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -36,7 +36,7 @@ document.getElementById("addPoemForm")?.addEventListener("submit", function (e) 
     const poems = JSON.parse(localStorage.getItem("poems")) || [];
     poems.push(poem);
 
-    localStorage.setItem("poems", JSON.stringify(poems));
+    localStorage.setItem("poems", JSON.stringify(poems));  // Guardar el poema
 
     loadPoems();  // Recargar la lista de poemas
     document.getElementById("addPoemForm").reset();  // Limpiar el formulario
