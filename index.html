@@ -5,24 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DichosoPoeta</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>DichosoPoeta</h1>
-        <button id="toggleTheme">🌙 / 🌞</button>
+        <div class="logo">
+            <h1>DichosoPoeta</h1>
+        </div>
+        <div class="menu">
+            <button id="toggle-theme">Cambiar tema</button>
+            <a href="#poemas">Poemas</a>
+            <a href="#about">Sobre mí</a>
+            <button id="login-btn">Iniciar sesión</button>
+        </div>
     </header>
 
-    <main>
-        <section class="poems-list">
-            <h2>Poemas Recientes</h2>
-            <div id="poemsContainer"></div>
-        </section>
-    </main>
+    <section class="login-section" id="login-section">
+        <h2>Iniciar sesión</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+
+    <section id="poemas">
+        <h2>Poemas</h2>
+        <div id="poemas-list"></div>
+        <button id="add-poem-btn" style="display:none;">Añadir Poema</button>
+    </section>
+
+    <section id="about">
+        <h2>Sobre el autor</h2>
+        <p>Bienvenidos a mi rincón de poesía. Aquí compartiré mis pensamientos y sentimientos a través de poemas.</p>
+    </section>
+
+    <section class="add-poem-section" id="add-poem-section" style="display:none;">
+        <h3>Añadir Poema</h3>
+        <form id="poem-form">
+            <textarea id="poem-content" placeholder="Escribe tu poema aquí..." required></textarea>
+            <button type="submit">Enviar Poema</button>
+        </form>
+    </section>
 
     <footer>
-        <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
+        <p>© 2024 DichosoPoeta - Todos los derechos reservados.</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
