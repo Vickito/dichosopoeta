@@ -1,6 +1,110 @@
-Esta página está en construcción. 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página en Construcción</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f7c5d5, #fff6f1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            color: #333;
+            overflow: hidden;
+        }
 
-Espero que se encuentren bien. 
-Si tienen alguna pregunta, por favor ponerse en contacto: dp@dichosopoeta.com
+        .message-container {
+            background-color: #f7b7d5;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
 
-Estará lista para el día 20 de Febrero. 
+        h1 {
+            font-size: 2.5rem;
+            color: #6f4a8e;
+            animation: slideIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            color: #444;
+            opacity: 0;
+            animation: fadeInText 3s ease-in-out 1s forwards;
+        }
+
+        .email {
+            color: #6f4a8e;
+            font-weight: bold;
+            text-decoration: none;
+            opacity: 0;
+            animation: fadeInText 3s ease-in-out 1.5s forwards;
+        }
+
+        .date {
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInText 3s ease-in-out 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="message-container">
+    <h1>Página en Construcción</h1>
+    <p>Espero que se encuentren bien. Si tienen alguna pregunta, por favor ponerse en contacto:</p>
+    <a href="mailto:dp@dichosopoeta.com" class="email">dp@dichosopoeta.com</a>
+    <p class="date">Estará lista para el día 20 de Febrero.</p>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Dichoso Poeta. Todos los derechos reservados.</p>
+</div>
+
+</body>
+</html>
