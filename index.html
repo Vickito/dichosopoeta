@@ -198,6 +198,7 @@
             if (username === 'admin' && password === 'admin123') {
                 loginSection.style.display = 'none';
                 addPoemBtn.style.display = 'block'; // Mostrar botón para añadir poema
+                loadPoems(); // Cargar poemas guardados
             } else {
                 alert('Credenciales incorrectas');
             }
@@ -211,6 +212,12 @@
             poemDiv.classList.add('poem');
             poemDiv.innerText = poemContent;
             poemasList.appendChild(poemDiv);
+
+            // Guardar poema en localStorage
+            let poems = JSON.parse(localStorage.getItem('poems')) || [];
+            poems.push(poemContent);
+            localStorage.setItem('poems', JSON.stringify(poems));
+
             poemFormSection.style.display = 'none'; // Ocultar sección de añadir poema
             document.getElementById('poem-content').value = ''; // Limpiar formulario
         });
@@ -220,6 +227,17 @@
             poemFormSection.style.display = 'block';
             addPoemBtn.style.display = 'none'; // Ocultar botón
         });
+
+        // Cargar poemas guardados en localStorage
+        function loadPoems() {
+            let poems = JSON.parse(localStorage.getItem('poems')) || [];
+            poems.forEach(poemContent => {
+                const poemDiv = document.createElement('div');
+                poemDiv.classList.add('poem');
+                poemDiv.innerText = poemContent;
+                poemasList.appendChild(poemDiv);
+            });
+        }
     </script>
 </body>
 </html>
