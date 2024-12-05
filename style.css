@@ -1,1 +1,67 @@
+/* Estilo básico */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 
+header {
+    background-color: #1f8a70; /* Turquesa suave */
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+}
+
+button {
+    background-color: #1f8a70;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #16a085;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #1f8a70;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-mode header {
+    background-color: #16a085;
+}
+
+body.dark-mode button {
+    background-color: #16a085;
+}
+
+body.dark-mode footer {
+    background-color: #16a085;
+}
