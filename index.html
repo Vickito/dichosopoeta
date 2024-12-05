@@ -3,255 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victor Morel - Blog Literario</title>
+    <title>Blog del Escritor</title>
     <style>
-        /* General */
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
         }
-
         header {
-            background: #333;
-            color: #fff;
-            padding: 20px;
             text-align: center;
-            position: relative;
+            padding: 20px;
         }
-
-        header h1 {
-            font-size: 2.5em;
+        .content {
+            margin: 20px;
         }
-
-        header nav ul {
-            list-style: none;
-            padding: 0;
+        .comment-section {
+            margin-top: 30px;
         }
-
-        header nav ul li {
-            display: inline;
-            margin: 0 15px;
+        .comment-form {
+            margin-top: 20px;
         }
-
-        header nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        /* Login Form */
-        #login-form {
+        .login-button {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            display: none;
         }
-
-        #login-form input {
-            margin-bottom: 10px;
-            padding: 8px;
-            width: 100%;
-        }
-
-        #login-form button {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            border: none;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        #login-form button:hover {
-            background-color: #555;
-        }
-
-        /* Escritos */
-        #escritos {
-            padding: 20px;
-        }
-
-        #escritos .filters {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            background-color: #333;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .filter-btn:hover {
-            background-color: #555;
-        }
-
-        .escritos-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .escrito {
-            background: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-
-        .escrito h3 {
-            margin-top: 0;
-        }
-
-        /* Formulario Añadir Poema */
-        #add-poem {
-            padding: 20px;
-            background: #f0f0f0;
-            margin: 20px 0;
-            border-radius: 10px;
-            display: none;
-        }
-
-        #add-poem input, #add-poem textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
-        #add-poem button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #333;
-            color: #fff;
-            margin-top: 20px;
+        .admin-section {
+            display: none; /* Solo visible para admins */
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Plumas del Alma</h1>
-        <p>Historias que nacen del corazón y palabras que tocan el alma.</p>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#escritos">Escritos</a></li>
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-        <button id="login-btn">Iniciar Sesión</button>
-    </header>
 
-    <!-- Login Form -->
-    <div id="login-form">
-        <input type="text" id="username" placeholder="Usuario" />
-        <input type="password" id="password" placeholder="Contraseña" />
-        <button id="login-btn-submit">Iniciar Sesión</button>
-    </div>
+<header>
+    <h1>Blog del Escritor</h1>
+    <button class="login-button" onclick="showLogin()">Login</button>
+</header>
 
-    <!-- Inicio -->
-    <section id="inicio">
-        <div class="intro">
-            <h2>Bienvenido a mi rincón literario</h2>
-            <p>Aquí encontrarás poemas, cuentos y escritos que reflejan mi esencia.</p>
-        </div>
-    </section>
+<div class="content">
+    <h2>Herramientas de Promoción</h2>
+    <h3>Blog o Página Web Personal</h3>
+    <p>Disponer de un blog o una página web personal es imprescindible para cualquier autor. Sirven para promocionarse y acercarnos a nuestros posibles lectores.</p>
+    <p>Una página web personal requiere ciertos conocimientos técnicos, y conlleva algunos costes. Trabajaremos sobre la base de Blogs gratuitos, que es la forma más fácil de crear y actualizar una página Web...</p>
 
-    <!-- Escritos -->
-    <section id="escritos">
-        <h2>Escritos</h2>
-        <div class="filters">
-            <button class="filter-btn" data-category="todos">Todos</button>
-            <button class="filter-btn" data-category="poesia">Poesía</button>
-            <button class="filter-btn" data-category="cuentos">Cuentos</button>
-        </div>
-        <div class="escritos-container" id="poems-container">
-            <!-- Aquí se cargarán los poemas y cuentos -->
-        </div>
-    </section>
+    <h3>¿Qué es un Blog?</h3>
+    <p>Básicamente, un Blog es un espacio personal de escritura en Internet donde el autor publica artículos o noticias. Estos pueden contener texto, imágenes e hipervínculos...</p>
 
-    <!-- Añadir Poema (Solo Admin) -->
-    <section id="add-poem">
-        <h3>Añadir Poema</h3>
-        <input type="text" id="poem-title" placeholder="Título del Poema" />
-        <textarea id="poem-content" placeholder="Escribe tu poema aquí"></textarea>
-        <button id="add-poem-btn">Añadir Poema</button>
-    </section>
+    <h3>Elementos de un Blog</h3>
+    <p>En la portada del weblog aparecen primero las anotaciones más recientes. Cada uno de estos post incluye un título, la fecha de publicación, el nombre del autor, y un enlace que lleva a un formulario donde los visitantes pueden escribir sus comentarios...</p>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2024 Victor Morel. Todos los derechos reservados.</p>
-    </footer>
+    <h3>¿Por dónde Empezar?</h3>
+    <p>Para conseguir un espacio en Internet y comenzar a publicar tus noticias, artículos y reflexiones existen en la actualidad muchas opciones...</p>
+    
+    <p>¿Ya tienes la página? Aquí te damos algunos consejos sobre el contenido...</p>
 
-    <script>
-        const loginBtn = document.getElementById('login-btn');
-        const loginForm = document.getElementById('login-form');
-        const loginBtnSubmit = document.getElementById('login-btn-submit');
-        const addPoemSection = document.getElementById('add-poem');
-        const poemsContainer = document.getElementById('poems-container');
-        const poemTitleInput = document.getElementById('poem-title');
-        const poemContentInput = document.getElementById('poem-content');
-        const addPoemBtn = document.getElementById('add-poem-btn');
-        
-        // Simulación de Login (Usuario y Contraseña)
-        const adminCredentials = { username: 'admin', password: 'admin123' };
-        let isAdmin = false;
+    <h3>Promociona Tu Blog</h3>
+    <p>Es normal que al principio no tengas tráfico hacia tu página. Asegúrate de darla de alta en buscadores y en directorios recomendados...</p>
+</div>
 
-        // Mostrar login form
-        loginBtn.addEventListener('click', () => {
-            loginForm.style.display = 'block';
-        });
+<!-- Área de comentarios -->
+<div class="comment-section">
+    <h3>Comentarios</h3>
+    <form class="comment-form">
+        <textarea placeholder="Escribe tu comentario..."></textarea>
+        <button type="submit">Enviar Comentario</button>
+    </form>
+</div>
 
-        // Procesar login
-        loginBtnSubmit.addEventListener('click', () => {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+<!-- Área de administración, solo visible para admins -->
+<div class="admin-section">
+    <h3>Añadir Poema</h3>
+    <form id="addPoemForm">
+        <input type="text" placeholder="Título del Poema" required><br>
+        <textarea placeholder="Escribe el poema..." required></textarea><br>
+        <button type="submit">Añadir Poema</button>
+    </form>
+</div>
 
-            if (username === adminCredentials.username && password === adminCredentials.password) {
-                isAdmin = true;
-                localStorage.setItem('isAdmin', true);
-                loginForm.style.display = 'none';
-                addPoemSection.style.display = 'block';
-                loadPoems();
-            } else {
-                alert('Credenciales incorrectas');
-            }
-        });
+<!-- Login Form -->
+<div id="loginModal" style="display: none;">
+    <form id="loginForm">
+        <label for="username">Usuario:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+</div>
 
-        // Cargar poemas guardados
-        function loadPoems() {
-            const poems = JSON.parse(localStorage.getItem('poems')) || [];
-            poemsContainer.innerHTML = poems.map(poem => `
-                <div class="escrito ${poem.category}">
-                    <h3>${poem.title}</h3>
-                    <p>${poem.content}</p>
-                </div>
-            `).join('');
+<script>
+    function showLogin() {
+        document.getElementById('loginModal').style.display = 'block';
+    }
+
+    // Simulación de Login (con admin hardcodeado)
+    const adminUser = { username: 'admin', password: '12345' };
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username === adminUser.username && password === adminUser.password) {
+            alert('Inicio de sesión exitoso');
+            document.querySelector('.admin-section').style.display = 'block';
+            document.getElementById('loginModal').style.display = 'none';
+        } else {
+            alert('Usuario o contraseña incorrectos');
         }
+    });
 
-        // Añadir poema
-        addPoemBtn.addEventListener('click', () => {
-            const
+    // Función para agregar poemas (solo accesible para admin)
+    document.getElementById('addPoemForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Poema añadido');
+    });
+</script>
+
+</body>
+</html>
