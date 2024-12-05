@@ -36,6 +36,11 @@
             border: none;
             cursor: pointer;
             text-decoration: none;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        header .menu button:active {
+            transform: scale(0.9);
         }
 
         #login-section {
@@ -105,6 +110,16 @@
             padding: 15px;
             margin-bottom: 10px;
         }
+
+        /* Animación para el botón de cambiar tema */
+        .button-pressed {
+            transform: scale(0.9);
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .button-pressed:active {
+            transform: scale(0.8);
+        }
     </style>
 </head>
 <body>
@@ -158,6 +173,7 @@
         const body = document.body;
         toggleThemeBtn.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
+            toggleThemeBtn.classList.toggle('button-pressed');
         });
 
         // Función para el login
