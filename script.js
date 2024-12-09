@@ -1,11 +1,11 @@
-// Botón de login
+// Botón de login con autenticación básica
 document.getElementById('login-btn').addEventListener('click', () => {
     const username = prompt("Usuario:");
     const password = prompt("Contraseña:");
-    
-    if (username === "admin" && password === "1234") { // Cambiar por autenticación segura en producción
+
+    if (username === "admin" && password === "1234") { // Cambiar en producción
         alert("Bienvenido, DichosoPoeta");
-        document.getElementById('publish-section').style.display = "block";
+        document.getElementById('publish-section').classList.remove('hidden');
     } else {
         alert("Usuario o contraseña incorrectos.");
     }
@@ -23,7 +23,6 @@ document.getElementById('publish-form').addEventListener('submit', (e) => {
         post.innerHTML = `
             <h3 class="text-lg font-semibold">${title}</h3>
             <p class="mt-4 text-gray-400">${content}</p>
-            <textarea class="w-full mt-4 p-2 bg-gray-800 text-white rounded" placeholder="Escribe un comentario..."></textarea>
         `;
         document.getElementById('posts-container').appendChild(post);
         alert("Escrito publicado.");
