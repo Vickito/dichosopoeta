@@ -6,7 +6,6 @@
     <title>Escritos</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body class="bg-black text-white font-sans">
     <header class="bg-gradient-to-r from-gray-900 to-gray-800 p-6 shadow-lg flex justify-between items-center">
@@ -24,7 +23,15 @@
             <p class="mt-4 text-gray-400">Explora mis escritos y reflexiones. Espero que encuentres algo que te inspire.</p>
         </section>
 
-        <!-- Sección de Publicación -->
+        <!-- Últimos escritos -->
+        <section>
+            <h2 class="text-xl font-bold mb-6 border-b border-gray-700 pb-2">Últimos Escritos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-container">
+                <!-- Artículos se añadirán dinámicamente aquí -->
+            </div>
+        </section>
+
+        <!-- Publicación (oculta hasta login) -->
         <section id="publish-section" class="hidden mt-10 p-6 bg-gray-900 rounded-lg">
             <h2 class="text-xl font-bold mb-4">Nueva Publicación</h2>
             <form id="publish-form">
@@ -34,15 +41,7 @@
             </form>
         </section>
 
-        <!-- Últimos escritos -->
-        <section id="posts">
-            <h2 class="text-xl font-bold mb-6 border-b border-gray-700 pb-2">Últimos Escritos</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Los artículos publicados aparecerán aquí -->
-            </div>
-        </section>
-
-        <!-- Formulario de contacto -->
+        <!-- Contacto -->
         <section class="mt-10 p-6 bg-gray-900 rounded-lg">
             <h2 class="text-xl font-bold mb-4">Contáctame</h2>
             <form id="contact-form">
@@ -57,5 +56,7 @@
     <footer class="bg-gray-900 text-gray-500 text-center p-6 mt-10">
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
