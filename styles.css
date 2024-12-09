@@ -5,7 +5,24 @@ body {
     line-height: 1.6;
 }
 
-/* Header y Login */
+/* Animaciones */
+header {
+    animation: fadeIn 1.5s ease-out;
+}
+
+article {
+    animation: slideUp 1.2s ease-in-out;
+}
+
+a {
+    transition: color 0.3s, transform 0.2s;
+}
+
+a:hover {
+    color: #0ea5e9;
+    transform: translateX(5px);
+}
+
 #login-btn {
     cursor: pointer;
 }
@@ -15,21 +32,6 @@ body {
 }
 #login-btn:hover img {
     transform: rotate(15deg);
-}
-
-/* Animaciones */
-header {
-    animation: fadeIn 1.5s ease-out;
-}
-article {
-    animation: slideUp 1.2s ease-in-out;
-}
-a {
-    transition: color 0.3s, transform 0.2s;
-}
-a:hover {
-    color: #0ea5e9;
-    transform: translateX(5px);
 }
 
 /* Keyframes */
@@ -43,6 +45,7 @@ a:hover {
         transform: translateY(0);
     }
 }
+
 @keyframes slideUp {
     from {
         opacity: 0;
