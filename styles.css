@@ -10,19 +10,6 @@ header {
     animation: fadeIn 1.5s ease-out;
 }
 
-article {
-    animation: slideUp 1.2s ease-in-out;
-}
-
-a {
-    transition: color 0.3s, transform 0.2s;
-}
-
-a:hover {
-    color: #0ea5e9;
-    transform: translateX(5px);
-}
-
 #login-btn {
     cursor: pointer;
 }
@@ -39,17 +26,6 @@ a:hover {
     from {
         opacity: 0;
         transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
     }
     to {
         opacity: 1;
