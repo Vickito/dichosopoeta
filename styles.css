@@ -5,20 +5,15 @@ body {
     line-height: 1.6;
 }
 
+/* Estilo para el grid de los escritos */
+#posts-container a {
+    display: block;
+    text-decoration: none;
+}
+
 /* Animaciones */
 header {
     animation: fadeIn 1.5s ease-out;
-}
-
-#login-btn {
-    cursor: pointer;
-}
-#login-btn img {
-    filter: brightness(0.8);
-    transition: transform 0.3s;
-}
-#login-btn:hover img {
-    transform: rotate(15deg);
 }
 
 /* Keyframes */
