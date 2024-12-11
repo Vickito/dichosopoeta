@@ -5,47 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre mí</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
+            color: #ffffff;
+        }
+        .card {
+            background: #3c3c3c; /* Gris oscuro */
+            border-left: 4px solid #ff6b6b; /* Rojo pastel suave */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.6);
+        }
+        .neon-title {
+            text-shadow: 0 0 8px #ff6b6b, 0 0 16px #ff6b6b;
+        }
+        .link:hover {
+            color: #ff6b6b; /* Rojo pastel suave */
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans">
+<body class="font-sans antialiased">
 
-    <!-- Header con el título y navegación -->
-    <header class="bg-gradient-to-r from-gray-800 to-gray-700 p-6 shadow-lg text-center">
-        <h1 class="text-4xl font-bold tracking-widest">Sobre mí</h1>
-        <nav class="mt-4">
-            <a href="index.html" class="text-gray-200 hover:text-gray-100 px-4 py-2">Inicio</a>
+    <!-- Header -->
+    <header class="bg-gray-800 bg-opacity-90 p-6 shadow-lg text-center sticky top-0 z-10">
+        <h1 class="text-4xl font-extrabold tracking-wide neon-title">Sobre mí</h1>
+        <nav class="mt-4 flex justify-center gap-6">
+            <a href="index.html" class="link transition duration-200">Home</a>
         </nav>
     </header>
 
     <!-- Main content -->
-    <main class="max-w-6xl mx-auto py-10">
-        <section class="bg-gray-800 p-8 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold mb-6">Quién soy</h2>
-            <p class="text-gray-300 leading-relaxed">Hola, es un gusto tenerte en esta página. 
-                Antes que nada espero que estés bien. 
-                Soy un estudiante, aspirante a ser escritor de poemarios y relatos de la vida cotidiana. 
-                Soy algo elocuente a la hora de hablar, pero con una pizca de tranquilidad. 
-                Hablo dos idiomas (próximamente tres). 
-                Suelo pasar mis días pensando en cosas que no tienen sentido alguno. 
-                Aprendí a leer y escribir a una edad tardía, y a causa de esto tengo problemas para leer (aunque yo digo que es dislexia). 
-                El tiempo se siente como algo muy surrealista para mí, 
-                    porque siento que nunca pasa, 
-                    sólo me vuelvo más viejo (y no, no estoy tan viejo, apenas voy por la primera moneda de mi vida; son cuatro monedas, y apenas estoy llegando a la primera). 
-                Artísticamente me puedes llamar «DichosoPoeta», aunque mi nombre es Víctor Morel (Vico para las personas cercanas). 
-                Soy naciente de la República Dominicana, aunque he dejado todo atrás y siento que no pertenezco a ningún lugar. 
-                
-                He escrito muchos poemas, pero tengo pocos publicados. 
-                He hecho algunos libros, pero oficialmente tengo dos publicados, por motivos de no tener mucho tiempo. 
-                Ummm... No sé qué escribir, no soy muy bueno hablando sobre mí. 
-                
-                Gracias por leerme, espero disfrutes de esta página. 
-                
-                Psdt: Posiblemente añada algunos detalles más adelante, y también quite algunos detalles más. </p>
+    <main class="max-w-5xl mx-auto py-16 px-6">
+        <section class="text-center mb-16">
+            <h2 class="text-2xl font-bold mb-6">¡Hola! Soy <span class="text-pink-400">DichosoPoeta</span></h2>
+            <p class="text-lg leading-relaxed">
+                Soy un estudiante y escritor apasionado por los poemas y los relatos. 
+                Mi camino no ha sido fácil, pero he encontrado en las palabras mi refugio y mi arte.
+                <br> 
+                Mis días están llenos de ideas, aprendizaje y la búsqueda constante de inspiración.
+            </p>
+        </section>
+
+        <!-- Interactive Cards -->
+        <section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Bloque 1 -->
+                <div class="card rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Mis raíces</h3>
+                    <p>
+                        Nací en la República Dominicana, un lugar lleno de colores y cultura. Sin embargo, 
+                        mi vida me llevó a explorar otros horizontes y, aunque he dejado mucho atrás, las experiencias me han formado.
+                    </p>
+                </div>
+                <!-- Bloque 2 -->
+                <div class="card rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Mi viaje con las palabras</h3>
+                    <p>
+                        Aprendí a leer y escribir tarde, y eso me marcó profundamente. Hoy en día, las palabras son mi herramienta más poderosa.
+                        Aunque a veces lucho con la dislexia, siempre encuentro la forma de expresarme.
+                    </p>
+                </div>
+                <!-- Bloque 3 -->
+                <div class="card rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Mi arte</h3>
+                    <p>
+                        Me considero un artista de lo cotidiano, un observador de la vida que transforma lo simple en poesía. 
+                        Mis libros y poemas reflejan lo que soy y lo que siento.
+                    </p>
+                </div>
+                <!-- Bloque 4 -->
+                <div class="card rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Un vistazo al futuro</h3>
+                    <p>
+                        Sueño con publicar más libros y explorar nuevas formas de creatividad. Este espacio es el inicio de algo más grande: 
+                        una ventana a mis pensamientos y emociones.
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 text-center p-6 mt-10">
+    <footer class="bg-gray-800 text-gray-400 text-center p-6 mt-16">
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
 
