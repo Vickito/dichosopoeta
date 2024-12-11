@@ -7,31 +7,25 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background: #0a0a0a; /* Fondo negro completo */
+            background: #0a0a0a; /* Fondo oscuro */
             color: #fafbfd; /* Texto blanco */
             font-family: 'Arial', sans-serif;
         }
         .neon-title {
-            color: #009764; /* Verde para el título "Sobre mí" */
+            color: #009764; /* Verde pastel para el título "Sobre mí" */
         }
         .card {
-            background: #1f1f1f;
+            background: #1f1f1f; /* Fondo muy oscuro para las tarjetas */
             border-left: 4px solid #009764; /* Verde pastel en el borde de las tarjetas */
             border-radius: 8px;
-            transition: all 0.3s ease;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
-        .card:hover {
-            transform: scale(1.05) translateY(-5px);
-            background: #333333;
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        .card-text {
+            color: #d9d9d9;
         }
         .link {
-            color: #009764;
-            transition: all 0.3s ease;
-        }
-        .link:hover {
-            color: #009764; /* Brillo verde pastel en hover para los enlaces */
-            text-shadow: 0 0 5px #fafbfd, 0 0 10px #fafbfd;
+            color: #009764; /* Verde pastel para los enlaces */
         }
         .glow-effect {
             position: relative;
@@ -55,10 +49,6 @@
             transform: scale(1);
             filter: blur(10px);
         }
-        .card-text {
-            color: #d9d9d9;
-        }
-        /* Efecto de líneas en el botón "Home" */
         .home-link span {
             position: relative;
         }
@@ -68,7 +58,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background-color: #009764; /* Color verde pastel para las líneas */
+            background-color: #3cefff; /* Color azul para las líneas */
             transform-origin: center top;
             transform: scaleY(0);
             transition: transform 0.5s ease;
@@ -78,18 +68,6 @@
         }
         .home-link span::after {
             right: -8px;
-        }
-        .home-link span:hover::before, .home-link span:hover::after {
-            transform-origin: center bottom;
-            transform: scaleY(1);
-        }
-        /* Cambios en los inputs */
-        input, textarea {
-            border: 2px solid #fff; /* Línea blanca */
-            background-color: #1f1f1f;
-            color: #fafbfd;
-            padding: 10px;
-            border-radius: 5px;
         }
     </style>
 </head>
@@ -121,7 +99,7 @@
         <section>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Bloque 1 -->
-                <div class="card shadow-md p-6">
+                <div class="card shadow-md">
                     <h3 class="text-xl font-semibold mb-4">Mis raíces</h3>
                     <p class="card-text">
                         Nací en la República Dominicana, un lugar lleno de colores y cultura. Sin embargo, 
@@ -130,7 +108,7 @@
                     </p>
                 </div>
                 <!-- Bloque 2 -->
-                <div class="card shadow-md p-6">
+                <div class="card shadow-md">
                     <h3 class="text-xl font-semibold mb-4">Mi viaje corto</h3>
                     <p class="card-text">
                         Aprendí a leer y escribir tarde, y eso me marcó profundamente. Hoy en día, las palabras son mi herramienta más poderosa.
@@ -138,7 +116,7 @@
                     </p>
                 </div>
                 <!-- Bloque 3 -->
-                <div class="card shadow-md p-6">
+                <div class="card shadow-md">
                     <h3 class="text-xl font-semibold mb-4">Mis escritos</h3>
                     <p class="card-text">
                         Me considero un artista de lo cotidiano, un observador de la vida que transforma lo simple en poesía. 
@@ -146,7 +124,7 @@
                     </p>
                 </div>
                 <!-- Bloque 4 -->
-                <div class="card shadow-md p-6">
+                <div class="card shadow-md">
                     <h3 class="text-xl font-semibold mb-4">El futuro</h3>
                     <p class="card-text">
                         Sueño con publicar más libros y explorar nuevas formas de crear nuevas historias. Este espacio es el inicio de algo más grande: 
