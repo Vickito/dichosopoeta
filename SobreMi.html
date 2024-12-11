@@ -31,11 +31,13 @@
         .card-text {
             color: #d9d9d9;
         }
-        .highlight {
+        .glow-effect {
             position: relative;
             z-index: 1;
+            display: inline-block;
+            color: white;
         }
-        .highlight::before {
+        .glow-effect::before {
             content: '';
             position: absolute;
             z-index: -1;
@@ -43,50 +45,14 @@
             bottom: 0;
             left: -0.25em;
             right: -0.25em;
-            background-color: #000000; /* Fondo negro puro */
-            transform-origin: center right;
-            transform: scaleX(0);
-            transition: transform 0.2s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.2); /* Brillo leve */
+            filter: blur(4px);
+            transform: scale(0);
+            transition: transform 0.3s ease-out, filter 0.3s ease-out;
         }
-        .highlight:hover::before {
-            transform: scaleX(1);
-            transform-origin: center left;
-        }
-        .balls {
-            width: 4em;
-            display: flex;
-            flex-flow: row nowrap;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 1rem;
-        }
-        .balls div {
-            width: 0.8em;
-            height: 0.8em;
-            border-radius: 50%;
-            background-color: #fc2f70; /* Color rosado vibrante */
-        }
-        .balls div:nth-of-type(1) {
-            transform: translateX(-100%);
-            animation: left-swing 0.5s ease-in alternate infinite;
-        }
-        .balls div:nth-of-type(3) {
-            transform: translateX(-95%);
-            animation: right-swing 0.5s ease-out alternate infinite;
-        }
-        @keyframes left-swing {
-            50%,
-            100% {
-                transform: translateX(95%);
-            }
-        }
-        @keyframes right-swing {
-            50% {
-                transform: translateX(-95%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
+        .glow-effect:hover::before {
+            transform: scale(1);
+            filter: blur(10px);
         }
     </style>
 </head>
@@ -94,14 +60,7 @@
 
     <!-- Header -->
     <header class="bg-black bg-opacity-90 p-6 shadow-lg text-center sticky top-0 z-10">
-        <h1 class="text-4xl font-extrabold tracking-wide neon-title">
-            Sobre mí
-        </h1>
-        <div class="balls">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+        <h1 class="text-4xl font-extrabold tracking-wide neon-title">Sobre mí</h1>
         <nav class="mt-4 flex justify-center gap-6">
             <a href="index.html" class="link transition duration-200">Home</a>
         </nav>
@@ -110,7 +69,7 @@
     <!-- Main content -->
     <main class="max-w-5xl mx-auto py-16 px-6">
         <section class="text-center mb-16">
-            <h2 class="text-2xl font-bold mb-6">¡Hola! Soy <span class="highlight">DichosoPoeta</span></h2>
+            <h2 class="text-2xl font-bold mb-6">¡Hola! Soy <span class="glow-effect">DichosoPoeta</span></h2>
             <p class="text-lg leading-relaxed">
                 Soy un estudiante y escritor apasionado por los poemas y los relatos. 
                 Mi camino no ha sido fácil, pero he encontrado en las palabras mi refugio y mi arte.
