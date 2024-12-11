@@ -62,43 +62,34 @@
 
         /* Efecto de animación para el botón "Home" */
         .home-button {
-            display: flex;
-            flex-flow: row nowrap;
-            align-items: center;
-            justify-content: space-between;
-            width: 2em;
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fafbfd; /* Blanco para el texto */
+            text-transform: uppercase;
+            border: 2px solid #a3d8b7; /* Verde pastel más suave */
+            background-color: #0a0a0a; /* Fondo oscuro */
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
         }
 
+        .home-button:hover {
+            cursor: pointer;
+            color: #259f48; /* Verde más brillante en hover */
+            box-shadow: 0 0 10px rgba(37, 159, 72, 0.8); /* Sombra verde suave */
+        }
+
+        /* Animación del texto al pasar el mouse */
         .home-button span {
-            width: 0.3em;
-            height: 1em;
-            background-color: #259f48; /* Verde brillante */
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
         }
 
-        .home-button span:nth-of-type(1) {
-            animation: grow 1s -0.45s ease-in-out infinite;
-        }
-
-        .home-button span:nth-of-type(2) {
-            animation: grow 1s -0.3s ease-in-out infinite;
-        }
-
-        .home-button span:nth-of-type(3) {
-            animation: grow 1s -0.15s ease-in-out infinite;
-        }
-
-        .home-button span:nth-of-type(4) {
-            animation: grow 1s ease-in-out infinite;
-        }
-
-        @keyframes grow {
-            0%, 100% {
-                transform: scaleY(1);
-            }
-
-            50% {
-                transform: scaleY(2);
-            }
+        .home-button:hover span {
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -109,12 +100,9 @@
         <h1 class="text-4xl font-extrabold tracking-wide neon-title">Sobre mí</h1>
         <nav class="mt-4 flex justify-center gap-6">
             <a href="index.html" class="link transition duration-200">
-                <!-- Botón con animación -->
+                <!-- Botón Home con animación -->
                 <div class="home-button">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span>Home</span>
                 </div>
             </a>
         </nav>
