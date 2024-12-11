@@ -6,9 +6,9 @@
     <title>Sobre mí</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body { background: #0a0a0a; color: #0a0a0a; font-family: 'Arial', sans-serif; }
+        body { background: #000000; color: #ffffff; font-family: 'Arial', sans-serif; }
         .card { 
-            background: #393939; 
+            background: #000000; 
             border-left: 4px solid #ffffff; 
             border-radius: 8px; 
             padding: 1.5rem; 
@@ -23,10 +23,10 @@
         .home-link span::after { right: -8px; }
         .home-link span:hover::before, .home-link span:hover::after { transform-origin: center bottom; transform: scaleY(1); }
 
-        /* Efecto de levantamiento */
+        /* Efecto de aumento */
         .card:hover {
-            transform: translateY(-10px); /* Levanta la tarjeta */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Agrega sombra */
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Agrega sombra */
         }
     </style>
 </head>
@@ -67,7 +67,7 @@
         </section>
     </main>
 
-    <footer class="bg-black text-gray-400 text-center p-6 mt-16">
+    <footer class="bg-black text-white text-center p-6 mt-16">
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
 
