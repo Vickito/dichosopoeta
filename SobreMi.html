@@ -7,35 +7,37 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #121212, #2a2a2a);
-            color: #ffffff;
+            background: #0a0a0a; /* Fondo oscuro */
+            color: #fafbfd; /* Texto blanco */
+            font-family: 'Arial', sans-serif;
+        }
+        .neon-title {
+            color: #259f48; /* Verde brillante para el título "Sobre mí" */
+            text-shadow: 0 0 10px #259f48, 0 0 20px #259f48;
         }
         .card {
             background: #1f1f1f;
-            border-left: 4px solid #ffffff;
+            border-left: 4px solid #259f48; /* Verde brillante en el borde de las tarjetas */
             border-radius: 8px;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
         .card:hover {
-            transform: scale(1.05) translateY(-10px);
-            background: linear-gradient(135deg, #2a2a2a, #3b3b3b);
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+            transform: scale(1.05) translateY(-5px);
+            background: #333333;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
         }
-        .neon-title {
-            text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+        .link {
+            color: #259f48;
+            transition: all 0.3s ease;
         }
         .link:hover {
-            color: #f0f0f0;
-            text-shadow: 0 0 5px #ffffff;
-        }
-        .card-text {
-            color: #d9d9d9;
+            color: #fafbfd; /* Brillo blanco en hover para los enlaces */
+            text-shadow: 0 0 5px #fafbfd, 0 0 10px #fafbfd;
         }
         .glow-effect {
             position: relative;
             z-index: 1;
             display: inline-block;
-            color: white;
         }
         .glow-effect::before {
             content: '';
@@ -53,6 +55,9 @@
         .glow-effect:hover::before {
             transform: scale(1);
             filter: blur(10px);
+        }
+        .card-text {
+            color: #d9d9d9;
         }
     </style>
 </head>
