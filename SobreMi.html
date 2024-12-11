@@ -7,40 +7,67 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
+            background: linear-gradient(135deg, #121212, #2a2a2a);
             color: #ffffff;
         }
         .card {
-            background: #3c3c3c; /* Gris oscuro */
-            border-left: 4px solid #ff6b6b; /* Rojo pastel suave */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #1f1f1f;
+            border-left: 4px solid #ffffff;
+            border-radius: 8px;
+            transition: all 0.4s ease;
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.6);
+            transform: scale(1.05) translateY(-10px);
+            background: linear-gradient(135deg, #2a2a2a, #3b3b3b);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
         }
         .neon-title {
-            text-shadow: 0 0 8px #ff6b6b, 0 0 16px #ff6b6b;
+            text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
         }
         .link:hover {
-            color: #ff6b6b; /* Rojo pastel suave */
+            color: #f0f0f0;
+            text-shadow: 0 0 5px #ffffff;
+        }
+        .card-text {
+            color: #d9d9d9;
+        }
+        .highlight {
+            position: relative;
+            z-index: 1;
+        }
+        .highlight::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            bottom: 0;
+            left: -0.25em;
+            right: -0.25em;
+            background-color: hsla(341, 97%, 59%, 0.75); /* Color rosa translúcido */
+            transform-origin: center right;
+            transform: scaleX(0);
+            transition: transform 0.2s ease-in-out;
+        }
+        .highlight:hover::before {
+            transform: scaleX(1);
+            transform-origin: center left;
         }
     </style>
 </head>
 <body class="font-sans antialiased">
 
     <!-- Header -->
-    <header class="bg-gray-800 bg-opacity-90 p-6 shadow-lg text-center sticky top-0 z-10">
+    <header class="bg-black bg-opacity-90 p-6 shadow-lg text-center sticky top-0 z-10">
         <h1 class="text-4xl font-extrabold tracking-wide neon-title">Sobre mí</h1>
         <nav class="mt-4 flex justify-center gap-6">
-            <a href="index.html" class="link transition duration-200">Home</a>
+            <a href="index.html" class="link transition duration-200">Inicio</a>
         </nav>
     </header>
 
     <!-- Main content -->
     <main class="max-w-5xl mx-auto py-16 px-6">
         <section class="text-center mb-16">
-            <h2 class="text-2xl font-bold mb-6">¡Hola! Soy <span class="text-pink-400">DichosoPoeta</span></h2>
+            <h2 class="text-2xl font-bold mb-6">¡Hola! Soy <span class="highlight">DichosoPoeta</span></h2>
             <p class="text-lg leading-relaxed">
                 Soy un estudiante y escritor apasionado por los poemas y los relatos. 
                 Mi camino no ha sido fácil, pero he encontrado en las palabras mi refugio y mi arte.
@@ -53,33 +80,33 @@
         <section>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Bloque 1 -->
-                <div class="card rounded-lg shadow-md p-6">
+                <div class="card shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-4">Mis raíces</h3>
-                    <p>
+                    <p class="card-text">
                         Nací en la República Dominicana, un lugar lleno de colores y cultura. Sin embargo, 
                         mi vida me llevó a explorar otros horizontes y, aunque he dejado mucho atrás, las experiencias me han formado.
                     </p>
                 </div>
                 <!-- Bloque 2 -->
-                <div class="card rounded-lg shadow-md p-6">
+                <div class="card shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-4">Mi viaje con las palabras</h3>
-                    <p>
+                    <p class="card-text">
                         Aprendí a leer y escribir tarde, y eso me marcó profundamente. Hoy en día, las palabras son mi herramienta más poderosa.
                         Aunque a veces lucho con la dislexia, siempre encuentro la forma de expresarme.
                     </p>
                 </div>
                 <!-- Bloque 3 -->
-                <div class="card rounded-lg shadow-md p-6">
+                <div class="card shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-4">Mi arte</h3>
-                    <p>
+                    <p class="card-text">
                         Me considero un artista de lo cotidiano, un observador de la vida que transforma lo simple en poesía. 
                         Mis libros y poemas reflejan lo que soy y lo que siento.
                     </p>
                 </div>
                 <!-- Bloque 4 -->
-                <div class="card rounded-lg shadow-md p-6">
+                <div class="card shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-4">Un vistazo al futuro</h3>
-                    <p>
+                    <p class="card-text">
                         Sueño con publicar más libros y explorar nuevas formas de creatividad. Este espacio es el inicio de algo más grande: 
                         una ventana a mis pensamientos y emociones.
                     </p>
@@ -89,7 +116,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 text-center p-6 mt-16">
+    <footer class="bg-black text-gray-400 text-center p-6 mt-16">
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
 
