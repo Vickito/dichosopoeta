@@ -6,117 +6,55 @@
     <title>Sobre mí</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body {
-            background: #0a0a0a; /* Fondo oscuro */
-            color: #fafbfd; /* Texto blanco */
-            font-family: 'Arial', sans-serif;
-        }
-        .neon-title {
-            color: #009764; /* Verde pastel para el título "Sobre mí" */
-        }
-        .card {
-            background: #1f1f1f; /* Fondo oscuro para las tarjetas */
-            border-left: 4px solid #d1d1d1; /* Borde blanco gris (claro) */
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-        .card-text {
-            color: #d9d9d9; /* Texto gris claro */
-        }
-        .link {
-            color: #009764; /* Enlaces verdes pastel */
-        }
-        .home-link span {
-            position: relative;
-        }
+        body { background: #0a0a0a; color: #fafbfd; font-family: 'Arial', sans-serif; }
+        .card { background: #1f1f1f; border-left: 4px solid #d1d1d1; border-radius: 8px; padding: 1.5rem; }
+        .card-text { color: #d9d9d9; }
+        .home-link span { position: relative; }
         .home-link span::before, .home-link span::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #3cefff; /* Color azul para las líneas */
-            transform-origin: center top;
-            transform: scaleY(0);
-            transition: transform 0.5s ease;
+            content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #3cefff; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
         }
-        .home-link span::before {
-            left: -8px;
-        }
-        .home-link span::after {
-            right: -8px;
-        }
-        .home-link span:hover::before, .home-link span:hover::after {
-            transform-origin: center bottom;
-            transform: scaleY(1);
-        }
+        .home-link span::before { left: -8px; }
+        .home-link span::after { right: -8px; }
+        .home-link span:hover::before, .home-link span:hover::after { transform-origin: center bottom; transform: scaleY(1); }
     </style>
 </head>
 <body class="font-sans antialiased">
 
-    <!-- Header -->
-    <header class="bg-black bg-opacity-90 p-6 shadow-lg text-center sticky top-0 z-10">
-        <h1 class="text-4xl font-extrabold tracking-wide neon-title">Sobre mí</h1>
-        <nav class="mt-4 flex justify-center gap-6">
-            <a href="index.html" class="home-link">
-                <span class="transition duration-200">Home</span>
-            </a>
+    <header class="bg-black p-3 text-center sticky top-0 z-10">
+        <h1 class="text-4xl font-extrabold tracking-wide">Sobre mí</h1>
+        <nav class="mt-4">
+            <a href="index.html" class="home-link"><span>Home</span></a>
         </nav>
     </header>
 
-    <!-- Main content -->
     <main class="max-w-5xl mx-auto py-16 px-6">
         <section class="text-center mb-16">
             <h2 class="text-2xl font-bold mb-6">¡Hola! Soy DichosoPoeta</h2>
-            <p class="text-lg leading-relaxed">
-                Soy un estudiante y escritor apasionado por la escritura. 
-                Mi camino no ha sido fácil, pero he encontrado un refugio en las palabras. 
-                <br> 
-                Mis días están llenos de ideas y aprendizaje. 
-            </p>
+            <p class="text-lg leading-relaxed">Soy un estudiante y escritor apasionado por la escritura. Mi camino no ha sido fácil, pero he encontrado un refugio en las palabras. Mis días están llenos de ideas y aprendizaje.</p>
         </section>
 
-        <!-- Interactive Cards -->
         <section>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Bloque 1 -->
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-4">Mis raíces</h3>
-                    <p class="card-text">
-                        Nací en la República Dominicana, un lugar lleno de colores y cultura. Sin embargo, 
-                        mi vida me llevó a explorar otros horizontes y, aunque he dejado mucho atrás, las experiencias me han formado. 
-                        Resido en otra parte del mundo.
-                    </p>
+                    <p class="card-text">Nací en la República Dominicana, un lugar lleno de colores y cultura. Sin embargo, mi vida me llevó a explorar otros horizontes.</p>
                 </div>
-                <!-- Bloque 2 -->
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-4">Mi viaje corto</h3>
-                    <p class="card-text">
-                        Aprendí a leer y escribir tarde, y eso me marcó profundamente. Hoy en día, las palabras son mi herramienta más poderosa.
-                        Aunque a veces lucho con la dislexia, siempre encuentro la forma de expresarme.
-                    </p>
+                    <p class="card-text">Aprendí a leer y escribir tarde, pero hoy las palabras son mi herramienta más poderosa, aunque a veces lucho con la dislexia.</p>
                 </div>
-                <!-- Bloque 3 -->
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-4">Mis escritos</h3>
-                    <p class="card-text">
-                        Me considero un artista de lo cotidiano, un observador de la vida que transforma lo simple en poesía. 
-                        Mis libros reflejan lo qué soy y lo qué siento.
-                    </p>
+                    <p class="card-text">Me considero un artista de lo cotidiano, transformando lo simple en poesía. Mis libros reflejan lo qué soy y lo qué siento.</p>
                 </div>
-                <!-- Bloque 4 -->
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-4">El futuro</h3>
-                    <p class="card-text">
-                        Sueño con publicar más libros y explorar nuevas formas de crear nuevas historias. Este espacio es el inicio de algo más grande: 
-                        una ventana a mis pensamientos y emociones. 
-                    </p>
+                    <p class="card-text">Sueño con publicar más libros y explorar nuevas formas de crear nuevas historias. Este espacio es el inicio de algo más grande.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-black text-gray-400 text-center p-6 mt-16">
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
