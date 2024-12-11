@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background: #0a0a0a; /* Fondo oscuro */
+            background: #0a0a0a; /* Fondo negro completo */
             color: #fafbfd; /* Texto blanco */
             font-family: 'Arial', sans-serif;
         }
@@ -30,7 +30,7 @@
             transition: all 0.3s ease;
         }
         .link:hover {
-            color: #fafbfd; /* Brillo blanco en hover para los enlaces */
+            color: #009764; /* Brillo verde pastel en hover para los enlaces */
             text-shadow: 0 0 5px #fafbfd, 0 0 10px #fafbfd;
         }
         .glow-effect {
@@ -58,7 +58,6 @@
         .card-text {
             color: #d9d9d9;
         }
-
         /* Efecto de líneas en el botón "Home" */
         .home-link span {
             position: relative;
@@ -69,7 +68,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background-color: #3cefff; /* Color azul para las líneas */
+            background-color: #009764; /* Color verde pastel para las líneas */
             transform-origin: center top;
             transform: scaleY(0);
             transition: transform 0.5s ease;
@@ -83,6 +82,14 @@
         .home-link span:hover::before, .home-link span:hover::after {
             transform-origin: center bottom;
             transform: scaleY(1);
+        }
+        /* Cambios en los inputs */
+        input, textarea {
+            border: 2px solid #fff; /* Línea blanca */
+            background-color: #1f1f1f;
+            color: #fafbfd;
+            padding: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
