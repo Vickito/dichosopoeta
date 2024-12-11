@@ -15,7 +15,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card-text { color: #ffffff; }
-        .home-link span { position: relative; }
+        .home-link span { position: relative; color: #A1E6A1; text-decoration: none; }
         .home-link span::before, .home-link span::after {
             content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #ffffff; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
         }
@@ -27,6 +27,15 @@
         .card:hover {
             transform: scale(1.05); /* Aumenta ligeramente el tamaño */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Agrega sombra */
+        }
+
+        /* Enlaces en verde pastel */
+        a, a:hover {
+            color: #A1E6A1; /* Verde pastel */
+            text-decoration: none; /* Quita el subrayado */
+        }
+        a:hover {
+            text-decoration: underline; /* Añadir subrayado al hacer hover */
         }
     </style>
 </head>
