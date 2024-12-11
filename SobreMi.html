@@ -7,7 +7,13 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body { background: #0a0a0a; color: #fafbfd; font-family: 'Arial', sans-serif; }
-        .card { background: #1f1f1f; border-left: 4px solid #ffffff; border-radius: 8px; padding: 1.5rem; }
+        .card { 
+            background: #1f1f1f; 
+            border-left: 4px solid #ffffff; 
+            border-radius: 8px; 
+            padding: 1.5rem; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
         .card-text { color: #d9d9d9; }
         .home-link span { position: relative; }
         .home-link span::before, .home-link span::after {
@@ -16,6 +22,12 @@
         .home-link span::before { left: -8px; }
         .home-link span::after { right: -8px; }
         .home-link span:hover::before, .home-link span:hover::after { transform-origin: center bottom; transform: scaleY(1); }
+
+        /* Efecto de levantamiento */
+        .card:hover {
+            transform: translateY(-10px); /* Levanta la tarjeta */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Agrega sombra */
+        }
     </style>
 </head>
 <body class="font-sans antialiased">
