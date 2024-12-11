@@ -12,12 +12,12 @@
             font-family: 'Arial', sans-serif;
         }
         .neon-title {
-            color: #259f48; /* Verde brillante para el título "Sobre mí" */
-            text-shadow: 0 0 10px #259f48, 0 0 20px #259f48;
+            color: #00FCA7; /* Verde pastel para el título "Sobre mí" */
+            text-shadow: 0 0 10px #00FCA7, 0 0 20px #00FCA7;
         }
         .card {
             background: #1f1f1f;
-            border-left: 4px solid #259f48; /* Verde brillante en el borde de las tarjetas */
+            border-left: 4px solid #00FCA7; /* Verde pastel en el borde de las tarjetas */
             border-radius: 8px;
             transition: all 0.3s ease;
         }
@@ -27,7 +27,7 @@
             box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
         }
         .link {
-            color: #259f48;
+            color: #00FCA7;
             transition: all 0.3s ease;
         }
         .link:hover {
@@ -60,36 +60,30 @@
             color: #d9d9d9;
         }
 
-        /* Efecto de animación para el botón "Home" */
-        .home-button {
-            display: inline-block;
-            padding: 8px 16px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fafbfd; /* Blanco para el texto */
-            text-transform: uppercase;
-            border: 2px solid #a3d8b7; /* Verde pastel más suave */
-            background-color: #0a0a0a; /* Fondo oscuro */
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .home-button:hover {
-            cursor: pointer;
-            color: #259f48; /* Verde más brillante en hover */
-            box-shadow: 0 0 10px rgba(37, 159, 72, 0.8); /* Sombra verde suave */
-        }
-
-        /* Animación del texto al pasar el mouse */
-        .home-button span {
+        /* Efecto de líneas en el botón "Home" */
+        .home-link span {
             position: relative;
-            display: inline-block;
-            transition: transform 0.3s ease-in-out;
         }
-
-        .home-button:hover span {
-            transform: translateY(-5px);
+        .home-link span::before, .home-link span::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #3cefff; /* Color azul para las líneas */
+            transform-origin: center top;
+            transform: scaleY(0);
+            transition: transform 0.5s ease;
+        }
+        .home-link span::before {
+            left: -8px;
+        }
+        .home-link span::after {
+            right: -8px;
+        }
+        .home-link span:hover::before, .home-link span:hover::after {
+            transform-origin: center bottom;
+            transform: scaleY(1);
         }
     </style>
 </head>
@@ -99,11 +93,8 @@
     <header class="bg-black bg-opacity-90 p-6 shadow-lg text-center sticky top-0 z-10">
         <h1 class="text-4xl font-extrabold tracking-wide neon-title">Sobre mí</h1>
         <nav class="mt-4 flex justify-center gap-6">
-            <a href="index.html" class="link transition duration-200">
-                <!-- Botón Home con animación -->
-                <div class="home-button">
-                    <span>Home</span>
-                </div>
+            <a href="index.html" class="home-link">
+                <span class="transition duration-200">Home</span>
             </a>
         </nav>
     </header>
