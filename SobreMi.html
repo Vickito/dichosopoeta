@@ -5,64 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre mí</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f8f8;
-            color: #333;
-            font-family: 'Arial', sans-serif;
-        }
-        .header {
-            background: linear-gradient(135deg, rgba(135, 206, 250, 0.6), rgba(0, 191, 255, 0.6));
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 1.5rem;
-        }
-        .content {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .button {
-            background-color: rgba(70, 130, 180, 0.8);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: rgba(70, 130, 180, 1);
-        }
-        .footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: rgba(135, 206, 250, 0.6);
-            color: #000;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header class="header">
-        <h1>Sobre mí</h1>
+<body class="bg-gray-900 text-gray-100 font-sans">
+
+    <!-- Header con el título y navegación -->
+    <header class="bg-gradient-to-r from-gray-800 to-gray-700 p-6 shadow-lg text-center">
+        <h1 class="text-4xl font-bold tracking-widest">Sobre mí</h1>
+        <nav class="mt-4">
+            <a href="index.html" class="text-gray-200 hover:text-gray-100 px-4 py-2">Inicio</a>
+        </nav>
     </header>
 
-    <main class="content">
-        <section>
-            <h2>¿Quién soy?</h2>
-            <p>Hola, es un gusto tenerte en esta página. Antes que nada, espero que estés bien. Soy un estudiante y aspirante a escritor de poemarios y relatos de la vida cotidiana. Me considero elocuente al hablar, pero con un toque de tranquilidad. Hablo dos idiomas (próximamente tres) y suelo pasar mis días pensando en cosas que no tienen sentido alguno.</p>
-            <p>Aprendí a leer y escribir a una edad tardía y, como resultado, tengo problemas para leer (aunque yo digo que es dislexia). El tiempo para mí es algo surrealista: siento que nunca pasa, solo me vuelvo más viejo (aunque no estoy tan viejo, apenas voy por la primera "moneda" de mi vida; son cuatro monedas, y estoy llegando a la primera).</p>
-            <p>Artísticamente me puedes llamar "DichosoPoeta", aunque mi nombre es Víctor Morel (Vico para las personas cercanas). Nací en la República Dominicana, aunque he dejado todo atrás y siento que no pertenezco a ningún lugar.</p>
-            <p>He escrito muchos poemas, pero tengo pocos publicados. También he trabajado en algunos libros, aunque oficialmente solo tengo dos publicados por falta de tiempo. Gracias por leerme, espero que disfrutes de esta página.</p>
-            <p><em>Psdt:</em> Posiblemente añada algunos detalles más adelante... o tal vez quite algunos.</p>
+    <!-- Main content -->
+    <main class="max-w-6xl mx-auto py-10">
+        <section class="bg-gray-800 p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6">Quién soy</h2>
+            <p class="text-gray-300 leading-relaxed">Hola, es un gusto tenerte en esta página. 
+                Antes que nada espero que estés bien. 
+                Soy un estudiante, aspirante a ser escritor de poemarios y relatos de la vida cotidiana. 
+                Soy algo elocuente a la hora de hablar, pero con una pizca de tranquilidad. 
+                Hablo dos idiomas (próximamente tres). 
+                Suelo pasar mis días pensando en cosas que no tienen sentido alguno. 
+                Aprendí a leer y escribir a una edad tardía, y a causa de esto tengo problemas para leer (aunque yo digo que es dislexia). 
+                El tiempo se siente como algo muy surrealista para mí, 
+                    porque siento que nunca pasa, 
+                    sólo me vuelvo más viejo (y no, no estoy tan viejo, apenas voy por la primera moneda de mi vida; son cuatro monedas, y apenas estoy llegando a la primera). 
+                Artísticamente me puedes llamar «DichosoPoeta», aunque mi nombre es Víctor Morel (Vico para las personas cercanas). 
+                Soy naciente de la República Dominicana, aunque he dejado todo atrás y siento que no pertenezco a ningún lugar. 
+                
+                He escrito muchos poemas, pero tengo pocos publicados. 
+                He hecho algunos libros, pero oficialmente tengo dos publicados, por motivos de no tener mucho tiempo. 
+                Ummm... No sé qué escribir, no soy muy bueno hablando sobre mí. 
+                
+                Gracias por leerme, espero disfrutes de esta página. 
+                
+                Psdt: Posiblemente añada algunos detalles más adelante, y también quite algunos detalles más. </p>
         </section>
     </main>
 
-    <footer class="footer">
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 text-center p-6 mt-10">
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
+
 </body>
 </html>
