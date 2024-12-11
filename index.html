@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            background: linear-gradient(135deg, #121212, #1e1e1e); /* Fondo en tonos de negro */
+            background: #000000; /* Fondo negro */
             color: #ffffff;
+            font-family: 'Arial', sans-serif;
         }
         header {
-            background: linear-gradient(to right, #1a1a1a, #333333); /* Gradiente de negro y gris oscuro */
+            background: #000000; /* Fondo negro */
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
             text-align: center;
@@ -30,7 +31,7 @@
             text-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff; /* Efecto de resplandor en el título */
         }
         nav a {
-            color: #cccccc;
+            color: #A1E6A1; /* Verde pastel */
             margin: 0 10px;
             font-size: 1rem;
             text-transform: uppercase;
@@ -57,14 +58,14 @@
             gap: 30px;
         }
         .post {
-            background-color: #333333;
+            background-color: #000000; /* Fondo negro */
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-left: 4px solid #ffffff; /* Borde blanco */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .post:hover {
-            transform: translateY(-10px);
+            transform: scale(1.05); /* Aumentar ligeramente el tamaño */
             box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
         }
         .post h3 {
@@ -79,10 +80,18 @@
             line-height: 1.5;
         }
         footer {
-            background-color: #1a1a1a;
+            background-color: #000000; /* Fondo negro */
             padding: 20px;
             text-align: center;
-            color: #b0b0b0;
+            color: #A1E6A1; /* Verde pastel */
+        }
+        /* Efecto de enlaces en verde pastel */
+        a, a:hover {
+            color: #A1E6A1; /* Verde pastel */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline; /* Añadir subrayado al hacer hover */
         }
     </style>
 </head>
@@ -92,7 +101,7 @@
     <header>
         <h1>Escritos de mí para ti</h1>
         <nav>
-            <a href="https://dichosopoeta.com/index.html">Inicio</a>
+            <a href="https://dichosopoeta.com/index.html">Home</a>
             <a href="https://dichosopoeta.com/SobreMi.html">Sobre mí</a>
         </nav>
     </header>
