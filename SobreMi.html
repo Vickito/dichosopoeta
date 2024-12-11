@@ -15,39 +15,16 @@
             color: #009764; /* Verde pastel para el título "Sobre mí" */
         }
         .card {
-            background: #1f1f1f; /* Fondo muy oscuro para las tarjetas */
-            border-left: 4px solid #009764; /* Verde pastel en el borde de las tarjetas */
+            background: #1f1f1f; /* Fondo oscuro para las tarjetas */
+            border-left: 4px solid #d1d1d1; /* Borde blanco gris (claro) */
             border-radius: 8px;
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
         }
         .card-text {
-            color: #d9d9d9;
+            color: #d9d9d9; /* Texto gris claro */
         }
         .link {
-            color: #009764; /* Verde pastel para los enlaces */
-        }
-        .glow-effect {
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-        }
-        .glow-effect::before {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            bottom: 0;
-            left: -0.25em;
-            right: -0.25em;
-            background-color: rgba(255, 255, 255, 0.2); /* Brillo leve */
-            filter: blur(4px);
-            transform: scale(0);
-            transition: transform 0.3s ease-out, filter 0.3s ease-out;
-        }
-        .glow-effect:hover::before {
-            transform: scale(1);
-            filter: blur(10px);
+            color: #009764; /* Enlaces verdes pastel */
         }
         .home-link span {
             position: relative;
@@ -69,6 +46,10 @@
         .home-link span::after {
             right: -8px;
         }
+        .home-link span:hover::before, .home-link span:hover::after {
+            transform-origin: center bottom;
+            transform: scaleY(1);
+        }
     </style>
 </head>
 <body class="font-sans antialiased">
@@ -86,7 +67,7 @@
     <!-- Main content -->
     <main class="max-w-5xl mx-auto py-16 px-6">
         <section class="text-center mb-16">
-            <h2 class="text-2xl font-bold mb-6">¡Hola! Soy <span class="glow-effect">DichosoPoeta</span></h2>
+            <h2 class="text-2xl font-bold mb-6">¡Hola! Soy DichosoPoeta</h2>
             <p class="text-lg leading-relaxed">
                 Soy un estudiante y escritor apasionado por la escritura. 
                 Mi camino no ha sido fácil, pero he encontrado un refugio en las palabras. 
@@ -99,7 +80,7 @@
         <section>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Bloque 1 -->
-                <div class="card shadow-md">
+                <div class="card">
                     <h3 class="text-xl font-semibold mb-4">Mis raíces</h3>
                     <p class="card-text">
                         Nací en la República Dominicana, un lugar lleno de colores y cultura. Sin embargo, 
@@ -108,7 +89,7 @@
                     </p>
                 </div>
                 <!-- Bloque 2 -->
-                <div class="card shadow-md">
+                <div class="card">
                     <h3 class="text-xl font-semibold mb-4">Mi viaje corto</h3>
                     <p class="card-text">
                         Aprendí a leer y escribir tarde, y eso me marcó profundamente. Hoy en día, las palabras son mi herramienta más poderosa.
@@ -116,7 +97,7 @@
                     </p>
                 </div>
                 <!-- Bloque 3 -->
-                <div class="card shadow-md">
+                <div class="card">
                     <h3 class="text-xl font-semibold mb-4">Mis escritos</h3>
                     <p class="card-text">
                         Me considero un artista de lo cotidiano, un observador de la vida que transforma lo simple en poesía. 
@@ -124,7 +105,7 @@
                     </p>
                 </div>
                 <!-- Bloque 4 -->
-                <div class="card shadow-md">
+                <div class="card">
                     <h3 class="text-xl font-semibold mb-4">El futuro</h3>
                     <p class="card-text">
                         Sueño con publicar más libros y explorar nuevas formas de crear nuevas historias. Este espacio es el inicio de algo más grande: 
