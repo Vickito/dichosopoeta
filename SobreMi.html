@@ -7,72 +7,80 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-            color: #f5f5f5;
+            background: linear-gradient(135deg, #f7f5f2, #e9e3f3);
+            color: #4a4a4a;
+        }
+        .pastel-card {
+            background-color: #d7e3fc;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .pastel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         .neon-text {
-            text-shadow: 0 0 8px #00ffcc, 0 0 16px #00ffcc;
+            color: #7b9acc;
+            text-shadow: 0 0 6px rgba(123, 154, 204, 0.7);
         }
-        .hover-glow:hover {
-            box-shadow: 0 0 12px 4px #00ffcc;
+        a:hover {
+            color: #9c88ff;
         }
     </style>
 </head>
 <body class="font-sans antialiased">
 
     <!-- Header -->
-    <header class="bg-gray-900 bg-opacity-80 p-6 shadow-lg text-center sticky top-0 z-10">
-        <h1 class="text-4xl font-extrabold tracking-wide neon-text">Sobre mí</h1>
+    <header class="bg-gradient-to-r from-purple-200 via-pink-200 to-purple-300 p-6 shadow-lg text-center sticky top-0 z-10">
+        <h1 class="text-4xl font-extrabold neon-text tracking-wide">Sobre mí</h1>
         <nav class="mt-4 flex justify-center gap-6">
-            <a href="https://dichosopoeta.com/index.html" class="hover:text-gray-400 transition duration-200">Home</a>
+            <a href="index.html" class="text-gray-700 font-medium hover:text-gray-900 transition">Home</a>
         </nav>
     </header>
 
     <!-- Main content -->
     <main class="max-w-5xl mx-auto py-16 px-6">
+        <!-- Introducción -->
         <section class="text-center mb-16">
-            <h2 class="text-2xl font-bold mb-6">¡Hola! Soy <span class="text-cyan-400">DichosoPoeta</span></h2>
-            <p class="text-lg leading-relaxed">
-                Soy un estudiante y escritor apasionado por los poemas y los relatos. 
-                Mi camino no ha sido fácil, pero he encontrado en las palabras mi refugio y mi arte.
-                <br> 
-                Mis días están llenos de ideas, aprendizaje y la búsqueda constante de inspiración.
+            <h2 class="text-3xl font-bold text-purple-700 mb-4">¡Hola! Soy <span class="neon-text">DichosoPoeta</span></h2>
+            <p class="text-lg leading-relaxed text-gray-600">
+                Soy un estudiante apasionado por la escritura y el arte de expresar emociones a través de palabras. 
+                Aquí comparto un poco de mi historia, mis sueños y mi viaje por la creatividad.
             </p>
         </section>
 
-        <!-- Timeline -->
+        <!-- Tarjetas de información -->
         <section>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Bloque 1 -->
-                <div class="bg-gray-800 hover-glow rounded-lg shadow-md p-6 transition duration-300">
-                    <h3 class="text-xl font-semibold mb-4">Mis raíces</h3>
-                    <p class="text-gray-300">
-                        Nací en la República Dominicana, un lugar lleno de colores y cultura. Sin embargo, 
-                        mi vida me llevó a explorar otros horizontes y, aunque he dejado mucho atrás, las experiencias me han formado.
+                <div class="pastel-card rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-4">Mis raíces</h3>
+                    <p class="text-gray-700">
+                        Nací en la República Dominicana, un lugar lleno de cultura y color. Aunque he dejado muchas cosas atrás, 
+                        mi herencia siempre está presente en mi vida y en mi escritura.
                     </p>
                 </div>
                 <!-- Bloque 2 -->
-                <div class="bg-gray-800 hover-glow rounded-lg shadow-md p-6 transition duration-300">
-                    <h3 class="text-xl font-semibold mb-4">Mi viaje con las palabras</h3>
-                    <p class="text-gray-300">
-                        Aprendí a leer y escribir tarde, y eso me marcó profundamente. Hoy en día, las palabras son mi herramienta más poderosa.
-                        Aunque a veces lucho con la dislexia, siempre encuentro la forma de expresarme.
+                <div class="pastel-card rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-4">Mi viaje con las palabras</h3>
+                    <p class="text-gray-700">
+                        Aprendí a leer y escribir más tarde de lo usual, lo que me enseñó la importancia de la perseverancia. 
+                        Aunque lucho con la dislexia, las palabras son mi refugio y mi arte.
                     </p>
                 </div>
                 <!-- Bloque 3 -->
-                <div class="bg-gray-800 hover-glow rounded-lg shadow-md p-6 transition duration-300">
-                    <h3 class="text-xl font-semibold mb-4">Mi arte</h3>
-                    <p class="text-gray-300">
-                        Me considero un artista de lo cotidiano, un observador de la vida que transforma lo simple en poesía (o eso diría si fuera todo alegría). 
-                        Mis libros y poemas reflejan lo que soy y lo que siento.
+                <div class="pastel-card rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-4">Mi arte</h3>
+                    <p class="text-gray-700">
+                        Me inspiro en lo cotidiano para escribir poesía y relatos que conecten con los demás. Mi objetivo es 
+                        plasmar emociones y momentos que resuenen en quienes los lean.
                     </p>
                 </div>
                 <!-- Bloque 4 -->
-                <div class="bg-gray-800 hover-glow rounded-lg shadow-md p-6 transition duration-300">
-                    <h3 class="text-xl font-semibold mb-4">Un vistazo al futuro</h3>
-                    <p class="text-gray-300">
-                        Sueño con publicar más libros y explorar nuevas formas de creatividad. Este espacio es el inicio de algo más grande: 
-                        una ventana a mis pensamientos y emociones.
+                <div class="pastel-card rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-4">Mis sueños</h3>
+                    <p class="text-gray-700">
+                        Sueño con seguir publicando libros y explorando nuevas formas de expresión creativa. Este espacio es 
+                        parte de mi meta de compartir más con el mundo.
                     </p>
                 </div>
             </div>
@@ -80,7 +88,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-500 text-center p-6 mt-16">
+    <footer class="bg-purple-200 text-gray-600 text-center p-6 mt-16">
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
 
