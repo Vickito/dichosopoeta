@@ -67,26 +67,27 @@
 
         // Jugador
         let player = {
-            x: canvas.width / 2,
+            x: canvas.width / 5,
             y: canvas.height / 2,
             width: 50,
-            height: 50,
-            image: new Image(),
+            height: 80,
+            color: "blue",
             health: 100,
             gold: 0,
             inventory: [],
             attackPower: 10,
             defense: 5,
-            name: "Jugador"
+            attackRange: 30,
+            speed: 4,
+            name: "Jugador",
+            attacking: false
         };
-        player.image.src = 'https://img.icons8.com/ios/452/user-male.png'; // Reemplaza con la imagen de tu personaje
 
         // Enemigos
         let enemies = [
-            { x: Math.random() * canvas.width, y: Math.random() * canvas.height, width: 50, height: 50, image: new Image(), health: 50, name: "Bartholomew" },
-            { x: Math.random() * canvas.width, y: Math.random() * canvas.height, width: 50, height: 50, image: new Image(), health: 50, name: "Beatrice" }
+            { x: canvas.width, y: canvas.height / 2, width: 50, height: 80, color: "red", health: 50, attackPower: 5, name: "Bartholomew", attacking: false, direction: -1 },
+            { x: canvas.width + 200, y: canvas.height / 2, width: 50, height: 80, color: "green", health: 50, attackPower: 5, name: "Beatrice", attacking: false, direction: -1 }
         ];
-        enemies.forEach(enemy => enemy.image.src = 'https://img.icons8.com/ios/452/user-male.png'); // Reemplaza con la imagen de tus enemigos
 
         // Objetos
         const items = [
@@ -97,12 +98,14 @@
 
         // Animaciones de combate
         function drawPlayer() {
-            ctx.drawImage(player.image, player.x, player.y, player.width, player.height);
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.width, player.height);
         }
 
         function drawEnemies() {
             enemies.forEach(enemy => {
-                ctx.drawImage(enemy.image, enemy.x, enemy.y, enemy.width, enemy.height);
+                ctx.fillStyle = enemy.color;
+                ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
                 ctx.fillStyle = "white";
                 ctx.font = "14px Arial";
                 ctx.fillText(enemy.name, enemy.x, enemy.y - 10);
@@ -145,37 +148,66 @@
 
         // Luchar con los enemigos
         function attackEnemy(enemy) {
-            enemy.health -= player.attackPower;
-            if (enemy.health <= 0) {
-                player.gold += 50; // Gana oro al derrotar enemigos
-                goldDisplay.textContent = player.gold;
-                enemies.splice(enemies.indexOf(enemy), 1); // Eliminar al enemigo derrotado
+            if (player.attacking && Math.abs(player.x - enemy.x) < player.attackRange) {
+                enemy.health -= player.attackPower;
+                if (enemy.health <= 0) {
+                    player.gold += 50; // Gana oro al derrotar enemigos
+                    goldDisplay.textContent = player.gold;
+                    enemies.splice(enemies.indexOf(enemy), 1); // Eliminar al enemigo derrotado
 
-                // Después de un enemigo derrotado, añadir un nuevo enemigo o desafío
-                enemies.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    width: 50,
-                    height: 50,
-                    image: new Image(),
-                    health: 50,
-                    name: "Nuevo Enemigo"
-                });
+                    // Después de un enemigo derrotado, añadir un nuevo enemigo o desafío
+                    enemies.push({
+                        x: canvas.width,
+                        y: Math.random() * canvas.height,
+                        width: 50,
+                        height: 80,
+                        color: "purple",
+                        health: 50,
+                        attackPower: 5,
+                        name: "Nuevo Enemigo",
+                        attacking: false,
+                        direction: -1
+                    });
+                }
             }
         }
 
-        // Colisiones entre jugador y enemigos
-        function fightEnemies() {
+        // Enemigos atacando al jugador
+        function enemyAttack() {
             enemies.forEach(enemy => {
-                const dx = player.x - enemy.x;
-                const dy = player.y - enemy.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (Math.abs(enemy.x - player.x) < enemy.width / 2 + player.attackRange) {
+                    player.health -= enemy.attackPower;
+                    healthDisplay.textContent = player.health;
 
-                if (distance < player.width / 2 + enemy.width / 2) {
-                    attackEnemy(enemy);
+                    // Mostrar un mensaje si el jugador muere
+                    if (player.health <= 0) {
+                        alert("¡Has muerto! El juego ha terminado.");
+                        window.location.reload();
+                    }
                 }
             });
         }
+
+        // Mover enemigos y jugador
+        function moveEnemies() {
+            enemies.forEach(enemy => {
+                enemy.x += enemy.direction * 2; // Los enemigos se mueven hacia la izquierda
+                if (enemy.x < 0) enemy.direction = 1; // Cambia de dirección si llegan al borde
+                if (enemy.x > canvas.width) enemy.direction = -1;
+            });
+        }
+
+        // Mover jugador con las teclas
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") {
+                player.x += player.speed;
+            } else if (e.key === "ArrowLeft") {
+                player.x -= player.speed;
+            } else if (e.key === " " && !player.attacking) {
+                player.attacking = true;
+                setTimeout(() => player.attacking = false, 500); // La animación de ataque dura medio segundo
+            }
+        });
 
         // Dibujar todo el juego
         function drawGame() {
@@ -184,7 +216,9 @@
             drawEnemies();
             drawItems();
             checkItemCollision();
-            fightEnemies();
+            enemyAttack();
+            moveEnemies();
+            enemies.forEach(enemy => attackEnemy(enemy));
         }
 
         // Bucle de juego
@@ -192,12 +226,6 @@
             drawGame();
             requestAnimationFrame(gameLoop);
         }
-
-        // Mover al jugador con el ratón
-        canvas.addEventListener("mousemove", (e) => {
-            player.x = e.clientX - player.width / 2;
-            player.y = e.clientY - player.height / 2;
-        });
 
         gameLoop();
     </script>
