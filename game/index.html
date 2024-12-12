@@ -3,80 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego estilo Agar.io</title>
+    <title>Juego de Minería y Lucha</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            background-color: #000;
+            background-color: #2c3e50;
+            font-family: Arial, sans-serif;
+            color: white;
         }
         canvas {
             display: block;
+            background-color: #34495e;
+            margin: 0 auto;
+            border: 2px solid #ecf0f1;
         }
-        #nameInput {
+        #info {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            color: white;
+            font-size: 16px;
+        }
+        #info p {
+            margin: 5px 0;
+        }
+        .tooltip {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px;
             border-radius: 5px;
-            font-size: 20px;
             display: none;
+            color: white;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
+    <div id="info">
+        <p>Oro: <span id="gold">0</span></p>
+        <p>Vida: <span id="health">100</span></p>
+        <p>Objeto: <span id="currentItem">Ninguno</span></p>
+    </div>
     <canvas id="gameCanvas"></canvas>
-    <input type="text" id="nameInput" placeholder="Escribe tu nombre" />
+    <div class="tooltip" id="tooltip"></div>
 
     <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const nameInput = document.getElementById('nameInput');
-        let playerName = "";
-        let player = { x: 0, y: 0, radius: 20, color: '#FF5733', speed: 5 };
-        let enemies = [];
-        const maxEnemies = 5;
-        const victorianNames = ["Alistair", "Beatrice", "Edwin", "Eleanor", "Felix", "Gwendolyn", "Hector", "Isobel", "Jasper", "Lydia"];
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const tooltip = document.getElementById("tooltip");
+        const goldDisplay = document.getElementById("gold");
+        const healthDisplay = document.getElementById("health");
+        const itemDisplay = document.getElementById("currentItem");
 
-        // Ajustar el tamaño del canvas a la pantalla
+        // Ajustar el tamaño del canvas
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
         resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener("resize", resizeCanvas);
 
-        // Función para generar enemigos con nombres victorianos
-        function generateEnemies() {
-            for (let i = 0; i < maxEnemies; i++) {
-                const name = victorianNames[Math.floor(Math.random() * victorianNames.length)];
-                const enemy = {
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    radius: 20 + Math.random() * 30, // Tamaño aleatorio
-                    color: '#A9DFBF',
-                    name: name,
-                    speed: 2
-                };
-                enemies.push(enemy);
-            }
-        }
+        // Jugador
+        let player = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: 30,
+            color: "#3498db",
+            health: 100,
+            gold: 0,
+            inventory: [],
+            mining: false,
+            attacking: false,
+        };
 
-        // Dibujar al jugador
+        // Enemigos
+        let enemies = [
+            { x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: 30, color: "#e74c3c", health: 50, name: "Bartholomew" },
+            { x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: 30, color: "#e74c3c", health: 50, name: "Beatrice" }
+        ];
+
+        // Objetos
+        const items = [
+            { name: "Espada", x: 100, y: 100, description: "Aumenta el ataque", effect: () => player.attackPower = 20 },
+            { name: "Escudo", x: 200, y: 100, description: "Aumenta la defensa", effect: () => player.defense = 10 },
+            { name: "Poción", x: 300, y: 100, description: "Recupera 20 de vida", effect: () => player.health = Math.min(100, player.health + 20) }
+        ];
+
+        // Animaciones
         function drawPlayer() {
             ctx.beginPath();
             ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
             ctx.fillStyle = player.color;
             ctx.fill();
-            ctx.fillStyle = "white";
-            ctx.font = "16px Arial";
-            ctx.fillText(playerName, player.x - player.radius / 2, player.y - player.radius - 5);
         }
 
-        // Dibujar los enemigos
         function drawEnemies() {
             enemies.forEach(enemy => {
                 ctx.beginPath();
@@ -84,80 +106,91 @@
                 ctx.fillStyle = enemy.color;
                 ctx.fill();
                 ctx.fillStyle = "white";
-                ctx.font = "16px Arial";
-                ctx.fillText(enemy.name, enemy.x - enemy.radius / 2, enemy.y - enemy.radius - 5);
+                ctx.font = "14px Arial";
+                ctx.fillText(enemy.name, enemy.x - enemy.radius, enemy.y - enemy.radius - 10);
             });
         }
 
-        // Mover el jugador con el ratón
-        canvas.addEventListener('mousemove', (e) => {
-            player.x = e.clientX;
-            player.y = e.clientY;
-        });
+        function drawItems() {
+            items.forEach(item => {
+                ctx.beginPath();
+                ctx.arc(item.x, item.y, 20, 0, Math.PI * 2);
+                ctx.fillStyle = "#2ecc71";
+                ctx.fill();
+                ctx.fillStyle = "white";
+                ctx.font = "14px Arial";
+                ctx.fillText(item.name, item.x - 15, item.y - 25);
+            });
+        }
 
-        // Movimiento de los enemigos
-        function moveEnemies() {
+        // Detectar colisiones entre el jugador y los objetos
+        function checkItemCollision() {
+            items.forEach(item => {
+                const dx = player.x - item.x;
+                const dy = player.y - item.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < player.radius + 20) {
+                    itemDisplay.textContent = item.name;
+                    tooltip.style.left = `${item.x + 25}px`;
+                    tooltip.style.top = `${item.y - 25}px`;
+                    tooltip.style.display = "block";
+                    tooltip.textContent = item.description;
+
+                    if (distance < player.radius + 20) {
+                        item.effect();
+                        items = items.filter(i => i !== item); // Eliminar el objeto una vez que el jugador lo ha tomado
+                    }
+                }
+            });
+        }
+
+        // Función para atacar a los enemigos
+        function attackEnemy(enemy) {
+            enemy.health -= 10; // Ataque básico
+            if (enemy.health <= 0) {
+                player.gold += 50; // Robar oro
+                enemies = enemies.filter(e => e !== enemy); // Eliminar al enemigo muerto
+                goldDisplay.textContent = player.gold; // Actualizar oro
+            }
+        }
+
+        // Función de lucha y movimiento del enemigo
+        function fightEnemies() {
             enemies.forEach(enemy => {
                 const dx = player.x - enemy.x;
                 const dy = player.y - enemy.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 300) {
-                    const angle = Math.atan2(dy, dx);
-                    enemy.x += Math.cos(angle) * enemy.speed;
-                    enemy.y += Math.sin(angle) * enemy.speed;
-                }
-            });
-        }
-
-        // Detectar colisiones con los enemigos
-        function checkCollisions() {
-            enemies.forEach((enemy, index) => {
-                const dx = player.x - enemy.x;
-                const dy = player.y - enemy.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+                
                 if (distance < player.radius + enemy.radius) {
-                    alert("¡Te han comido! Game Over.");
-                    window.location.reload(); // Recargar la página para reiniciar el juego
+                    attackEnemy(enemy);
                 }
             });
         }
 
-        // Dibujar el juego
+        // Dibujar todo el juego
         function drawGame() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar pantalla
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas
             drawPlayer();
             drawEnemies();
+            drawItems();
+            checkItemCollision();
+            fightEnemies();
         }
 
-        // Lógica del juego
+        // Bucle de juego
         function gameLoop() {
-            moveEnemies();
-            checkCollisions();
             drawGame();
             requestAnimationFrame(gameLoop);
         }
 
-        // Función para iniciar el juego
-        function startGame() {
-            playerName = nameInput.value || "Jugador";
-            nameInput.style.display = 'none'; // Ocultar el input de nombre
-            generateEnemies(); // Generar enemigos
-            gameLoop(); // Comenzar el ciclo del juego
-        }
+        // Mover al jugador con el ratón
+        canvas.addEventListener("mousemove", (e) => {
+            player.x = e.clientX;
+            player.y = e.clientY;
+        });
 
-        // Mostrar el input de nombre y esperar que el jugador ingrese su nombre
-        function showNameInput() {
-            nameInput.style.display = 'block';
-            nameInput.focus();
-            nameInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    startGame();
-                }
-            });
-        }
-
-        showNameInput(); // Mostrar el input de nombre al principio
+        gameLoop();
     </script>
 </body>
 </html>
