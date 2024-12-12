@@ -61,7 +61,7 @@
         // Función para dibujar al jugador
         function drawPlayer() {
             ctx.fillStyle = player.color;
-            ctx.fillRect(player.x, player.y, player.width, player.height);
+            ctx.fillRect(player.x - player.width / 2, player.y - player.height / 2, player.width, player.height);
         }
 
         // Función para dibujar los objetos que caen
@@ -76,7 +76,7 @@
 
         // Crear un nuevo objeto que cae
         function createFallingObject() {
-            const radius = Math.random() * 20 + 20;
+            const radius = Math.random() * 10 + 10; // Hacerlos más pequeños
             const x = Math.random() * (canvas.width - radius * 2) + radius;
             const color = Math.random() > 0.5 ? "#f39c12" : "#e74c3c"; // Estrella o obstáculo
             fallingObjects.push({
@@ -99,8 +99,8 @@
         // Comprobar colisiones entre el jugador y los objetos
         function checkCollisions() {
             fallingObjects.forEach((obj, index) => {
-                const distX = Math.abs(obj.x - player.x - player.width / 2);
-                const distY = Math.abs(obj.y - player.y - player.height / 2);
+                const distX = Math.abs(obj.x - player.x);
+                const distY = Math.abs(obj.y - player.y);
                 const distance = Math.sqrt(distX * distX + distY * distY);
 
                 if (distance < obj.radius + player.width / 2) {
@@ -116,14 +116,10 @@
             });
         }
 
-        // Mover al jugador con las flechas del teclado
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "ArrowLeft" && player.x > 0) {
-                player.x -= player.speed;
-            }
-            if (e.key === "ArrowRight" && player.x < canvas.width - player.width) {
-                player.x += player.speed;
-            }
+        // Mover al jugador con el cursor
+        canvas.addEventListener("mousemove", (e) => {
+            player.x = e.clientX;
+            player.y = e.clientY;
         });
 
         // Actualizar el juego
