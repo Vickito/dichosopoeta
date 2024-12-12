@@ -12,10 +12,10 @@ const loadPosts = () => {
     escritos.forEach((escrito) => {
         const postElement = document.createElement("a");
         postElement.href = escrito.url;
-        postElement.className = "bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-gray-800 transition";
+        postElement.className = "card hover:scale-105 hover:shadow-lg transition-transform duration-300";
 
         const titleElement = document.createElement("h3");
-        titleElement.className = "text-lg font-semibold";
+        titleElement.className = "text-xl font-semibold mb-4 card-text";
         titleElement.textContent = escrito.title;
 
         postElement.appendChild(titleElement);
