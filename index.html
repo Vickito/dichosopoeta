@@ -8,24 +8,13 @@
     <style>
         body { background: #000000; color: #c2c2c2; font-family: 'Arial', sans-serif; }
         .card {
-            background: #1E1E2F; /* Fondo más oscuro */
-            border: 2px solid #6e6e6e; /* Borde más claro */
-            border-radius: 8px; /* Esquinas redondeadas */
-            padding: 1.5rem; /* Espaciado interno */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+            background: #000000;
+            border: 2px solid #6e6e6e;
+            border-radius: 8px;
+            padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        .card:hover {
-            transform: scale(1.03); /* Efecto de zoom al pasar el ratón */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al pasar el ratón */
-        }
-        
-        .card-text {
-            color: #C8C8C8; /* Color más claro para el texto */
-            font-size: 1rem; /* Tamaño estándar */
-        }
-
+        .card-text { color: #e8e8e8; }
         .home-link span {
             position: relative; color: #A1E6A1; text-decoration: none;
         }
@@ -59,11 +48,15 @@
 
     <main>
         <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card">
-                <!-- Los posts se generarán aquí dinámicamente -->    
-                </div>
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">Título del post 1</h3>
+                <p class="card-text">Este es un breve resumen o introducción al contenido del primer post.</p>
             </div>
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">Título del post 2</h3>
+                <p class="card-text">Este es un breve resumen o introducción al contenido del segundo post.</p>
+            </div>
+            <!-- Agrega más tarjetas de posts aquí si lo necesitas -->
         </div>
     </main>
 
@@ -71,6 +64,5 @@
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
