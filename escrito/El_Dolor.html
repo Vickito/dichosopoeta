@@ -5,22 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puedo ver</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: #000000; color: #c2c2c2; font-family: 'Arial', sans-serif; }
+        header {
+            background: linear-gradient(to right, #2d2d2d, #121212);
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #A1E6A1;
+        }
+        nav a {
+            font-size: 1.125rem;
+            color: #A1E6A1;
+            text-decoration: none;
+            position: relative;
+            padding: 0.25rem;
+        }
+        nav a::before, nav a::after {
+            content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #e8e8e8; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
+        }
+        nav a::before { left: -8px; }
+        nav a::after { right: -8px; }
+        nav a:hover::before, nav a:hover::after { transform-origin: center bottom; transform: scaleY(1); }
+        main {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+        section {
+            background: #121212;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #e8e8e8;
+        }
+        p {
+            color: #b1b1b1;
+            line-height: 1.6;
+        }
+        footer {
+            background: #121212;
+            color: #6e6e6e;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        footer p {
+            font-size: 0.875rem;
+        }
+        a, a:hover {
+            color: #A1E6A1;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body class="bg-black text-white font-sans">
-    <header class="bg-gradient-to-r from-gray-900 to-gray-800 p-6 shadow-lg text-center">
+<body class="font-sans antialiased">
+
+    <header class="p-6 shadow-lg text-center">
         <h1 class="text-3xl font-bold tracking-widest">Escritos</h1>
+        <nav class="mt-4">
+            <a href="index.html" class="home-link"><span>Home</span></a>
+            <span class="mx-4">|</span>
+            <a href="SobreMi.html" class="home-link"><span>Sobre mí</span></a>
+        </nav>
     </header>
 
     <main class="max-w-6xl mx-auto py-10">
         <section>
             <h2 class="text-2xl font-bold mb-6">Puedo ver</h2>
-            <p class="text-gray-400">Veo a niños en personas, y veo a personas en niños. Niños hechos de dolores, y dolores que matan sus entrañas. Veo heridas en aquellos que se hacen llamar «adultos». Los veo, y no entiendo el por qué, o cómo; pero siento sus dolores. Tienen miedo,quieren hacer todo más fácil, como si todo fuese un deseo—que mal que la vida es complicada. No se dan cuenta que están dañando a los demás, tratando de hacer madurar a los niños a temprana edad. Esos adultos, que yo veo me dan tristeza, porque ellos quieren saber la razón de existir, del por qué estamos vivos sin alguna razón lógica detrás.</p>
+            <p class="text-gray-400">Veo a niños en personas, y veo a personas en niños. Niños hechos de dolores, y dolores que matan sus entrañas. Veo heridas en aquellos que se hacen llamar «adultos». Los veo, y no entiendo el por qué, o cómo; pero siento sus dolores. Tienen miedo, quieren hacer todo más fácil, como si todo fuese un deseo—que mal que la vida es complicada. No se dan cuenta que están dañando a los demás, tratando de hacer madurar a los niños a temprana edad. Esos adultos, que yo veo me dan tristeza, porque ellos quieren saber la razón de existir, del por qué estamos vivos sin alguna razón lógica detrás.</p>
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-gray-500 text-center p-6 mt-10">
+    <footer class="text-center p-6 mt-10">
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
+
 </body>
 </html>
