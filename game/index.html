@@ -3,59 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Minería y Lucha</title>
+    <title>Atrapa la Estrella</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #2c3e50;
+            background-color: #1a1a1a;
             font-family: Arial, sans-serif;
-            color: white;
         }
         canvas {
             display: block;
-            background-color: #34495e;
             margin: 0 auto;
-            border: 2px solid #ecf0f1;
+            background-color: #333;
+            border: 2px solid #fff;
         }
-        #info {
+        #score {
             position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 1000;
-            color: white;
-            font-size: 16px;
-        }
-        #info p {
-            margin: 5px 0;
-        }
-        .tooltip {
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 5px;
-            border-radius: 5px;
-            display: none;
-            color: white;
-            font-size: 14px;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #fff;
         }
     </style>
 </head>
 <body>
-    <div id="info">
-        <p>Oro: <span id="gold">0</span></p>
-        <p>Vida: <span id="health">100</span></p>
-        <p>Objeto: <span id="currentItem">Ninguno</span></p>
-    </div>
+    <div id="score">Puntaje: 0</div>
     <canvas id="gameCanvas"></canvas>
-    <div class="tooltip" id="tooltip"></div>
 
     <script>
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
-        const tooltip = document.getElementById("tooltip");
-        const goldDisplay = document.getElementById("gold");
-        const healthDisplay = document.getElementById("health");
-        const itemDisplay = document.getElementById("currentItem");
+        const scoreDisplay = document.getElementById("score");
 
         // Ajustar el tamaño del canvas
         function resizeCanvas() {
@@ -67,163 +45,103 @@
 
         // Jugador
         let player = {
-            x: canvas.width / 5,
-            y: canvas.height / 2,
+            x: canvas.width / 2,
+            y: canvas.height - 50,
             width: 50,
-            height: 80,
-            color: "blue",
-            health: 100,
-            gold: 0,
-            inventory: [],
-            attackPower: 10,
-            defense: 5,
-            attackRange: 30,
-            speed: 4,
-            name: "Jugador",
-            attacking: false
+            height: 50,
+            color: "#3498db",
+            speed: 8
         };
 
-        // Enemigos
-        let enemies = [
-            { x: canvas.width, y: canvas.height / 2, width: 50, height: 80, color: "red", health: 50, attackPower: 5, name: "Bartholomew", attacking: false, direction: -1 },
-            { x: canvas.width + 200, y: canvas.height / 2, width: 50, height: 80, color: "green", health: 50, attackPower: 5, name: "Beatrice", attacking: false, direction: -1 }
-        ];
+        // Objetos caen del cielo
+        let fallingObjects = [];
+        let starsCaught = 0;
+        let gameSpeed = 3;
 
-        // Objetos
-        const items = [
-            { name: "Espada", x: 100, y: 100, description: "Aumenta el ataque", effect: () => player.attackPower += 10 },
-            { name: "Escudo", x: 200, y: 100, description: "Aumenta la defensa", effect: () => player.defense += 5 },
-            { name: "Poción", x: 300, y: 100, description: "Recupera 20 de vida", effect: () => player.health = Math.min(100, player.health + 20) }
-        ];
-
-        // Animaciones de combate
+        // Función para dibujar al jugador
         function drawPlayer() {
             ctx.fillStyle = player.color;
             ctx.fillRect(player.x, player.y, player.width, player.height);
         }
 
-        function drawEnemies() {
-            enemies.forEach(enemy => {
-                ctx.fillStyle = enemy.color;
-                ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
-                ctx.fillStyle = "white";
-                ctx.font = "14px Arial";
-                ctx.fillText(enemy.name, enemy.x, enemy.y - 10);
-            });
-        }
-
-        function drawItems() {
-            items.forEach(item => {
+        // Función para dibujar los objetos que caen
+        function drawFallingObjects() {
+            fallingObjects.forEach(obj => {
+                ctx.fillStyle = obj.color;
                 ctx.beginPath();
-                ctx.arc(item.x, item.y, 20, 0, Math.PI * 2);
-                ctx.fillStyle = "#2ecc71";
+                ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.fillStyle = "white";
-                ctx.font = "14px Arial";
-                ctx.fillText(item.name, item.x - 15, item.y - 25);
             });
         }
 
-        // Colisiones entre jugador y objetos
-        function checkItemCollision() {
-            items.forEach(item => {
-                const dx = player.x - item.x;
-                const dy = player.y - item.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < player.width / 2 + 20) {
-                    itemDisplay.textContent = item.name;
-                    tooltip.style.left = `${item.x + 25}px`;
-                    tooltip.style.top = `${item.y - 25}px`;
-                    tooltip.style.display = "block";
-                    tooltip.textContent = item.description;
-
-                    if (distance < player.width / 2 + 20) {
-                        item.effect();
-                        items.splice(items.indexOf(item), 1); // Eliminar el objeto una vez recogido
-                    }
-                }
+        // Crear un nuevo objeto que cae
+        function createFallingObject() {
+            const radius = Math.random() * 20 + 20;
+            const x = Math.random() * (canvas.width - radius * 2) + radius;
+            const color = Math.random() > 0.5 ? "#f39c12" : "#e74c3c"; // Estrella o obstáculo
+            fallingObjects.push({
+                x: x,
+                y: -radius, // Comienza fuera de la pantalla
+                radius: radius,
+                color: color,
+                speed: gameSpeed
             });
         }
 
-        // Luchar con los enemigos
-        function attackEnemy(enemy) {
-            if (player.attacking && Math.abs(player.x - enemy.x) < player.attackRange) {
-                enemy.health -= player.attackPower;
-                if (enemy.health <= 0) {
-                    player.gold += 50; // Gana oro al derrotar enemigos
-                    goldDisplay.textContent = player.gold;
-                    enemies.splice(enemies.indexOf(enemy), 1); // Eliminar al enemigo derrotado
-
-                    // Después de un enemigo derrotado, añadir un nuevo enemigo o desafío
-                    enemies.push({
-                        x: canvas.width,
-                        y: Math.random() * canvas.height,
-                        width: 50,
-                        height: 80,
-                        color: "purple",
-                        health: 50,
-                        attackPower: 5,
-                        name: "Nuevo Enemigo",
-                        attacking: false,
-                        direction: -1
-                    });
-                }
-            }
+        // Mover los objetos que caen
+        function moveFallingObjects() {
+            fallingObjects.forEach(obj => {
+                obj.y += obj.speed;
+            });
+            fallingObjects = fallingObjects.filter(obj => obj.y < canvas.height); // Eliminar objetos fuera de la pantalla
         }
 
-        // Enemigos atacando al jugador
-        function enemyAttack() {
-            enemies.forEach(enemy => {
-                if (Math.abs(enemy.x - player.x) < enemy.width / 2 + player.attackRange) {
-                    player.health -= enemy.attackPower;
-                    healthDisplay.textContent = player.health;
+        // Comprobar colisiones entre el jugador y los objetos
+        function checkCollisions() {
+            fallingObjects.forEach((obj, index) => {
+                const distX = Math.abs(obj.x - player.x - player.width / 2);
+                const distY = Math.abs(obj.y - player.y - player.height / 2);
+                const distance = Math.sqrt(distX * distX + distY * distY);
 
-                    // Mostrar un mensaje si el jugador muere
-                    if (player.health <= 0) {
-                        alert("¡Has muerto! El juego ha terminado.");
+                if (distance < obj.radius + player.width / 2) {
+                    if (obj.color === "#f39c12") {
+                        starsCaught++;
+                        scoreDisplay.textContent = `Puntaje: ${starsCaught}`;
+                    } else {
+                        alert("¡Juego Terminado! Tu puntaje final fue: " + starsCaught);
                         window.location.reload();
                     }
+                    fallingObjects.splice(index, 1); // Eliminar el objeto cuando se captura o golpea
                 }
             });
         }
 
-        // Mover enemigos y jugador
-        function moveEnemies() {
-            enemies.forEach(enemy => {
-                enemy.x += enemy.direction * 2; // Los enemigos se mueven hacia la izquierda
-                if (enemy.x < 0) enemy.direction = 1; // Cambia de dirección si llegan al borde
-                if (enemy.x > canvas.width) enemy.direction = -1;
-            });
-        }
-
-        // Mover jugador con las teclas
+        // Mover al jugador
         document.addEventListener("keydown", (e) => {
-            if (e.key === "ArrowRight") {
-                player.x += player.speed;
-            } else if (e.key === "ArrowLeft") {
+            if (e.key === "ArrowLeft" && player.x > 0) {
                 player.x -= player.speed;
-            } else if (e.key === " " && !player.attacking) {
-                player.attacking = true;
-                setTimeout(() => player.attacking = false, 500); // La animación de ataque dura medio segundo
+            }
+            if (e.key === "ArrowRight" && player.x < canvas.width - player.width) {
+                player.x += player.speed;
             }
         });
 
-        // Dibujar todo el juego
-        function drawGame() {
+        // Actualizar el juego
+        function updateGame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas
             drawPlayer();
-            drawEnemies();
-            drawItems();
-            checkItemCollision();
-            enemyAttack();
-            moveEnemies();
-            enemies.forEach(enemy => attackEnemy(enemy));
+            drawFallingObjects();
+            moveFallingObjects();
+            checkCollisions();
+
+            if (Math.random() < 0.02) { // Crear nuevos objetos con probabilidad
+                createFallingObject();
+            }
         }
 
-        // Bucle de juego
+        // Bucle del juego
         function gameLoop() {
-            drawGame();
+            updateGame();
             requestAnimationFrame(gameLoop);
         }
 
