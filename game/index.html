@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Monedas Virtuales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Juego de Monedas Virtuales</h1>
+        <div id="user-info">
+            <p>Saldo: <span id="saldo">0</span> Monedas</p>
+            <button id="depositar">Depositar</button>
+            <button id="retirar">Retirar</button>
+            <button id="transferir">Transferir</button>
+        </div>
+        <div id="transfer-form" style="display: none;">
+            <input type="text" id="userDestino" placeholder="Usuario destinatario">
+            <input type="number" id="cantidad" placeholder="Cantidad de monedas">
+            <button id="confirmar-transferencia">Confirmar Transferencia</button>
+            <button id="cancelar-transferencia">Cancelar</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
