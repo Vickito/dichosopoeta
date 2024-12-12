@@ -76,6 +76,17 @@
         .box:hover {
             background-color: #e84e47;
         }
+        .loading-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #3498db;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -202,6 +213,8 @@
             currentUser.coins -= 2;
             document.getElementById('player-coins').innerText = currentUser.coins;
             document.getElementById('result-ruleta').innerText = 'Girando...';
+            document.getElementById('spinner').style.display = 'block';
+
             setTimeout(() => {
                 const result = Math.random();
                 if (result > 0.5) {
@@ -210,8 +223,9 @@
                 } else {
                     document.getElementById('result-ruleta').innerText = 'Perdiste. Te quedan ' + currentUser.coins + ' monedas.';
                 }
-                localStorage.setItem(currentUser.name, JSON.stringify(currentUser));
-            }, 2000);
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('player-coins').innerText = currentUser.coins;
+            }, 3000); // Espera 3 segundos antes de mostrar el resultado
         } else {
             alert('No tienes suficientes monedas para jugar.');
         }
@@ -219,37 +233,51 @@
 
     // Función para adivinar el número
     function guessNumber() {
-        const guess = parseInt(document.getElementById('guess-number').value);
-        if (guess >= 1 && guess <= 10) {
-            if (currentUser.coins >= 2) {
-                currentUser.coins -= 2;
-                const correctNumber = Math.floor(Math.random() * 10) + 1;
-                if (guess === correctNumber) {
-                    currentUser.coins += 5;
-                    document.getElementById('result-adivinanza').innerText = '¡Adivinaste! Ahora tienes ' + currentUser.coins + ' monedas.';
+        if (currentUser.coins >= 3) {
+            currentUser.coins -= 3;
+            document.getElementById('player-coins').innerText = currentUser.coins;
+            document.getElementById('result-adivinanza').innerHTML = '<div class="loading-text">Calculando...</div>';
+
+            setTimeout(() => {
+                const guess = parseInt(document.getElementById('guess-number').value);
+                const number = Math.floor(Math.random() * 10) + 1;
+
+                if (guess === number) {
+                    currentUser.coins += 6;
+                    document.getElementById('result-adivinanza').innerText = '¡Adivinaste el número! Ahora tienes ' + currentUser.coins + ' monedas.';
                 } else {
-                    document.getElementById('result-adivinanza').innerText = 'Fallaste. El número era ' + correctNumber + '. Te quedan ' + currentUser.coins + ' monedas.';
+                    document.getElementById('result-adivinanza').innerText = 'Fallaste. El número era ' + number + '. Te quedan ' + currentUser.coins + ' monedas.';
                 }
                 document.getElementById('player-coins').innerText = currentUser.coins;
-                localStorage.setItem(currentUser.name, JSON.stringify(currentUser));
-            } else {
-                alert('No tienes suficientes monedas para jugar.');
-            }
+            }, 2000); // Espera 2 segundos antes de mostrar el resultado
         } else {
-            alert('Ingresa un número entre 1 y 10.');
+            alert('No tienes suficientes monedas para jugar.');
         }
     }
 
     // Función para elegir una caja
     function chooseBox(boxNumber) {
-        if (currentUser.coins >= 2) {
-            currentUser.coins -= 2;
-            const win = Math.random() > 0.5;
-            const reward = win ? 10 : -5;
-            currentUser.coins += reward;
-            document.getElementById('result-caja').innerText = `Elegiste la Caja ${boxNumber}. ${win ? 'Ganaste' : 'Perdiste'}. Ahora tienes ${currentUser.coins} monedas.`;
+        if (currentUser.coins >= 1) {
+            currentUser.coins -= 1;
             document.getElementById('player-coins').innerText = currentUser.coins;
-            localStorage.setItem(currentUser.name, JSON.stringify(currentUser));
+            document.getElementById('result-caja').innerHTML = '<div class="loading-text">Abriendo la caja...</div>';
+
+            setTimeout(() => {
+                const prize = Math.random();
+                let resultText = '';
+
+                if (prize > 0.8) {
+                    currentUser.coins += 10;
+                    resultText = '¡Ganaste 10 monedas! Ahora tienes ' + currentUser.coins + ' monedas.';
+                } else if (prize > 0.5) {
+                    resultText = 'Lo siento, la caja estaba vacía. Te quedan ' + currentUser.coins + ' monedas.';
+                } else {
+                    resultText = '¡Ganaste 5 monedas! Ahora tienes ' + currentUser.coins + ' monedas.';
+                }
+
+                document.getElementById('result-caja').innerText = resultText;
+                document.getElementById('player-coins').innerText = currentUser.coins;
+            }, 2500); // Espera 2.5 segundos antes de mostrar el resultado
         } else {
             alert('No tienes suficientes monedas para jugar.');
         }
@@ -257,9 +285,9 @@
 
     // Función para cerrar sesión
     function logout() {
+        currentUser = null;
         document.getElementById('game-section').classList.add('hidden');
         document.getElementById('login-section').classList.remove('hidden');
-        currentUser = null;
     }
 </script>
 
