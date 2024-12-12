@@ -2,8 +2,6 @@
 // Para hacer esto dinámico, necesitarías un backend o alguna herramienta para leer archivos desde el servidor.
 const escritos = [
     { title: "El dolor", url: "escrito/El_Dolor.html" },
-    { title: "Poema 2", url: "escrito/poema2.html" },
-    { title: "Poema 3", url: "escrito/poema3.html" },
     // Aquí se pueden agregar más escritos manualmente
 ];
 
