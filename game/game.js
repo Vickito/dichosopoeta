@@ -1,83 +1,99 @@
-// Almacenamos el saldo en el almacenamiento local del navegador
-let saldo = parseInt(localStorage.getItem('saldo')) || 50;  // Empezamos con 50 monedas si no hay saldo guardado
-
+// Inicializamos el saldo con 50 monedas
+let saldo = 50;
 document.getElementById('saldo').innerText = saldo;
 
-// Función para actualizar el saldo en la pantalla
+// Función para actualizar el saldo
 function actualizarSaldo() {
     document.getElementById('saldo').innerText = saldo;
-    localStorage.setItem('saldo', saldo);
 }
 
-// Juego de suerte (sorteo)
-document.getElementById('jugarSuerte').addEventListener('click', function() {
-    if (saldo < 2) {
-        alert("No tienes suficientes monedas para jugar.");
-        return;
-    }
-    saldo -= 2;  // El costo del juego
-
-    let resultado = Math.random();  // Generamos un número aleatorio entre 0 y 1
-    let mensaje = "";
-
-    // 50% de probabilidades de ganar
-    if (resultado < 0.5) {
-        let ganancia = Math.floor(Math.random() * 10) + 5;  // Ganamos entre 5 y 15 monedas
-        saldo += ganancia;
-        mensaje = `¡Ganaste! Has recibido ${ganancia} monedas.`;
-    } else {
-        let perdida = Math.floor(2 * 0.25);  // Perdemos un 25% de 2 monedas = 0.5, pero lo redondeamos a 1
-        saldo -= perdida;
-        mensaje = `Perdiste... Has perdido ${perdida} monedas.`;
-    }
-
-    if (saldo < 0) {
-        saldo = 50;  // Si el saldo es negativo, le damos 50 monedas
-        mensaje = "Tu saldo es negativo. ¡Has recibido 50 monedas para continuar jugando!";
-    }
-
-    mostrarResultado(mensaje);
-    actualizarSaldo();
-});
-
-// Juego de ruleta (ruleta simple con una probabilidad de ganar)
-document.getElementById('jugarRuleta').addEventListener('click', function() {
-    if (saldo < 2) {
-        alert("No tienes suficientes monedas para jugar.");
-        return;
-    }
-    saldo -= 2;  // El costo del juego
-
-    let resultado = Math.random();  // Generamos un número aleatorio entre 0 y 1
-    let mensaje = "";
-
-    // 40% de probabilidades de ganar
-    if (resultado < 0.4) {
-        let ganancia = Math.floor(Math.random() * 20) + 10;  // Ganamos entre 10 y 30 monedas
-        saldo += ganancia;
-        mensaje = `¡Ganaste! Has recibido ${ganancia} monedas de la ruleta.`;
-    } else {
-        let perdida = Math.floor(2 * 0.25);  // Perdemos un 25% de 2 monedas
-        saldo -= perdida;
-        mensaje = `Perdiste... Has perdido ${perdida} monedas en la ruleta.`;
-    }
-
-    if (saldo < 0) {
-        saldo = 50;  // Si el saldo es negativo, le damos 50 monedas
-        mensaje = "Tu saldo es negativo. ¡Has recibido 50 monedas para continuar jugando!";
-    }
-
-    mostrarResultado(mensaje);
-    actualizarSaldo();
-});
-
-// Función para mostrar el resultado de un juego
+// Función para mostrar el mensaje de resultado
 function mostrarResultado(mensaje) {
-    document.getElementById('mensaje').innerText = mensaje;
+    document.getElementById('mensajeResultado').innerText = mensaje;
     document.getElementById('resultado').style.display = 'block';
 }
 
 // Función para cerrar el resultado
 document.getElementById('cerrarResultado').addEventListener('click', function() {
     document.getElementById('resultado').style.display = 'none';
+});
+
+// Juego de Adivinar el Número
+document.getElementById('adivinaNumero').addEventListener('click', function() {
+    if (saldo < 2) {
+        mostrarResultado("No tienes suficientes monedas para jugar.");
+        return;
+    }
+
+    saldo -= 2;  // Costo del juego
+    let numeroAleatorio = Math.floor(Math.random() * 10) + 1;  // Número aleatorio entre 1 y 10
+    let adivinanza = prompt("Adivina un número entre 1 y 10:");
+
+    if (parseInt(adivinanza) === numeroAleatorio) {
+        saldo += 10;  // Ganas 10 monedas si aciertas
+        mostrarResultado(`¡Adivinaste correctamente! Has ganado 10 monedas.`);
+    } else {
+        saldo -= 2;  // Pierdes 2 monedas si fallas
+        mostrarResultado(`Fallaste. El número era ${numeroAleatorio}. Has perdido 2 monedas.`);
+    }
+
+    if (saldo <= 0) {
+        saldo = 50;  // Si el saldo es negativo, recibe 50 monedas
+        mostrarResultado("Tu saldo es negativo. Has recibido 50 monedas para seguir jugando.");
+    }
+
+    actualizarSaldo();
+});
+
+// Juego de Lanzar la Moneda
+document.getElementById('lanzarMoneda').addEventListener('click', function() {
+    if (saldo < 2) {
+        mostrarResultado("No tienes suficientes monedas para jugar.");
+        return;
+    }
+
+    saldo -= 2;  // Costo del juego
+    let eleccion = prompt("Elige cara o cruz:");
+
+    let lanzamiento = Math.random() < 0.5 ? "cara" : "cruz";  // Elección aleatoria entre cara y cruz
+    if (eleccion.toLowerCase() === lanzamiento) {
+        saldo += 5;  // Ganas 5 monedas si acertaste
+        mostrarResultado(`¡Ganaste! La moneda salió ${lanzamiento}. Has ganado 5 monedas.`);
+    } else {
+        saldo -= 2;  // Pierdes 2 monedas si fallas
+        mostrarResultado(`Perdiste. La moneda salió ${lanzamiento}. Has perdido 2 monedas.`);
+    }
+
+    if (saldo <= 0) {
+        saldo = 50;  // Si el saldo es negativo, recibe 50 monedas
+        mostrarResultado("Tu saldo es negativo. Has recibido 50 monedas para seguir jugando.");
+    }
+
+    actualizarSaldo();
+});
+
+// Juego de Lanzar el Dado
+document.getElementById('lanzarDado').addEventListener('click', function() {
+    if (saldo < 2) {
+        mostrarResultado("No tienes suficientes monedas para jugar.");
+        return;
+    }
+
+    saldo -= 2;  // Costo del juego
+    let dado = Math.floor(Math.random() * 6) + 1;  // Lanza un dado de 6 caras
+
+    if (dado > 3) {
+        saldo += 7;  // Ganas 7 monedas si el dado es mayor que 3
+        mostrarResultado(`¡Ganaste! El dado mostró un ${dado}. Has ganado 7 monedas.`);
+    } else {
+        saldo -= 2;  // Pierdes 2 monedas si el dado es 3 o menos
+        mostrarResultado(`Perdiste. El dado mostró un ${dado}. Has perdido 2 monedas.`);
+    }
+
+    if (saldo <= 0) {
+        saldo = 50;  // Si el saldo es negativo, recibe 50 monedas
+        mostrarResultado("Tu saldo es negativo. Has recibido 50 monedas para seguir jugando.");
+    }
+
+    actualizarSaldo();
 });
