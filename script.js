@@ -10,7 +10,7 @@ const escritos = [
 const postsContainer = document.getElementById('posts-container');
 
 // Generar posts dinámicamente
-escritos.forEach(escrito => {
+escrito.forEach(escrito => {
     const postDiv = document.createElement('div');
     postDiv.classList.add('card');
 
