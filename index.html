@@ -8,13 +8,30 @@
     <style>
         body { background: #000000; color: #c2c2c2; font-family: 'Arial', sans-serif; }
         .card {
-            background: #000000;
-            border: 2px solid #6e6e6e;
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card-text { color: #e8e8e8; }
+    background: #1E1E2F; /* Fondo más oscuro */
+    border: 2px solid #6e6e6e; /* Borde más claro */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 1.5rem; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.03); /* Efecto de zoom al pasar el ratón */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al pasar el ratón */
+}
+
+.card-text {
+    color: #C8C8C8; /* Color más claro para el texto */
+    font-size: 1rem; /* Tamaño estándar */
+}
+
+h3 {
+    color: #A1E6A1; /* Verde claro */
+    font-size: 1.25rem; /* Tamaño ligeramente más grande */
+    margin-bottom: 1rem; /* Separación del título con el texto */
+}
+
         .home-link span {
             position: relative; color: #A1E6A1; text-decoration: none;
         }
