@@ -8,92 +8,156 @@
         body {
             margin: 0;
             padding: 0;
+            overflow: hidden;
             background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
         canvas {
-            border: 1px solid white;
+            display: block;
+        }
+        #nameInput {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 20px;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <canvas id="gameCanvas"></canvas>
+    <input type="text" id="nameInput" placeholder="Escribe tu nombre" />
 
     <script>
-        // Configuración del juego
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
-        const player = {
-            x: canvas.width / 2,
-            y: canvas.height / 2,
-            radius: 20,
-            color: '#FF5733',
-            speed: 2
-        };
-        const foodItems = [];
-        const maxFood = 50;
+        const nameInput = document.getElementById('nameInput');
+        let playerName = "";
+        let player = { x: 0, y: 0, radius: 20, color: '#FF5733', speed: 5 };
+        let enemies = [];
+        const maxEnemies = 5;
+        const victorianNames = ["Alistair", "Beatrice", "Edwin", "Eleanor", "Felix", "Gwendolyn", "Hector", "Isobel", "Jasper", "Lydia"];
 
-        // Generar alimentos aleatorios
-        function generateFood() {
-            for (let i = 0; i < maxFood; i++) {
-                foodItems.push({
+        // Ajustar el tamaño del canvas a la pantalla
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Función para generar enemigos con nombres victorianos
+        function generateEnemies() {
+            for (let i = 0; i < maxEnemies; i++) {
+                const name = victorianNames[Math.floor(Math.random() * victorianNames.length)];
+                const enemy = {
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    radius: 5 + Math.random() * 10, // Tamaño aleatorio
-                    color: '#A9DFBF'
-                });
+                    radius: 20 + Math.random() * 30, // Tamaño aleatorio
+                    color: '#A9DFBF',
+                    name: name,
+                    speed: 2
+                };
+                enemies.push(enemy);
             }
         }
 
-        // Detectar colisión entre el jugador y los alimentos
-        function checkCollision() {
-            foodItems.forEach((food, index) => {
-                const dx = player.x - food.x;
-                const dy = player.y - food.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < player.radius + food.radius) {
-                    player.radius += food.radius; // Crecer
-                    foodItems.splice(index, 1); // Eliminar el alimento comido
-                }
+        // Dibujar al jugador
+        function drawPlayer() {
+            ctx.beginPath();
+            ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
+            ctx.fillStyle = player.color;
+            ctx.fill();
+            ctx.fillStyle = "white";
+            ctx.font = "16px Arial";
+            ctx.fillText(playerName, player.x - player.radius / 2, player.y - player.radius - 5);
+        }
+
+        // Dibujar los enemigos
+        function drawEnemies() {
+            enemies.forEach(enemy => {
+                ctx.beginPath();
+                ctx.arc(enemy.x, enemy.y, enemy.radius, 0, Math.PI * 2);
+                ctx.fillStyle = enemy.color;
+                ctx.fill();
+                ctx.fillStyle = "white";
+                ctx.font = "16px Arial";
+                ctx.fillText(enemy.name, enemy.x - enemy.radius / 2, enemy.y - enemy.radius - 5);
             });
         }
 
         // Mover el jugador con el ratón
         canvas.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            player.x = e.clientX - rect.left;
-            player.y = e.clientY - rect.top;
+            player.x = e.clientX;
+            player.y = e.clientY;
         });
 
-        // Dibujar el jugador y los alimentos
+        // Movimiento de los enemigos
+        function moveEnemies() {
+            enemies.forEach(enemy => {
+                const dx = player.x - enemy.x;
+                const dy = player.y - enemy.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 300) {
+                    const angle = Math.atan2(dy, dx);
+                    enemy.x += Math.cos(angle) * enemy.speed;
+                    enemy.y += Math.sin(angle) * enemy.speed;
+                }
+            });
+        }
+
+        // Detectar colisiones con los enemigos
+        function checkCollisions() {
+            enemies.forEach((enemy, index) => {
+                const dx = player.x - enemy.x;
+                const dy = player.y - enemy.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < player.radius + enemy.radius) {
+                    alert("¡Te han comido! Game Over.");
+                    window.location.reload(); // Recargar la página para reiniciar el juego
+                }
+            });
+        }
+
+        // Dibujar el juego
         function drawGame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar pantalla
-            ctx.beginPath();
-            ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-            ctx.fillStyle = player.color;
-            ctx.fill();
-
-            foodItems.forEach(food => {
-                ctx.beginPath();
-                ctx.arc(food.x, food.y, food.radius, 0, Math.PI * 2);
-                ctx.fillStyle = food.color;
-                ctx.fill();
-            });
+            drawPlayer();
+            drawEnemies();
         }
 
         // Lógica del juego
         function gameLoop() {
-            checkCollision();
+            moveEnemies();
+            checkCollisions();
             drawGame();
             requestAnimationFrame(gameLoop);
         }
 
-        // Iniciar juego
-        generateFood();
-        gameLoop();
+        // Función para iniciar el juego
+        function startGame() {
+            playerName = nameInput.value || "Jugador";
+            nameInput.style.display = 'none'; // Ocultar el input de nombre
+            generateEnemies(); // Generar enemigos
+            gameLoop(); // Comenzar el ciclo del juego
+        }
+
+        // Mostrar el input de nombre y esperar que el jugador ingrese su nombre
+        function showNameInput() {
+            nameInput.style.display = 'block';
+            nameInput.focus();
+            nameInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    startGame();
+                }
+            });
+        }
+
+        showNameInput(); // Mostrar el input de nombre al principio
     </script>
 </body>
 </html>
