@@ -8,17 +8,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Juego de Monedas Virtuales</h1>
-        <div id="user-info">
-            <p>Saldo: <span id="saldo">0</span> Monedas</p>
-            <button id="jugarSuerte">Jugar a la Suerte (2 Monedas)</button>
-            <button id="jugarRuleta">Jugar a la Ruleta (2 Monedas)</button>
+        <h1>Bienvenido al Juego de Monedas Virtuales</h1>
+        <p>Saldo: <span id="saldo">50</span> Monedas</p>
+
+        <div id="juegos">
+            <button id="adivinaNumero">Adivina el Número</button>
+            <button id="lanzarMoneda">Lanzar la Moneda</button>
+            <button id="lanzarDado">Lanzar el Dado</button>
         </div>
+
         <div id="resultado" style="display: none;">
-            <p id="mensaje"></p>
+            <p id="mensajeResultado"></p>
             <button id="cerrarResultado">Cerrar</button>
         </div>
     </div>
+
     <script src="game.js"></script>
 </body>
 </html>
