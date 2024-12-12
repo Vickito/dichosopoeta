@@ -69,45 +69,43 @@
         let player = {
             x: canvas.width / 2,
             y: canvas.height / 2,
-            radius: 30,
-            color: "#3498db",
+            width: 50,
+            height: 50,
+            image: new Image(),
             health: 100,
             gold: 0,
             inventory: [],
-            mining: false,
-            attacking: false,
+            attackPower: 10,
+            defense: 5,
+            name: "Jugador"
         };
+        player.image.src = 'https://img.icons8.com/ios/452/user-male.png'; // Reemplaza con la imagen de tu personaje
 
         // Enemigos
         let enemies = [
-            { x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: 30, color: "#e74c3c", health: 50, name: "Bartholomew" },
-            { x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: 30, color: "#e74c3c", health: 50, name: "Beatrice" }
+            { x: Math.random() * canvas.width, y: Math.random() * canvas.height, width: 50, height: 50, image: new Image(), health: 50, name: "Bartholomew" },
+            { x: Math.random() * canvas.width, y: Math.random() * canvas.height, width: 50, height: 50, image: new Image(), health: 50, name: "Beatrice" }
         ];
+        enemies.forEach(enemy => enemy.image.src = 'https://img.icons8.com/ios/452/user-male.png'); // Reemplaza con la imagen de tus enemigos
 
         // Objetos
         const items = [
-            { name: "Espada", x: 100, y: 100, description: "Aumenta el ataque", effect: () => player.attackPower = 20 },
-            { name: "Escudo", x: 200, y: 100, description: "Aumenta la defensa", effect: () => player.defense = 10 },
+            { name: "Espada", x: 100, y: 100, description: "Aumenta el ataque", effect: () => player.attackPower += 10 },
+            { name: "Escudo", x: 200, y: 100, description: "Aumenta la defensa", effect: () => player.defense += 5 },
             { name: "Poción", x: 300, y: 100, description: "Recupera 20 de vida", effect: () => player.health = Math.min(100, player.health + 20) }
         ];
 
-        // Animaciones
+        // Animaciones de combate
         function drawPlayer() {
-            ctx.beginPath();
-            ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-            ctx.fillStyle = player.color;
-            ctx.fill();
+            ctx.drawImage(player.image, player.x, player.y, player.width, player.height);
         }
 
         function drawEnemies() {
             enemies.forEach(enemy => {
-                ctx.beginPath();
-                ctx.arc(enemy.x, enemy.y, enemy.radius, 0, Math.PI * 2);
-                ctx.fillStyle = enemy.color;
-                ctx.fill();
+                ctx.drawImage(enemy.image, enemy.x, enemy.y, enemy.width, enemy.height);
                 ctx.fillStyle = "white";
                 ctx.font = "14px Arial";
-                ctx.fillText(enemy.name, enemy.x - enemy.radius, enemy.y - enemy.radius - 10);
+                ctx.fillText(enemy.name, enemy.x, enemy.y - 10);
             });
         }
 
@@ -123,46 +121,57 @@
             });
         }
 
-        // Detectar colisiones entre el jugador y los objetos
+        // Colisiones entre jugador y objetos
         function checkItemCollision() {
             items.forEach(item => {
                 const dx = player.x - item.x;
                 const dy = player.y - item.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance < player.radius + 20) {
+                if (distance < player.width / 2 + 20) {
                     itemDisplay.textContent = item.name;
                     tooltip.style.left = `${item.x + 25}px`;
                     tooltip.style.top = `${item.y - 25}px`;
                     tooltip.style.display = "block";
                     tooltip.textContent = item.description;
 
-                    if (distance < player.radius + 20) {
+                    if (distance < player.width / 2 + 20) {
                         item.effect();
-                        items = items.filter(i => i !== item); // Eliminar el objeto una vez que el jugador lo ha tomado
+                        items.splice(items.indexOf(item), 1); // Eliminar el objeto una vez recogido
                     }
                 }
             });
         }
 
-        // Función para atacar a los enemigos
+        // Luchar con los enemigos
         function attackEnemy(enemy) {
-            enemy.health -= 10; // Ataque básico
+            enemy.health -= player.attackPower;
             if (enemy.health <= 0) {
-                player.gold += 50; // Robar oro
-                enemies = enemies.filter(e => e !== enemy); // Eliminar al enemigo muerto
-                goldDisplay.textContent = player.gold; // Actualizar oro
+                player.gold += 50; // Gana oro al derrotar enemigos
+                goldDisplay.textContent = player.gold;
+                enemies.splice(enemies.indexOf(enemy), 1); // Eliminar al enemigo derrotado
+
+                // Después de un enemigo derrotado, añadir un nuevo enemigo o desafío
+                enemies.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    width: 50,
+                    height: 50,
+                    image: new Image(),
+                    health: 50,
+                    name: "Nuevo Enemigo"
+                });
             }
         }
 
-        // Función de lucha y movimiento del enemigo
+        // Colisiones entre jugador y enemigos
         function fightEnemies() {
             enemies.forEach(enemy => {
                 const dx = player.x - enemy.x;
                 const dy = player.y - enemy.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < player.radius + enemy.radius) {
+
+                if (distance < player.width / 2 + enemy.width / 2) {
                     attackEnemy(enemy);
                 }
             });
@@ -186,8 +195,8 @@
 
         // Mover al jugador con el ratón
         canvas.addEventListener("mousemove", (e) => {
-            player.x = e.clientX;
-            player.y = e.clientY;
+            player.x = e.clientX - player.width / 2;
+            player.y = e.clientY - player.height / 2;
         });
 
         gameLoop();
