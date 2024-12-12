@@ -1,27 +1,23 @@
-// Aquí puedes incluir los títulos de los poemas de forma manual. 
-// Para hacer esto dinámico, necesitarías un backend o alguna herramienta para leer archivos desde el servidor.
+// Ejemplo de datos de los escritos
 const escritos = [
-    { title: "El dolor", url: "escrito/El_Dolor.html" },
-    // Aquí se pueden agregar más escritos manualmente
+    { titulo: "Primavera en el alma", contenido: "Un poema sobre la renovación y la esperanza." },
+    { titulo: "El ocaso de un sueño", contenido: "Reflexiones sobre la pérdida y la nostalgia." },
+    { titulo: "Caminos inciertos", contenido: "Una historia sobre elecciones y consecuencias." },
+    // Agrega tantos como desees
 ];
 
-// Cargar los escritos en el grid del Home
-const loadPosts = () => {
-    const postsContainer = document.getElementById("posts-container");
+// Contenedor de los posts
+const postsContainer = document.getElementById('posts-container');
 
-    escritos.forEach((escrito) => {
-        const postElement = document.createElement("a");
-        postElement.href = escrito.url;
-        postElement.className = "card hover:scale-105 hover:shadow-lg transition-transform duration-300";
+// Generar posts dinámicamente
+escritos.forEach(escrito => {
+    const postDiv = document.createElement('div');
+    postDiv.classList.add('card');
 
-        const titleElement = document.createElement("h3");
-        titleElement.className = "text-xl font-semibold mb-4 card-text";
-        titleElement.textContent = escrito.title;
+    postDiv.innerHTML = `
+        <h3 class="text-xl font-semibold mb-4">${escrito.titulo}</h3>
+        <p class="card-text">${escrito.contenido}</p>
+    `;
 
-        postElement.appendChild(titleElement);
-        postsContainer.appendChild(postElement);
-    });
-};
-
-// Llamar la función para cargar los escritos al cargar la página
-document.addEventListener("DOMContentLoaded", loadPosts);
+    postsContainer.appendChild(postDiv);
+});
