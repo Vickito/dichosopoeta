@@ -7,35 +7,33 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body { background: #000000; color: #c2c2c2; font-family: 'Arial', sans-serif; }
-        .card { 
-            background: #000000; 
-            border: 2px solid #6e6e6e; /* Borde blanco alrededor de la casilla */
-            border-radius: 8px; 
-            padding: 1.5rem; 
+        .card {
+            background: #000000;
+            border: 2px solid #6e6e6e;
+            border-radius: 8px;
+            padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .card-text { color: #e8e8e8; } /* Color del texto en las casillas */
-        .home-link span { position: relative; color: #A1E6A1; text-decoration: none; }
+        .card-text { color: #e8e8e8; }
+        .home-link span {
+            position: relative; color: #A1E6A1; text-decoration: none;
+        }
         .home-link span::before, .home-link span::after {
             content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #e8e8e8; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
-        } /* Color de todo los texto (incluso del título) que no esté en la casilla */
+        }
         .home-link span::before { left: -8px; }
         .home-link span::after { right: -8px; }
         .home-link span:hover::before, .home-link span:hover::after { transform-origin: center bottom; transform: scaleY(1); }
-
-        /* Efecto de aumento */
         .card:hover {
-            transform: scale(1.05); /* Aumenta ligeramente el tamaño */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Agrega sombra */
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-
-        /* Enlaces en verde pastel */
         a, a:hover {
-            color: #A1E6A1; /* Verde pastel */
-            text-decoration: none; /* Quita el subrayado */
+            color: #A1E6A1;
+            text-decoration: none;
         }
         a:hover {
-            text-decoration: underline; /* Añadir subrayado al hacer hover */
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -46,12 +44,17 @@
         <nav class="mt-4">
             <a href="SobreMi.html" class="home-link"><span>Sobre mí</span></a>
         </nav>
-        <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
     </header>
+
+    <main>
+        <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+            <!-- Más tarjetas pueden añadirse aquí -->
+        </div>
+    </main>
+
     <footer class="bg-black text-white text-center p-6 mt-16">
         <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
     </footer>
 
 </body>
 </html>
-
