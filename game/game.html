@@ -3,100 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Monedas Virtuales</title>
+    <title>Juego de Monedas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
         }
         .container {
-            margin-top: 50px;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 100%;
+            box-sizing: border-box;
         }
         button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            cursor: pointer;
+            padding: 10px;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
+            cursor: pointer;
         }
         button:hover {
             background-color: #45a049;
         }
-        #resultado {
-            margin-top: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Juego de Monedas Virtuales</h1>
 
-        <div id="registro">
-            <p>Introduce tu nombre y clave para comenzar:</p>
-            <input type="text" id="nombre" placeholder="Nombre">
-            <input type="password" id="clave" placeholder="Clave">
-            <button id="iniciar">Iniciar Sesión</button>
-        </div>
-
-        <div id="juego" style="display: none;">
-            <p>Saldo: <span id="saldo">50</span> Monedas</p>
-            <button id="adivinaNumero">Adivina el Número</button>
-            <button id="lanzarMoneda">Lanzar la Moneda</button>
-            <button id="lanzarDado">Lanzar el Dado</button>
-            <button id="guardar">Guardar Progreso</button>
-        </div>
-
-        <div id="resultado" style="display: none;">
-            <p id="mensajeResultado"></p>
-            <button id="cerrarResultado">Cerrar</button>
-        </div>
+<div class="container">
+    <h2>Juego de Monedas</h2>
+    
+    <div id="login-section">
+        <h3>Login</h3>
+        <input type="text" id="login-name" placeholder="Nombre de usuario">
+        <input type="password" id="login-password" placeholder="Contraseña">
+        <button onclick="login()">Iniciar sesión</button>
+        <p>¿No tienes cuenta? <a href="javascript:void(0)" onclick="toggleRegister()">Registrate aquí</a></p>
     </div>
 
-    <script>
-        // Variables globales
-        let saldo = 50;
-        let usuario = { nombre: '', clave: '', monedas: 50 };
+    <div id="register-section" class="hidden">
+        <h3>Registro</h3>
+        <input type="text" id="register-name" placeholder="Nombre de usuario">
+        <input type="password" id="register-password" placeholder="Contraseña">
+        <button onclick="register()">Registrarse</button>
+        <p>¿Ya tienes cuenta? <a href="javascript:void(0)" onclick="toggleRegister()">Inicia sesión aquí</a></p>
+    </div>
 
-        // Función para mostrar mensaje de resultado
-        function mostrarResultado(mensaje) {
-            document.getElementById('mensajeResultado').innerText = mensaje;
-            document.getElementById('resultado').style.display = 'block';
+    <div id="game-section" class="hidden">
+        <h3>Bienvenido <span id="player-name"></span></h3>
+        <p>Monedas: <span id="player-coins">50</span></p>
+        <button onclick="playGame()">Jugar</button>
+        <button onclick="logout()">Cerrar sesión</button>
+    </div>
+</div>
+
+<script>
+    // Función para mostrar u ocultar las secciones de login y registro
+    function toggleRegister() {
+        document.getElementById('login-section').classList.toggle('hidden');
+        document.getElementById('register-section').classList.toggle('hidden');
+    }
+
+    // Función para registrar al usuario
+    function register() {
+        const name = document.getElementById('register-name').value;
+        const password = document.getElementById('register-password').value;
+
+        if (name && password) {
+            const user = { name, password, coins: 50 };
+
+            // Guardar usuario en localStorage
+            localStorage.setItem(name, JSON.stringify(user));
+            alert('Registro exitoso. Ahora puedes iniciar sesión.');
+            toggleRegister(); // Volver a la pantalla de login
+        } else {
+            alert('Por favor, ingresa un nombre y una contraseña.');
         }
+    }
 
-        // Función para cerrar el mensaje
-        document.getElementById('cerrarResultado').addEventListener('click', function() {
-            document.getElementById('resultado').style.display = 'none';
-        });
+    // Función para hacer login
+    function login() {
+        const name = document.getElementById('login-name').value;
+        const password = document.getElementById('login-password').value;
 
-        // Función para actualizar el saldo visual
-        function actualizarSaldo() {
-            document.getElementById('saldo').innerText = saldo;
-        }
+        const userData = localStorage.getItem(name);
 
-        // Función para guardar datos en localStorage
-        function guardarProgreso() {
-            usuario.monedas = saldo;
-            localStorage.setItem(usuario.nombre, JSON.stringify(usuario));
-            mostrarResultado('Progreso guardado correctamente.');
-        }
-
-        // Evento para iniciar sesión
-        document.getElementById('iniciar').addEventListener('click', function() {
-            const nombre = document.getElementById('nombre').value;
-            const clave = document.getElementById('clave').value;
-
-            if (!nombre || !clave) {
-                alert('Por favor, ingresa un nombre y una clave.');
-                return;
+        if (userData) {
+            const user = JSON.parse(userData);
+            if (user.password === password) {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('game-section').classList.remove('hidden');
+                document.getElementById('player-name').innerText = name;
+                document.getElementById('player-coins').innerText = user.coins;
+                alert('Login exitoso.');
+            } else {
+                alert('Contraseña incorrecta.');
             }
+        } else {
+            alert('Usuario no encontrado.');
+        }
+    }
 
-            // Buscar usuario en localStorage
-            const datosGuardados = localStorage
+    // Función para jugar el juego
+    function playGame() {
+        const name = document.getElementById('player-name').innerText;
+        const userData = localStorage.getItem(name);
+
+        if (userData) {
+            const user = JSON.parse(userData);
+            if (user.coins >= 2) {
+                user.coins -= 2; // Restamos 2 monedas por jugar
+                const result = Math.random();
+                if (result > 0.5) { // Probabilidad de ganar
+                    user.coins += 5; // Ganar 5 monedas
+                    alert('¡Ganaste! Ahora tienes ' + user.coins + ' monedas.');
+                } else {
+                    alert('Perdiste. Te quedan ' + user.coins + ' monedas.');
+                }
+
+                // Guardamos los nuevos datos del jugador
+                localStorage.setItem(name, JSON.stringify(user));
+                document.getElementById('player-coins').innerText = user.coins;
+
+                // Verificamos si las monedas son negativas
+                if (user.coins < 0) {
+                    user.coins = 50; // Resetear a 50 si el saldo es negativo
+                    localStorage.setItem(name, JSON.stringify(user));
+                    document.getElementById('player-coins').innerText = user.coins;
+                    alert('Tu saldo es negativo. Se te han dado 50 monedas nuevamente.');
+                }
+            } else {
+                alert('No tienes suficientes monedas para jugar.');
+            }
+        }
+    }
+
+    // Función para cerrar sesión
+    function logout() {
+        document.getElementById('game-section').classList.add('hidden');
+        document.getElementById('login-section').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
