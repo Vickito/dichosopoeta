@@ -3,293 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Monedas</title>
+    <title>Juego estilo Agar.io</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
             margin: 0;
             padding: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .container {
-            max-width: 500px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #ffffff;
-        }
-        h2, h3 {
-            text-align: center;
-        }
-        input, button {
-            padding: 10px;
-            margin: 10px;
-            width: 100%;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .hidden {
-            display: none;
-        }
-        .game-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .game-container div {
-            margin: 10px;
-        }
-        .spinner {
-            border: 10px solid #f3f3f3;
-            border-top: 10px solid #3498db;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .box {
-            display: inline-block;
-            width: 100px;
-            height: 100px;
-            background-color: #ff6347;
-            color: white;
-            font-size: 20px;
-            line-height: 100px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        .box:hover {
-            background-color: #e84e47;
-        }
-        .loading-text {
-            font-size: 18px;
-            font-weight: bold;
-            color: #3498db;
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
+        canvas {
+            border: 1px solid white;
         }
     </style>
 </head>
 <body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
 
-<div class="container">
-    <h2>Juego de Monedas</h2>
-    
-    <div id="login-section">
-        <h3>Login</h3>
-        <input type="text" id="login-name" placeholder="Nombre de usuario">
-        <input type="password" id="login-password" placeholder="Contraseña">
-        <button onclick="login()">Iniciar sesión</button>
-        <p>¿No tienes cuenta? <a href="javascript:void(0)" onclick="toggleRegister()">Registrate aquí</a></p>
-    </div>
+    <script>
+        // Configuración del juego
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const player = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: 20,
+            color: '#FF5733',
+            speed: 2
+        };
+        const foodItems = [];
+        const maxFood = 50;
 
-    <div id="register-section" class="hidden">
-        <h3>Registro</h3>
-        <input type="text" id="register-name" placeholder="Nombre de usuario">
-        <input type="password" id="register-password" placeholder="Contraseña">
-        <button onclick="register()">Registrarse</button>
-        <p>¿Ya tienes cuenta? <a href="javascript:void(0)" onclick="toggleRegister()">Inicia sesión aquí</a></p>
-    </div>
-
-    <div id="game-section" class="hidden">
-        <h3>Bienvenido <span id="player-name"></span></h3>
-        <p>Monedas: <span id="player-coins">50</span></p>
-        <button onclick="showGame('ruleta')">Jugar a la ruleta</button>
-        <button onclick="showGame('adivinanza')">Adivina el número</button>
-        <button onclick="showGame('caja')">Elige una caja</button>
-        <button onclick="logout()">Cerrar sesión</button>
-    </div>
-
-    <!-- Sección de juegos -->
-    <div id="ruleta-game" class="hidden game-container">
-        <h3>Ruleta</h3>
-        <div class="spinner" id="spinner"></div>
-        <button onclick="spinWheel()">Girar ruleta</button>
-        <div id="result-ruleta"></div>
-    </div>
-
-    <div id="adivinanza-game" class="hidden game-container">
-        <h3>Adivina el número</h3>
-        <p>Escribe un número entre 1 y 10</p>
-        <input type="number" id="guess-number">
-        <button onclick="guessNumber()">Adivinar</button>
-        <div id="result-adivinanza"></div>
-    </div>
-
-    <div id="caja-game" class="hidden game-container">
-        <h3>Elige una caja</h3>
-        <div class="box" onclick="chooseBox(1)">Caja 1</div>
-        <div class="box" onclick="chooseBox(2)">Caja 2</div>
-        <div class="box" onclick="chooseBox(3)">Caja 3</div>
-        <div id="result-caja"></div>
-    </div>
-</div>
-
-<script>
-    let currentUser = null;
-
-    // Función para mostrar u ocultar las secciones de login y registro
-    function toggleRegister() {
-        document.getElementById('login-section').classList.toggle('hidden');
-        document.getElementById('register-section').classList.toggle('hidden');
-    }
-
-    // Función para registrar al usuario
-    function register() {
-        const name = document.getElementById('register-name').value;
-        const password = document.getElementById('register-password').value;
-
-        if (name && password) {
-            const user = { name, password, coins: 50 };
-
-            // Guardar usuario en localStorage
-            localStorage.setItem(name, JSON.stringify(user));
-            alert('Registro exitoso. Ahora puedes iniciar sesión.');
-            toggleRegister(); // Volver a la pantalla de login
-        } else {
-            alert('Por favor, ingresa un nombre y una contraseña.');
-        }
-    }
-
-    // Función para hacer login
-    function login() {
-        const name = document.getElementById('login-name').value;
-        const password = document.getElementById('login-password').value;
-
-        const userData = localStorage.getItem(name);
-
-        if (userData) {
-            const user = JSON.parse(userData);
-            if (user.password === password) {
-                currentUser = user;
-                document.getElementById('login-section').classList.add('hidden');
-                document.getElementById('game-section').classList.remove('hidden');
-                document.getElementById('player-name').innerText = name;
-                document.getElementById('player-coins').innerText = user.coins;
-                alert('Login exitoso.');
-            } else {
-                alert('Contraseña incorrecta.');
+        // Generar alimentos aleatorios
+        function generateFood() {
+            for (let i = 0; i < maxFood; i++) {
+                foodItems.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: 5 + Math.random() * 10, // Tamaño aleatorio
+                    color: '#A9DFBF'
+                });
             }
-        } else {
-            alert('Usuario no encontrado.');
         }
-    }
 
-    // Función para mostrar el juego seleccionado
-    function showGame(game) {
-        hideAllGames();
-        document.getElementById(`${game}-game`).classList.remove('hidden');
-    }
-
-    // Función para ocultar todos los juegos
-    function hideAllGames() {
-        document.getElementById('ruleta-game').classList.add('hidden');
-        document.getElementById('adivinanza-game').classList.add('hidden');
-        document.getElementById('caja-game').classList.add('hidden');
-    }
-
-    // Función para girar la ruleta
-    function spinWheel() {
-        if (currentUser.coins >= 2) {
-            currentUser.coins -= 2;
-            document.getElementById('player-coins').innerText = currentUser.coins;
-            document.getElementById('result-ruleta').innerText = 'Girando...';
-            document.getElementById('spinner').style.display = 'block';
-
-            setTimeout(() => {
-                const result = Math.random();
-                if (result > 0.5) {
-                    currentUser.coins += 5;
-                    document.getElementById('result-ruleta').innerText = '¡Ganaste! Ahora tienes ' + currentUser.coins + ' monedas.';
-                } else {
-                    document.getElementById('result-ruleta').innerText = 'Perdiste. Te quedan ' + currentUser.coins + ' monedas.';
+        // Detectar colisión entre el jugador y los alimentos
+        function checkCollision() {
+            foodItems.forEach((food, index) => {
+                const dx = player.x - food.x;
+                const dy = player.y - food.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < player.radius + food.radius) {
+                    player.radius += food.radius; // Crecer
+                    foodItems.splice(index, 1); // Eliminar el alimento comido
                 }
-                document.getElementById('spinner').style.display = 'none';
-                document.getElementById('player-coins').innerText = currentUser.coins;
-            }, 3000); // Espera 3 segundos antes de mostrar el resultado
-        } else {
-            alert('No tienes suficientes monedas para jugar.');
+            });
         }
-    }
 
-    // Función para adivinar el número
-    function guessNumber() {
-        if (currentUser.coins >= 3) {
-            currentUser.coins -= 3;
-            document.getElementById('player-coins').innerText = currentUser.coins;
-            document.getElementById('result-adivinanza').innerHTML = '<div class="loading-text">Calculando...</div>';
+        // Mover el jugador con el ratón
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            player.x = e.clientX - rect.left;
+            player.y = e.clientY - rect.top;
+        });
 
-            setTimeout(() => {
-                const guess = parseInt(document.getElementById('guess-number').value);
-                const number = Math.floor(Math.random() * 10) + 1;
+        // Dibujar el jugador y los alimentos
+        function drawGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar pantalla
+            ctx.beginPath();
+            ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
+            ctx.fillStyle = player.color;
+            ctx.fill();
 
-                if (guess === number) {
-                    currentUser.coins += 6;
-                    document.getElementById('result-adivinanza').innerText = '¡Adivinaste el número! Ahora tienes ' + currentUser.coins + ' monedas.';
-                } else {
-                    document.getElementById('result-adivinanza').innerText = 'Fallaste. El número era ' + number + '. Te quedan ' + currentUser.coins + ' monedas.';
-                }
-                document.getElementById('player-coins').innerText = currentUser.coins;
-            }, 2000); // Espera 2 segundos antes de mostrar el resultado
-        } else {
-            alert('No tienes suficientes monedas para jugar.');
+            foodItems.forEach(food => {
+                ctx.beginPath();
+                ctx.arc(food.x, food.y, food.radius, 0, Math.PI * 2);
+                ctx.fillStyle = food.color;
+                ctx.fill();
+            });
         }
-    }
 
-    // Función para elegir una caja
-    function chooseBox(boxNumber) {
-        if (currentUser.coins >= 1) {
-            currentUser.coins -= 1;
-            document.getElementById('player-coins').innerText = currentUser.coins;
-            document.getElementById('result-caja').innerHTML = '<div class="loading-text">Abriendo la caja...</div>';
-
-            setTimeout(() => {
-                const prize = Math.random();
-                let resultText = '';
-
-                if (prize > 0.8) {
-                    currentUser.coins += 10;
-                    resultText = '¡Ganaste 10 monedas! Ahora tienes ' + currentUser.coins + ' monedas.';
-                } else if (prize > 0.5) {
-                    resultText = 'Lo siento, la caja estaba vacía. Te quedan ' + currentUser.coins + ' monedas.';
-                } else {
-                    resultText = '¡Ganaste 5 monedas! Ahora tienes ' + currentUser.coins + ' monedas.';
-                }
-
-                document.getElementById('result-caja').innerText = resultText;
-                document.getElementById('player-coins').innerText = currentUser.coins;
-            }, 2500); // Espera 2.5 segundos antes de mostrar el resultado
-        } else {
-            alert('No tienes suficientes monedas para jugar.');
+        // Lógica del juego
+        function gameLoop() {
+            checkCollision();
+            drawGame();
+            requestAnimationFrame(gameLoop);
         }
-    }
 
-    // Función para cerrar sesión
-    function logout() {
-        currentUser = null;
-        document.getElementById('game-section').classList.add('hidden');
-        document.getElementById('login-section').classList.remove('hidden');
-    }
-</script>
-
+        // Iniciar juego
+        generateFood();
+        gameLoop();
+    </script>
 </body>
 </html>
