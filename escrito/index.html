@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DichosoPoeta | Escritos</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body { background: #000000; color: #e8e8e8; font-family: 'Arial', sans-serif; }
+        .card {
+            background: #000000;
+            border: 2px solid #6e6e6e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-text { color: #e8e8e8; }
+        .home-link span {
+            position: relative; color: #A1E6A1; text-decoration: none;
+        }
+        .home-link span::before, .home-link span::after {
+            content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #e8e8e8; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
+        }
+        .home-link span::before { left: -8px; }
+        .home-link span::after { right: -8px; }
+        .home-link span:hover::before, .home-link span:hover::after { transform-origin: center bottom; transform: scaleY(1); }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        a, a:hover {
+            color: #A1E6A1;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <header class="bg-black p-3 text-center sticky top-0 z-10">
+        <h1 class="text-4xl font-extrabold tracking-wide">Escritos de mí para ti</h1>
+        <nav class="mt-4">
+            <span class="mx-4">|</span>
+            <a href="https://www.dichosopoeta.com/SobreMi.html" class="home-link"><span>Sobre mí</span></a>
+            <span class="mx-4">|</span>
+            <a href="https://www.dichosopoeta.com/game" class="home-link"><span>Game [en proceso...]</span></a>
+            <span class="mx-4">|</span>
+        </nav>
+    </header>
+
+    <main>
+        <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">Usted me quiere</h3>
+                <p class="card-text">La vida tiende a ser complicada, complicada es la vida.</p>
+                <a href="\escrito/usted_me_quiere.html" class="text-sm text-green-400 mt-4 inline-block">Leer más...</a>
+            </div>
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">La muerte acecha | Relato</h3>
+                <p class="card-text">«Dios toma esa decisión», me dice mi madre mientras hablamos acerca de la muerte. Mi sobrino está jugando y gritando, y mientras mi madre lo atiende yo le digo que me cuente acerca de la muerte.</p>
+                <a href="\escrito/la_muerte_acecha.html" class="text-sm text-green-400 mt-4 inline-block">Leer más...</a>
+            </div>
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">No te quiero perder</h3>
+                <p class="card-text">Puedes hacer lo qué gustes, pero venid a mí si necesitas ayuda.</p>
+                <a href="\escrito/no_te_quiero_perder.html" class="text-sm text-green-400 mt-4 inline-block">Leer más...</a>
+            </div>
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">Un enigma</h3>
+                <p class="card-text">Mi bombilla se enciende. Una mordida se marca en mi piel.</p>
+                <a href="\escrito/un_enigma.html" class="text-sm text-green-400 mt-4 inline-block">Leer más...</a>
+            </div>
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">El dolor</h3>
+                <p class="card-text">Veo a niños en personas, y veo a personas en niños.</p>
+                <a href="\escrito/puedo_ver.html" class="text-sm text-green-400 mt-4 inline-block">Leer más...</a>
+            </div>
+            <!-- Agrega más tarjetas de posts aquí si lo necesitas -->
+        </div>
+    </main>
+
+    <footer class="bg-black text-white text-center p-6 mt-16">
+        <p>&copy; 2024 DichosoPoeta.</p>
+    </footer>
+
+</body>
+</html>
