@@ -9,23 +9,13 @@
         body {
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-        }
-        body.page-enigma {
-            background-color: #1a1a2e;
-            color: #e8e8e8;
-        }
-        body.page-misterio {
-            background-color: #2e1a1a;
-            color: #f5e8e8;
-        }
-        body.page-no-te-quiero-perder {
-            background-color: #1a2e1a;
-            color: #e8f5e8;
+            background-color: #ffffff;
+            color: #000000;
         }
         header {
-            background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+            background: #000000;
+            color: #ffffff;
             padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
         h1 {
@@ -37,24 +27,11 @@
             font-size: 1.125rem;
             text-decoration: none;
             position: relative;
+            color: #ffffff;
             padding: 0.25rem;
         }
-        nav a::before, nav a::after {
-            content: ''; 
-            position: absolute; 
-            top: 0; 
-            bottom: 0; 
-            width: 2px; 
-            background-color: currentColor; 
-            transform-origin: center top; 
-            transform: scaleY(0); 
-            transition: transform 0.5s ease;
-        }
-        nav a::before { left: -8px; }
-        nav a::after { right: -8px; }
-        nav a:hover::before, nav a:hover::after {
-            transform-origin: center bottom; 
-            transform: scaleY(1);
+        nav a:hover {
+            text-decoration: underline;
         }
         main {
             max-width: 1024px;
@@ -64,12 +41,13 @@
         section {
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         section:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
         h2 {
             font-size: 1.75rem;
@@ -78,57 +56,52 @@
         }
         p {
             line-height: 1.8;
+            color: #333333;
         }
         footer {
-            background: #0f0f0f;
-            color: #7d7d7d;
+            background: #000000;
+            color: #ffffff;
             text-align: center;
             padding: 1.5rem;
             margin-top: 2.5rem;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
         }
         footer p {
             font-size: 0.875rem;
         }
-        a, a:hover {
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
-<body class="font-sans antialiased page-no-te-quiero-perder">
+<body>
 
-    <header class="p-6 shadow-lg text-center">
+    <header>
         <h1 class="text-3xl font-bold tracking-widest">Escritos</h1>
         <nav class="mt-4">
-            <a href="\index.html" class="home-link"><span>Home</span></a>
+            <a href="\index.html" class="home-link">Home</a>
             <span class="mx-4">|</span>
-            <a href="\SobreMi.html" class="about-link"><span>Sobre mí</span></a>
+            <a href="\SobreMi.html" class="about-link">Sobre mí</a>
         </nav>
     </header>
 
-    <main class="max-w-6xl mx-auto py-10">
+    <main>
         <section>
             <h2 class="text-2xl font-bold mb-6">No te quiero perder</h2>
-            <p class="text-gray-400">Puedes hacer lo qué gustes, pero venid a mí si necesitas ayuda. Puedes llorar, pero recuerda que tienes mi hombro para hacerlo. Puedes reír, porque tu sonrisa es mi vitamina D. Puedes elegir si estar, o no, a mi lado, porque yo te daré esa libertad.</p>
-            <p class="text-gray-400">«Si no hay afecto de por medio, entonces no hay amor. Si no hay días en el que te levantes extrañándome, entonces no hay amor». Esto me dijeron hace tiempo, y ahora que no lo vivo, siento que todo es amor.</p>
-            <p class="text-gray-400">Te explicaré con palabras simples: Te conocí, y no pude escapar de ti. Me enamoraste, y caí en lo más profundo por ti. En la oscuridad pude ver la luz que habita en ti. Seguí esa luz, tan hermosa, que tienes, y logré salir.</p>
-            <p class="text-gray-400">Yo salí, y pude encontrarme contigo; y entonces entendí. Entendí que—yo—contigo me debía quedar.</p>
-            <p class="text-gray-400">Entonces el tiempo pasó. Y ahora estoy aquí, contigo, y vos conmigo.</p>
-            <p class="text-gray-400">Mi deseo cambió, de «quiero un amor eterno» a «quiero tener un amor eterno contigo». Mis anhelos comenzaron a tener tu nombre.</p>
-            <p class="text-gray-400">Entonces, luego de haber pasado algunos meses a tu lado, pude ver que te quería más de lo qué nadie más podría quererte. Por eso te comencé a cuidar, a mimar, y a amar.</p>
-            <p class="text-gray-400">Ahora no se trata de mí, sino de mí contigo, y de ti conmigo. Mi miedo más grande no es la muerte, ahora es perderte.</p>
-            <p class="text-gray-400">¿Es tan curiosa la vida? Porque nos juntó en el momento que nos necesitábamos. Entonces, ¿deseas estar conmigo por mucho tiempo, aunque eso implique que me veas llorar?</p>
-            <p class="text-gray-400">Y sí, sé que entiendes lo qué te quiero decir, pero me quiero asegurar de expresarte todo mi sentir hacia ti. Así entiendes mi miedo más grande, que no es la muerte, sino verte partir.</p>
-            <p class="text-gray-400">No te quiero perder. Y así, cerraré mis ojitos, para volverte a soñar—al menos así podré tenerte para siempre.</p>
-            <p class="text-gray-400">Eres la melodía en mi noche serena, un eco suave, una promesa que resuena. No es solo sentir, es ser parte de un latir, un lazo que florece, un abrazo por venir.</p>
+            <p>Puedes hacer lo qué gustes, pero venid a mí si necesitas ayuda. Puedes llorar, pero recuerda que tienes mi hombro para hacerlo. Puedes reír, porque tu sonrisa es mi vitamina D. Puedes elegir si estar, o no, a mi lado, porque yo te daré esa libertad.</p>
+            <p>«Si no hay afecto de por medio, entonces no hay amor. Si no hay días en el que te levantes extrañándome, entonces no hay amor». Esto me dijeron hace tiempo, y ahora que no lo vivo, siento que todo es amor.</p>
+            <p>Te explicaré con palabras simples: Te conocí, y no pude escapar de ti. Me enamoraste, y caí en lo más profundo por ti. En la oscuridad pude ver la luz que habita en ti. Seguí esa luz, tan hermosa, que tienes, y logré salir.</p>
+            <p>Yo salí, y pude encontrarme contigo; y entonces entendí. Entendí que—yo—contigo me debía quedar.</p>
+            <p>Entonces el tiempo pasó. Y ahora estoy aquí, contigo, y vos conmigo.</p>
+            <p>Mi deseo cambió, de «quiero un amor eterno» a «quiero tener un amor eterno contigo». Mis anhelos comenzaron a tener tu nombre.</p>
+            <p>Entonces, luego de haber pasado algunos meses a tu lado, pude ver que te quería más de lo qué nadie más podría quererte. Por eso te comencé a cuidar, a mimar, y a amar.</p>
+            <p>Ahora no se trata de mí, sino de mí contigo, y de ti conmigo. Mi miedo más grande no es la muerte, ahora es perderte.</p>
+            <p>¿Es tan curiosa la vida? Porque nos juntó en el momento que nos necesitábamos. Entonces, ¿deseas estar conmigo por mucho tiempo, aunque eso implique que me veas llorar?</p>
+            <p>Y sí, sé que entiendes lo qué te quiero decir, pero me quiero asegurar de expresarte todo mi sentir hacia ti. Así entiendes mi miedo más grande, que no es la muerte, sino verte partir.</p>
+            <p>No te quiero perder. Y así, cerraré mis ojitos, para volverte a soñar—al menos así podré tenerte para siempre.</p>
+            <p>Eres la melodía en mi noche serena, un eco suave, una promesa que resuena. No es solo sentir, es ser parte de un latir, un lazo que florece, un abrazo por venir.</p>
         </section>
     </main>
 
-    <footer class="text-center p-6 mt-10">
-        <p>&copy; 2024 DichosoPoeta. Todos los derechos reservados.</p>
+    <footer>
+        <p>&copy; 2024 DichosoPoeta.</p>
     </footer>
 
 </body>
