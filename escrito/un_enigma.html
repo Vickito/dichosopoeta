@@ -7,10 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #000000;
-            color: #c2c2c2;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
+        }
+        body.page-enigma {
+            background-color: #1a1a2e;
+            color: #e8e8e8;
+        }
+        body.page-misterio {
+            background-color: #2e1a1a;
+            color: #f5e8e8;
         }
         header {
             background: linear-gradient(to right, #0f0f0f, #1a1a1a);
@@ -22,11 +28,9 @@
             font-size: 2.25rem;
             font-weight: 700;
             letter-spacing: 0.1em;
-            color: #e8e8e8;
         }
         nav a {
             font-size: 1.125rem;
-            color: #A1E6A1;
             text-decoration: none;
             position: relative;
             padding: 0.25rem;
@@ -37,7 +41,7 @@
             top: 0; 
             bottom: 0; 
             width: 2px; 
-            background-color: #A1E6A1; 
+            background-color: currentColor; 
             transform-origin: center top; 
             transform: scaleY(0); 
             transition: transform 0.5s ease;
@@ -54,7 +58,6 @@
             padding: 2.5rem 1rem;
         }
         section {
-            background: #0f0f0f;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -68,10 +71,8 @@
             font-size: 1.75rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            color: #e8e8e8;
         }
         p {
-            color: #c2c2c2;
             line-height: 1.8;
         }
         footer {
@@ -86,7 +87,6 @@
             font-size: 0.875rem;
         }
         a, a:hover {
-            color: #A1E6A1;
             text-decoration: none;
         }
         a:hover {
@@ -94,7 +94,7 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased page-enigma">
 
     <header class="p-6 shadow-lg text-center">
         <h1 class="text-3xl font-bold tracking-widest">Escritos</h1>
