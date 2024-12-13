@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DichosoPoeta | Escritos</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body { background: #000000; color: #c2c2c2; font-family: 'Arial', sans-serif; }
+        header {
+            background: linear-gradient(to right, #000000, #000000);
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #A1E6A1;
+        }
+        nav a {
+            font-size: 1.125rem;
+            color: #A1E6A1;
+            text-decoration: none;
+            position: relative;
+            padding: 0.25rem;
+        }
+        nav a::before, nav a::after {
+            content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #e8e8e8; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
+        }
+        nav a::before { left: -8px; }
+        nav a::after { right: -8px; }
+        nav a:hover::before, nav a:hover::after { transform-origin: center bottom; transform: scaleY(1); }
+        main {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+        section {
+            background: #000000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #e8e8e8;
+        }
+        p {
+            color: #e8e8e8;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        footer {
+            background: #000000;
+            color: #000000;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        footer p {
+            font-size: 0.875rem;
+        }
+        a, a:hover {
+            color: #A1E6A1;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <header class="p-6 shadow-lg text-center">
+        <h1 class="text-3xl font-bold tracking-widest">Escritos</h1>
+        <nav class="mt-4">
+            <a href="\index.html" class="home-link"><span>Home</span></a>
+            <span class="mx-4">|</span>
+            <a href="\SobreMi.html" class="home-link"><span>Sobre mí</span></a>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto py-10">
+        <section>
+            <h2 class="text-2xl font-bold mb-6">Un enigma</h2>
+            <p class="text-gray-400">Mi bombilla se enciende. Una mordida se marca en mi piel. Mi mochila se llena de deseos. Una sombrilla me cubre de la lluvia. Cosquillas se presentan con el tacto de tu piel. Miles de sonrisas se escapan. Mi vida se torna alegre. Y una comida me hace recordarte. Joder, estoy listo para enamorarme y enamorarte.</p>
+        </section>
+    </main>
+
+    <footer class="text-center p-6 mt-10">
+        <p>&copy; 2024 DichosoPoeta.</p>
+    </footer>
+
+</body>
+</html>
