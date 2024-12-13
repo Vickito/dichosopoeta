@@ -7,46 +7,31 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #000000;
-            color: #c2c2c2;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
             overflow-x: hidden;
+            background-color: #000000;
+            color: #d1d1d1;
         }
         header {
-            background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+            background: #000000;
+            color: #ffffff;
             padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
         h1 {
             font-size: 2.25rem;
             font-weight: 700;
             letter-spacing: 0.1em;
-            color: #e8e8e8;
         }
         nav a {
             font-size: 1.125rem;
-            color: #A1E6A1;
             text-decoration: none;
             position: relative;
+            color: #ffffff;
             padding: 0.25rem;
         }
-        nav a::before, nav a::after {
-            content: ''; 
-            position: absolute; 
-            top: 0; 
-            bottom: 0; 
-            width: 2px; 
-            background-color: #A1E6A1; 
-            transform-origin: center top; 
-            transform: scaleY(0); 
-            transition: transform 0.5s ease;
-        }
-        nav a::before { left: -8px; }
-        nav a::after { right: -8px; }
-        nav a:hover::before, nav a:hover::after {
-            transform-origin: center bottom; 
-            transform: scaleY(1);
+        nav a:hover {
+            text-decoration: underline;
         }
         main {
             max-width: 1024px;
@@ -54,65 +39,79 @@
             padding: 2.5rem 1rem;
         }
         section {
-            background: #0f0f0f;
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            background-color: #000000;
+            border: 1px solid #d1d1d1;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         section:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         }
         h2 {
             font-size: 1.75rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            color: #e8e8e8;
         }
         p {
-            color: #c2c2c2;
             line-height: 1.8;
+            color: #d1d1d1;
         }
         footer {
-            background: #0f0f0f;
-            color: #7d7d7d;
+            background: #000000;
+            color: #ffffff;
             text-align: center;
             padding: 1.5rem;
             margin-top: 2.5rem;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 -4px 10px rgba(255, 255, 255, 0.1);
         }
         footer p {
             font-size: 0.875rem;
         }
-        a, a:hover {
-            color: #A1E6A1;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+        .date {
+            font-size: 0.875rem;
+            color: #a8a8a8;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
         }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body>
 
-    <header class="p-6 shadow-lg text-center">
+    <header>
         <h1 class="text-3xl font-bold tracking-widest">Escritos</h1>
         <nav class="mt-4">
-            <a href="\index.html" class="home-link"><span>Home</span></a>
+            <a href="\index.html" class="home-link">Home</a>
             <span class="mx-4">|</span>
-            <a href="\SobreMi.html" class="about-link"><span>Sobre mí</span></a>
+            <a href="\SobreMi.html" class="about-link">Sobre mí</a>
         </nav>
     </header>
 
-    <main class="max-w-6xl mx-auto py-10">
+    <main>
         <section>
-            <h2 class="text-2xl font-bold mb-6">Puedo ver</h2>
-            <p class="text-gray-400">Veo a niños en personas, y veo a personas en niños. Niños hechos de dolores, y dolores que matan sus entrañas. Veo heridas en aquellos que se hacen llamar «adultos». Los veo, y no entiendo el por qué, o cómo; pero siento sus dolores. Tienen miedo, quieren hacer todo más fácil, como si todo fuese un deseo—que mal que la vida es complicada. No se dan cuenta que están dañando a los demás, tratando de hacer madurar a los niños a temprana edad. Esos adultos, que yo veo me dan tristeza, porque ellos quieren saber la razón de existir, del por qué estamos vivos sin alguna razón lógica detrás.</p>
+            <h2 class="text-2xl font-bold mb-2">Puedo ver</h2>
+            <p class="date">20 de ago., 2022</p>
+            <p>Veo a niños en personas,</p>
+            <p>y veo a personas en niños.</p>
+            <p>Niños hechos de dolores,</p>
+            <p>y dolores que matan sus entrañas.</p>
+            <p>Veo heridas en aquellos que se hacen llamar «adultos».</p>
+            <p>Los veo,</p>
+            <p>y no entiendo el por qué, o cómo; pero siento sus dolores.</p>
+            <p>Tienen miedo,</p>
+            <p>quieren hacer todo más fácil,</p>
+            <p>como si todo fuese un deseo—que mal que la vida es complicada.</p>
+            <p>No se dan cuenta que están dañando a los demás,</p>
+            <p>tratando de hacer madurar a los niños a temprana edad.</p>
+            <p>Esos adultos, que yo veo me dan tristeza,</p>
+            <p>porque ellos quieren saber la razón de existir,</p>
+            <p>del por qué estamos vivos sin alguna razón lógica detrás.</p>
         </section>
     </main>
 
-    <footer class="text-center p-6 mt-10">
+    <footer>
         <p>&copy; 2024 DichosoPoeta.</p>
     </footer>
 
