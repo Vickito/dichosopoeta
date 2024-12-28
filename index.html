@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog de DichosoPoeta, un espacio para reflexiones, poemas y escritos narrativos.">
+    <meta name="keywords" content="DichosoPoeta, Victor Morel, Blog, Escritos, Poesía, Narrativa, Reflexiones">
+    <meta name="author" content="DichosoPoeta">
+    <title>Escritos | DP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Sobre mí</a></li>
+                <li><a href="#escritos">Escritos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="login.html" class="login-icon"><i class="fas fa-moon"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro">
+            <h1>Bienvenido a DichosoPoeta</h1>
+            <p>Un rincón donde las palabras toman vida y las emociones se transforman en arte.</p>
+        </section>
+
+        <section id="escritos">
+            <h2>Mis Escritos</h2>
+            <div class="grid">
+                <!-- Ejemplo de un escrito -->
+                <div class="card">
+                    <h3>Título del Escrito</h3>
+                    <p>Fragmento del escrito que invita a leer más...</p>
+                    <a href="#">Leer más</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <form id="contact-form" action="mailto:tuemail@example.com" method="post" enctype="text/plain">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright © 2024 DichosoPoeta. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Ejemplo de integración con GitHub (requiere un backend)
+        document.getElementById('contact-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('nombre').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            const response = await fetch('https://api.github.com/repos/tuusuario/tu-repositorio/contents/escritos', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer TU_TOKEN_PERSONAL',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: `Nuevo mensaje de ${nombre}`,
+                    content: btoa(mensaje)
+                })
+            });
+
+            if (response.ok) {
+                alert('Mensaje enviado correctamente y guardado en GitHub.');
+            } else {
+                alert('Hubo un error al enviar el mensaje.');
+            }
+        });
+    </script>
+</body>
+</html>
