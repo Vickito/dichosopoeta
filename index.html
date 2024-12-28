@@ -11,17 +11,16 @@
     <meta property="og:description" content="Bienvenido a DichosoPoeta, un espacio lleno de escritos reflexivos, poesía y relatos que inspiran y conmueven." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.dichosopoeta.com/" />
-    <meta property="og:image" content="https://www.dichosopoeta.com/preview.jpg" /> <!-- Cambia esto por la URL de tu imagen de previsualización -->
+    <meta property="og:image" content="https://www.dichosopoeta.com/preview.jpg" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Escritos | DP" />
     <meta name="twitter:description" content="Bienvenido a DichosoPoeta, un espacio lleno de escritos reflexivos, poesía y relatos que inspiran y conmueven." />
-    <meta name="twitter:image" content="https://www.dichosopoeta.com/preview.jpg" /> <!-- Cambia esto por la URL de tu imagen de previsualización -->
+    <meta name="twitter:image" content="https://www.dichosopoeta.com/preview.jpg" />
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" href="https://www.dichosopoeta.com/favicon.ico" /> <!-- Cambia esto por la URL de tu favicon -->
-
+    <link rel="icon" href="https://www.dichosopoeta.com/favicon.ico" />
     <title>DichosoPoeta | Escritos</title>
     <style>
         body { background: #000000; color: #e8e8e8; font-family: 'Arial', sans-serif; }
@@ -53,6 +52,53 @@
         a:hover {
             text-decoration: underline;
         }
+        /* Estilo para el login */
+        .login-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 20;
+        }
+        .login-button {
+            background: #6e6e6e;
+            border: none;
+            color: #e8e8e8;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .login-button:hover {
+            transform: scale(1.1);
+        }
+        .login-form {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: #000000;
+            border: 2px solid #6e6e6e;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .login-form input {
+            background: #222;
+            border: 1px solid #6e6e6e;
+            color: #e8e8e8;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .login-form button {
+            background: #6e6e6e;
+            border: none;
+            padding: 10px;
+            color: #e8e8e8;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="font-sans antialiased">
@@ -68,52 +114,31 @@
 
 <main>
     <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
-            <div class="card">
-                <h3 class="text-xl font-semibold mb-4">
-                    Usted me quiere
-                </h3>
-                <p class="card-text">La vida tiende a ser complicada, complicada es la vida.</p>
-                <a href="https://www.dichosopoeta.com/escritos/usted_me_quiere.html" class="text-sm mt-4 inline-block">Leer más...</a>
-            </div>
-            
-            <div class="card">
-                <h3 class="text-xl font-semibold mb-4">
-                    La muerte acecha | Relato
-                </h3>
-                <p class="card-text">«Dios toma esa decisión», me dice mi madre mientras hablamos acerca de la muerte. Mi sobrino está jugando y gritando, y mientras mi madre lo atiende yo le digo que me cuente acerca de la muerte.</p>
-                <a href="https://www.dichosopoeta.com/escritos/la_muerte_acecha.html" class="text-sm mt-4 inline-block">Leer más...</a>
-            </div>
-            
-            <div class="card">
-                <h3 class="text-xl font-semibold mb-4">
-                    No te quiero perder
-                </h3>
-                <p class="card-text">Puedes hacer lo qué gustes, pero venid a mí si necesitas ayuda.</p>
-                <a href="https://www.dichosopoeta.com/escritos/no_te_quiero_perder.html" class="text-sm mt-4 inline-block">Leer más...</a>
-            </div>
-            
-            <div class="card">
-                <h3 class="text-xl font-semibold mb-4">
-                    Un enigma
-                </h3>
-                <p class="card-text">Mi bombilla se enciende. Una mordida se marca en mi piel.</p>
-                <a href="https://www.dichosopoeta.com/escritos/un_enigma.html" class="text-sm mt-4 inline-block">Leer más...</a>
-            </div>
-            
-            <div class="card">
-                <h3 class="text-xl font-semibold mb-4">
-                    El dolor
-                </h3>
-                <p class="card-text">Veo a niños en personas, y veo a personas en niños.</p>
-                <a href="https://www.dichosopoeta.com/escritos/puedo_ver.html" class="text-sm mt-4 inline-block">Leer más...</a>
-            </div>        
-        <!-- Más tarjetas -->
+        <!-- Contenido de tarjetas -->
     </div>
 </main>
+
+<div class="login-container">
+    <button id="login-toggle" class="login-button">🔒</button>
+    <form id="login-form" class="login-form">
+        <input type="text" id="username" placeholder="Usuario" />
+        <input type="password" id="password" placeholder="Contraseña" />
+        <button type="submit">Entrar</button>
+    </form>
+</div>
 
 <footer class="bg-black text-white text-center p-6 mt-16">
     <p>&copy; 2024 DichosoPoeta.</p>
 </footer>
+
+<script>
+    const loginToggle = document.getElementById('login-toggle');
+    const loginForm = document.getElementById('login-form');
+    loginToggle.addEventListener('click', () => {
+        const isFormVisible = loginForm.style.display === 'flex';
+        loginForm.style.display = isFormVisible ? 'none' : 'flex';
+    });
+</script>
 
 </body>
 </html>
