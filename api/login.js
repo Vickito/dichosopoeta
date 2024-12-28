@@ -4,17 +4,26 @@ export default {
         const path = url.pathname;
 
         if (path === "/api/login" && request.method === "POST") {
-            const body = await request.json();
-            const { username, password } = body;
+            try {
+                const body = await request.json();
+                const { username, password } = body;
 
-            // Busca al usuario en la base de datos
-            const query = `SELECT password FROM Login WHERE username = ?`;
-            const result = await env.DB.prepare(query).bind(username).first();
+                if (!username || !password) {
+                    return new Response(JSON.stringify({ success: false, error: "Datos incompletos" }), { status: 400 });
+                }
 
-            if (result && await verifyPassword(password, result.password)) {
-                return new Response(JSON.stringify({ success: true }), { status: 200 });
-            } else {
-                return new Response(JSON.stringify({ success: false, error: "Credenciales incorrectas" }), { status: 401 });
+                // Busca al usuario en la base de datos
+                const query = `SELECT password FROM Login WHERE username = ?`;
+                const result = await env.DB.prepare(query).bind(username).first();
+
+                if (result && await verifyPassword(password, result.password)) {
+                    return new Response(JSON.stringify({ success: true }), { status: 200 });
+                } else {
+                    return new Response(JSON.stringify({ success: false, error: "Credenciales incorrectas" }), { status: 401 });
+                }
+            } catch (error) {
+                console.error("Error en el login:", error);
+                return new Response(JSON.stringify({ success: false, error: "Error interno del servidor" }), { status: 500 });
             }
         }
 
@@ -24,7 +33,11 @@ export default {
 
 // Helper para verificar contraseñas
 async function verifyPassword(plainPassword, hashedPassword) {
-    // Usa bcrypt.js o una librería similar para verificar contraseñas
-    const bcrypt = await import("bcryptjs");
-    return bcrypt.compare(plainPassword, hashedPassword);
+    try {
+        const bcrypt = await import("bcryptjs");
+        return bcrypt.compare(plainPassword, hashedPassword);
+    } catch (error) {
+        console.error("Error al verificar la contraseña:", error);
+        throw new Error("Error en la verificación de la contraseña");
+    }
 }
