@@ -111,44 +111,5 @@
 
 <footer class="bg-black text-white text-center p-6 mt-16">
     <p>&copy; 2024 DichosoPoeta.</p>
+    <a href="mailto:dp@dichosopoeta.com? Subject=Hola,%20quiero%20hablar">Puedes contactarme cuando lo desees.</a>
 </footer>
-
-
-<!DOCTYPE html>
-<html lang="es">
-<body>
-  <div id="route-tree" class="tree"></div>
-
-  <script>
-    // Rutas del sitio web
-    const routes = {
-      "Home": {
-        "Sobre Mí": null,
-        "Escritura": {
-          "Poemas": null,
-          "Relatos": null
-        }
-      }
-    };
-
-    // Generador de árbol de rutas
-    function generateTree(container, tree) {
-      for (const [key, value] of Object.entries(tree)) {
-        const branch = document.createElement('div');
-        branch.classList.add(value ? 'branch' : 'leaf');
-        branch.textContent = key;
-        container.appendChild(branch);
-        if (value) {
-          const subTree = document.createElement('div');
-          subTree.style.marginLeft = '20px';
-          branch.appendChild(subTree);
-          generateTree(subTree, value);
-        }
-      }
-    }
-
-    const treeContainer = document.getElementById('route-tree');
-    generateTree(treeContainer, routes);
-  </script>
-</body>
-</html>
