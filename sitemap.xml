@@ -1,16 +1,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
 <loc>https://www.dichosopoeta.com/</loc>
-<lastmod>2024-12-13T14:02:17+00:00</lastmod>
+<lastmod>2025-01-10T04:14:19+00:00</lastmod>
 <priority>1.00</priority>
 </url>
 <url>
 <loc>https://www.dichosopoeta.com/SobreMi</loc>
-<lastmod>2024-12-13T14:02:17+00:00</lastmod>
+<lastmod>2025-01-10T04:14:19+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.dichosopoeta.com/escritos/usted_me_quiere</loc>
+<lastmod>2025-01-10T04:14:19+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.dichosopoeta.com/escritos/la_muerte_acecha</loc>
+<lastmod>2025-01-10T04:14:19+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.dichosopoeta.com/escritos/no_te_quiero_perder</loc>
+<lastmod>2025-01-10T04:14:19+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.dichosopoeta.com/escritos/un_enigma</loc>
+<lastmod>2025-01-10T04:14:19+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.dichosopoeta.com/escritos/puedo_ver</loc>
+<lastmod>2025-01-10T04:14:19+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.dichosopoeta.com/404</loc>
+<lastmod>2025-01-10T04:14:19+00:00</lastmod>
 <priority>0.80</priority>
 </url>
 </urlset>
-<footer class="bg-black text-white text-center p-6 mt-16">
-    <p>&copy; 2024 DichosoPoeta.</p>
-    <a href="/">Home</a>
-</footer>
