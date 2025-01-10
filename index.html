@@ -22,30 +22,26 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" href="https://www.dichosopoeta.com/favicon.ico" /> <!-- Cambia esto por la URL de tu favicon -->
 
-    <title>DichosoPoeta | Escritos</title>
+    <title>Escritos</title>
     <style>
-        body { background: #000000; color: #e8e8e8; font-family: 'Arial', sans-serif; }
+        body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; }
         .card {
             background: #000000;
-            border: 2px solid #6e6e6e;
+            border: 2px solid #fdf0f0;
             border-radius: 8px;
             padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .card-text { color: #e8e8e8; }
+        .card-text { color: #fdf0f0; }
         .home-link span {
             position: relative; color: #e6a1a1; text-decoration: none;
         }
         .home-link span::before, .home-link span::after {
-            content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #e8e8e8; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
+            content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #fdf0f0; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
         }
         .home-link span::before { left: -8px; }
         .home-link span::after { right: -8px; }
         .home-link span:hover::before, .home-link span:hover::after { transform-origin: center bottom; transform: scaleY(1); }
-        .card:hover {
-            transform: scale(1.00005);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
         a, a:hover {
             color: #e6a1a1;
             text-decoration: none;
