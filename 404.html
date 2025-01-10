@@ -6,30 +6,31 @@
     <title>Error 404</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #000000;
-            color: #fdf0f0;
+            body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; }
+        .card {
+            background: #000000;
+            border: 2px solid #fdf0f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        h1 {
-            font-size: 3em;
-            color: #fdf0f0;
+        .card-text { color: #fdf0f0; }
+        .home-link span {
+            position: relative; color: #e6a1a1; text-decoration: none;
         }
-        p {
-            font-size: 1.2em;
+        .home-link span::before, .home-link span::after {
+            content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #fdf0f0; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
         }
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #fdf0f0;
-            color: #000000;
+        .home-link span::before { left: -8px; }
+        .home-link span::after { right: -8px; }
+        .home-link span:hover::before, .home-link span:hover::after { transform-origin: center bottom; transform: scaleY(1); }
+        /* Color */
+        a, a:hover {
+            color: #e6a1a1;
             text-decoration: none;
-            border-radius: 5px;
         }
         a:hover {
-            background-color: #f0fbfd;
+            text-decoration: underline;
         }
     </style>
 </head>

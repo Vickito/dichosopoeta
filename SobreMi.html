@@ -7,29 +7,30 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; }
-        .card { 
-            background: #000000; 
-            border: 2px solid #fdf0f0; /* Borde blanco alrededor de la casilla */
-            border-radius: 8px; 
-            padding: 1.5rem; 
+        .card {
+            background: #000000;
+            border: 2px solid #fdf0f0;
+            border-radius: 8px;
+            padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .card-text { color: #fdf0f0; } /* Color del texto en las casillas */
-        .home-link span { position: relative; color: #e6a1a1; text-decoration: none; }
+        .card-text { color: #fdf0f0; }
+        .home-link span {
+            position: relative; color: #e6a1a1; text-decoration: none;
+        }
         .home-link span::before, .home-link span::after {
             content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #fdf0f0; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
-        } /* Color de todo los texto (incluso del título) que no esté en la casilla */
+        }
         .home-link span::before { left: -8px; }
         .home-link span::after { right: -8px; }
         .home-link span:hover::before, .home-link span:hover::after { transform-origin: center bottom; transform: scaleY(1); }
-
-        /* Enlaces */
+        /* Color */
         a, a:hover {
-            color: #e6a1a1; 
-            text-decoration: none; /* Quita el subrayado */
+            color: #e6a1a1;
+            text-decoration: none;
         }
         a:hover {
-            text-decoration: underline; /* Añadir subrayado al hacer hover */
+            text-decoration: underline;
         }
     </style>
 </head>

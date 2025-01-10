@@ -6,18 +6,32 @@
     <title>Usted me quiere | DP</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Arial', sans-serif; overflow-x: hidden; background-color: #000000; color: #fdf0f0; }
-        header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
-        h1 { font-size: 2.25rem; font-weight: 700; letter-spacing: 0.1em; }
-        nav a { font-size: 1.125rem; text-decoration: none; position: relative; color: #fdf0f0; padding: 0.25rem; }
-        nav a:hover { text-decoration: underline; }
-        main { max-width: 1024px; margin: 0 auto; padding: 2.5rem 1rem; }
-        section { padding: 2rem; border-radius: 8px; background-color: #000000; border: 1px solid #fdf0f0; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
-        p { line-height: 1.8; color: #fdf0f0; }
-        footer { background: #000000; color: #fdf0f0; text-align: center; padding: 1.5rem; margin-top: 2.5rem; box-shadow: 0 -4px 10px rgba(255, 255, 255, 0.1); }
-        footer p { font-size: 0.875rem; }
-        .date { font-size: 0.875rem; color: #fdf0f0; margin-top: -1rem; margin-bottom: 1.5rem; }
+        body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; }
+        .card {
+            background: #000000;
+            border: 2px solid #fdf0f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-text { color: #fdf0f0; }
+        .home-link span {
+            position: relative; color: #e6a1a1; text-decoration: none;
+        }
+        .home-link span::before, .home-link span::after {
+            content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background-color: #fdf0f0; transform-origin: center top; transform: scaleY(0); transition: transform 0.5s ease;
+        }
+        .home-link span::before { left: -8px; }
+        .home-link span::after { right: -8px; }
+        .home-link span:hover::before, .home-link span:hover::after { transform-origin: center bottom; transform: scaleY(1); }
+        /* Color */
+        a, a:hover {
+            color: #e6a1a1;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
