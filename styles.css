@@ -4,7 +4,7 @@ body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; fo
 .home-link span { position: relative; color: #e6a1a1; text-decoration: none; }
 .home-link span::before { left: -8px; }
 .home-link span::after { right: -8px; }
-.date { font-size: 10px; color: #fdf0f0; margin-top: -1rem; margin-bottom: 1.5rem; }
+.date { font-size: 16px; color: #fdf0f0; margin-top: -1rem; margin-bottom: 1.5rem; text-align: center; }
 
 /* Color */
 a { color: #a1e6df; }
