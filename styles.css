@@ -25,3 +25,14 @@ a:hover {
     text-decoration: underline;
 }
 .date { font-size: 0.875rem; color: #fdf0f0; margin-top: -1rem; margin-bottom: 1.5rem; }
+header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
+
+h1 { font-size: 2.25rem; font-weight: 700; letter-spacing: 0.1em; }
+h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+nav a { font-size: 1.125rem; text-decoration: none; position: relative; color: #fdf0f0; padding: 0.25rem; }
+nav a:hover { text-decoration: underline; }
+main { max-width: 1024px; margin: 0 auto; padding: 2.5rem 1rem; }
+section { padding: 2rem; border-radius: 8px; background-color: #000000; border: 1px solid #fdf0f0; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+p { line-height: 1.8; color: #fdf0f0; }
+footer { background: #000000; color: #fdf0f0; text-align: center; padding: 1.5rem; margin-top: 2.5rem; box-shadow: 0 -4px 10px rgba(255, 255, 255, 0.1); }
+footer p { font-size: 0.875rem; }.date { font-size: 0.875rem; color: #fdf0f0; margin-top: -1rem; margin-bottom: 1.5rem; }
