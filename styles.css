@@ -12,9 +12,9 @@ body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; fo
 a { color: #e6a1a1; text-decoration: none; }
 header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
 
-h1 { font: bold; }
-h2 { font: bold; }
-h3 { font: bold; }
+h1 { font: bold; text-align: center; }
+h2 { font: bold; text-align: center; }
+h3 { font: bold; text-align: center; }
 p { color: #fdf0f0; }
 
 nav a { font-size: 18px; text-decoration: none; position: relative; color: #fdf0f0; padding: 0.25rem; }
@@ -22,5 +22,3 @@ nav a:hover { text-decoration: underline; }
 main { max-width: 1024px; margin: 0 auto; padding: 2.5rem 1rem; }
 section { padding: 2rem; border-radius: 8px; background-color: #000000; border: 1px solid #000000; }
 footer { background: #000000; text-align: center; }
-footer p { font-size: 0.875rem; }
-
