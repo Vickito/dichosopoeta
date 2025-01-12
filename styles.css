@@ -1,13 +1,13 @@
 body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; font: optional; initial-value: auto; }
 .card { background: #000000; border: 2px solid #fdf0f0; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .card-text { color: #fdf0f0; }
-.home-link span { position: relative; color: #e6a1a1; text-decoration: none; }
+.home-link span { position: relative; color: #9CCB95; text-decoration: none; }
 .home-link span::before { left: -8px; }
 .home-link span::after { right: -8px; }
 .date { font-size: 12px; color: #fdf0f0; }
 
 /* Color */
-a { color: #f9c29a; }
+a { color: #B0E5A7; }
 header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
 
 h1 { font: bold; font-size: 30px; }
