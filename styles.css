@@ -1,4 +1,4 @@
-body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; font: optional; antialiased; }
+body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; font: optional; initial-value: auto; }
 .card { background: #000000; border: 2px solid #fdf0f0; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .card-text { color: #fdf0f0; }
 .home-link span { position: relative; color: #e6a1a1; text-decoration: none; }
