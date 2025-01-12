@@ -21,5 +21,5 @@ nav a:hover { text-decoration: underline; }
 main { max-width: 1024px; margin: 0 auto; padding: 2.5rem 1rem; }
 section { padding: 2rem; border-radius: 8px; background-color: #000000; border: 1px solid #000000; }
 p { line-height: 1.8; color: #fdf0f0; }
-footer { background: #000000; color: #fdf0f0; text-align: center; }
+footer { background: #000000; text-align: center; }
 footer p { font-size: 0.875rem; }
