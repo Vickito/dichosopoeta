@@ -10,9 +10,9 @@ body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; fo
 a { color: #d6a481; }
 header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
 
-h1 { font: bold; }
-h2 { font: bold; }
-h3 { font: bold; }
+h1 { font: bold; font-size: 30px; }
+h2 { font: bold; font-size: 26px; }
+h3 { font: bold; font-size: 20px; }
 p { color: #fdf0f0; }
 
 nav a { font-size: 18px; text-decoration: none; position: relative; color: #fab98c; padding: 0.25rem; }
