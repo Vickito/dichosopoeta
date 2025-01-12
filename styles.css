@@ -7,7 +7,7 @@ body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; fo
 .date { font-size: 16px; color: #fdf0f0; margin-top: -1rem; margin-bottom: 1.5rem; }
 
 /* Color */
-a { color: #fab98c; }
+a { color: #f9c29a; }
 header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
 
 h1 { font: bold; font-size: 30px; }
@@ -15,7 +15,7 @@ h2 { font: bold; font-size: 26px; }
 h3 { font: bold; font-size: 20px; }
 p { color: #fdf0f0; }
 
-nav a { font-size: 18px; text-decoration: none; position: relative; color: #fab98c; padding: 0.25rem; }
+nav a { font-size: 18px; text-decoration: none; position: relative; color: #f9c29a; padding: 0.25rem; }
 nav a:hover { text-decoration: underline; }
 main { max-width: 1024px; margin: 0 auto; padding: 2.5rem 1rem; }
 section { padding: 2rem; border-radius: 8px; background-color: #000000; border: 1px solid #000000; }
