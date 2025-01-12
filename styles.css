@@ -12,9 +12,9 @@ body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; fo
 a { color: #e6a1a1; text-decoration: none; }
 header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
 
-h1 { font-size: xx-large; font-weight: 700; margin-bottom: auto; text-size-adjust: auto; letter-spacing: auto; font: bold; }
-h2 { font-size: x-large; font-weight: 600; margin-bottom: auto; text-size-adjust: auto; letter-spacing: auto; font: bold; }
-h3 { font-size: large; font-weight: 600; margin-bottom: auto; text-size-adjust: auto; letter-spacing: auto; font: bold; }
+h1 { font-size: 26px; font-weight: 700; margin-bottom: auto; text-size-adjust: auto; letter-spacing: auto; font: bold; }
+h2 { font-size: 20cm; font-weight: 600; margin-bottom: auto; text-size-adjust: auto; letter-spacing: auto; font: bold; }
+h3 { font-size: 18cm; font-weight: 600; margin-bottom: auto; text-size-adjust: auto; letter-spacing: auto; font: bold; }
 
 nav a { font-size: 18px; text-decoration: none; position: relative; color: #fdf0f0; padding: 0.25rem; }
 nav a:hover { text-decoration: underline; }
