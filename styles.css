@@ -9,8 +9,7 @@ body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; }
 .date { font-size: 0.875rem; color: #fdf0f0; margin-top: -1rem; margin-bottom: 1.5rem; }
 
 /* Color */
-a, a:hover { color: #e6a1a1; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: #e6a1a1; text-decoration: none; }
 header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
 
 h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: auto; text-size-adjust: auto; letter-spacing: auto; font: bold; }
