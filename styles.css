@@ -10,9 +10,9 @@ body { background: #000000; color: #cdcdcd; font-family: 'Arial', sans-serif; fo
 a { color: #81b29a; }
 header { background: #000000; color: #cdcdcd; padding: 1.5rem; text-align: center; }
 
-h1 { font: bold; font-size: 32px; color: #81b29a }
-h2 { font: bold; font-size: 28px; color: #81b29a }
-h3 { font: bold; font-size: 24px; color: #81b29a }
+h1 { font: bold; font-size: 32px; color: #81b29a; }
+h2 { font: bold; font-size: 28px; color: #81b29a; }
+h3 { font: bold; font-size: 24px; color: #81b29a; }
 p { color: #e6ccb2; }
 
 main { max-width: 1024px; margin: 0 auto; padding: 2.5rem 1rem; }
