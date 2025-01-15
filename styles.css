@@ -4,7 +4,7 @@ body { background: #000000; color: #cdcdcd; font-family: 'Arial', sans-serif; fo
 .home-link { position: center; color: #81b29a; text-decoration: none; padding: auto; }
 .home-link span::before { left: -8px; }
 .home-link span::after { right: -8px; }
-.date { font-size: 12px; color: #b23a48; }
+.date { font-size: 12px; color: #ddbea9; }
 
 /* Color */
 a { color: #81b29a; }
