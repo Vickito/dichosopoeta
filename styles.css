@@ -1,7 +1,7 @@
 body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; font: optional; initial-value: auto; }
 .card { background-blend-mode: none; border: 2px solid #6b705c; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .card-text { color: #f4f1de; }
-.home-link { position: relative; color: #81b29a; text-decoration: none; padding: auto; }
+.home-link { position: center; color: #81b29a; text-decoration: none; padding: auto; }
 .home-link span::before { left: -8px; }
 .home-link span::after { right: -8px; }
 .date { font-size: 12px; color: #bfb6a4; }
