@@ -7,17 +7,15 @@ body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; fo
 .date { font-size: 12px; color: #bfb6a4; }
 
 /* Color */
-a { color: #81b29a; }
+a { color: #e07a5f; }
 header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
 
-h1 { font: bold; font-size: 32px; color: #e07a5f }
-h2 { font: bold; font-size: 28px; color: #e07a5f }
-h3 { font: bold; font-size: 24px; color: #e07a5f }
+h1 { font: bold; font-size: 32px; color: #81b29a }
+h2 { font: bold; font-size: 28px; color: #81b29a }
+h3 { font: bold; font-size: 24px; color: #81b29a }
 p { color: #f4f1de; }
 
-nav a { font-size: 18px; text-decoration: none; position: relative; color: #81b29a; padding: 0.25rem; }
-nav a:hover { text-decoration: underline; }
 main { max-width: 1024px; margin: 0 auto; padding: 2.5rem 1rem; }
 section { padding: 2rem; border-radius: 8px; background-color: #000000; border: 1px solid #000000; }
-footer { background: #000000; text-align: center; }
+footer { background: none; text-align: center; }
 
