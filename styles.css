@@ -17,5 +17,5 @@ p { color: #e6ccb2; }
 
 main { max-width: 1024px; margin: 0 auto; padding: 2.5rem 1rem; }
 section { padding: 2rem; border-radius: 8px; background-color: #000000; border: 1px solid #000000; }
-footer { background: none; text-align: center; color: #cdcdcd; }
+footer { background: #000000; text-align: center; color: #cdcdcd; }
 
