@@ -13,7 +13,7 @@ header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: cente
 h1 { font: bold; font-size: 32px; }
 h2 { font: bold; font-size: 28px; }
 h3 { font: bold; font-size: 24px; }
-p { color: #fdf0f0; }
+p { color: #dde2e3; }
 
 nav a { font-size: 18px; text-decoration: none; position: relative; color: #B0E5A7; padding: 0.25rem; }
 nav a:hover { text-decoration: underline; }
