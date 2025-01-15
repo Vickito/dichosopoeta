@@ -62,24 +62,24 @@
             </div>
         </div>
     </main>
+    <p>Si quieres estar en contacto conmigo, puedes llenar el siguiente formulario:</p><br>
+    <form action="enviar.php" method="POST">
+        <label for="nombre">Nombre/apodo:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+    
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required><br><br>
+    
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" required></textarea><br><br>
+    
+        <button type="submit">Enviar</button>
+    </form>   
     <footer>
         <p>&copy; 2024 DichosoPoeta.</p>
         <a href="mailto:poeta@dichosopoeta.com">poeta@dichosopoeta.com</a>
         <p>Puedes decirme si te gustan mis escritos. También me puedes escribir por si necesitas a alguien con quién hablar.</p>
-        <br>
-        <p>Puedes llenar el siguiente formulario si se te hace más fácil:</p><br>
-        <form action="https://formspree.io/f/<tu-endpoint>" method="POST">
-            <label>Nombre</label>
-            <input type="text" name="nombre" required><br>
-            
-            <label>Correo</label>
-            <input type="email" name="correo" required><br>
-            
-            <label>Mensaje</label>
-            <textarea name="mensaje" required></textarea><br>
-            
-            <button type="submit">Enviar</button>
-          </form>
+        <br>     
     </footer>
 </body>
 
