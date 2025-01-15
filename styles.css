@@ -1,5 +1,5 @@
 body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; font: optional; initial-value: auto; }
-.card { background: #000000; border: 1px solid #dbccc1; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card { background: #000000; border: 1px solid #14213D; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .card-text { color: #fdf0f0; }
 .home-link span { position: relative; color: #cdc1cb; text-decoration: none; }
 .home-link span::before { left: -8px; }
