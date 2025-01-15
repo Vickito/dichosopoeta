@@ -1,13 +1,13 @@
-body { background: #e5dee5; color: #fdf0f0; font-family: 'Arial', sans-serif; font: optional; initial-value: auto; }
+body { background: #000000; color: #fdf0f0; font-family: 'Arial', sans-serif; font: optional; initial-value: auto; }
 .card { background: #000000; border: 1px solid #9195c5; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .card-text { color: #fdf0f0; }
-.home-link span { position: relative; color: #37745B; text-decoration: none; }
+.home-link span { position: relative; color: #7c3b30; text-decoration: none; }
 .home-link span::before { left: -8px; }
 .home-link span::after { right: -8px; }
 .date { font-size: 12px; color: #e3deda; }
 
 /* Color */
-a { color: #37745B; }
+a { color: #7c3b30; }
 header { background: #000000; color: #fdf0f0; padding: 1.5rem; text-align: center; }
 
 h1 { font: bold; font-size: 32px; color: #deafa7 }
@@ -15,7 +15,7 @@ h2 { font: bold; font-size: 28px; color: #deafa7 }
 h3 { font: bold; font-size: 24px; color: #deafa7 }
 p { color: #dde2e3; }
 
-nav a { font-size: 18px; text-decoration: none; position: relative; color: #37745B; padding: 0.25rem; }
+nav a { font-size: 18px; text-decoration: none; position: relative; color: #7c3b30; padding: 0.25rem; }
 nav a:hover { text-decoration: underline; }
 main { max-width: 1024px; margin: 0 auto; padding: 2.5rem 1rem; }
 section { padding: 2rem; border-radius: 8px; background-color: #000000; border: 1px solid #000000; }
